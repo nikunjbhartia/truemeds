@@ -618,8 +618,48 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                   itemSalts[k] = v;
                 }
                 item.salts = itemSalts;
-              } else {
-                item.salts = itemSalts;
+              }
+
+              // Override strengths from brand name if name contains slash-separated strengths (e.g., "250/10 Mg")
+              const slashMatch = item.brand.match(/(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)\s*([a-zA-Z%]+)?/);
+              if (slashMatch) {
+                const unit = slashMatch[3] || 'mg';
+                const nameStrengths = [
+                  { val: parseFloat(slashMatch[1]), unit },
+                  { val: parseFloat(slashMatch[2]), unit }
+                ];
+                const saltKeys = Object.keys(item.salts || {});
+                if (saltKeys.length === 2 && nameStrengths.length === 2) {
+                  const assigned = new Set();
+                  const matchedKeys = {};
+                  
+                  // First pass: exact numeric match
+                  saltKeys.forEach(k => {
+                    const parsed = parseStrengthValueAndUnit(item.salts[k]);
+                    if (parsed) {
+                      const matchIndex = nameStrengths.findIndex((ns, idx) => !assigned.has(idx) && ns.val === parsed.value);
+                      if (matchIndex !== -1) {
+                        matchedKeys[k] = `${nameStrengths[matchIndex].val} ${nameStrengths[matchIndex].unit}`;
+                        assigned.add(matchIndex);
+                      }
+                    }
+                  });
+                  
+                  // Second pass: assign remaining
+                  saltKeys.forEach(k => {
+                    if (!matchedKeys[k]) {
+                      const nextAvailableIndex = [0, 1].find(idx => !assigned.has(idx));
+                      if (nextAvailableIndex !== undefined) {
+                        matchedKeys[k] = `${nameStrengths[nextAvailableIndex].val} ${nameStrengths[nextAvailableIndex].unit}`;
+                        assigned.add(nextAvailableIndex);
+                      }
+                    }
+                  });
+                  
+                  for (const [k, v] of Object.entries(matchedKeys)) {
+                    item.salts[k] = v;
+                  }
+                }
               }
             }
             if (item.match_percent === undefined) {
@@ -752,21 +792,37 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             return mp > 0;
           });
 
-          // Backfill mock recommendations list up to 4 cards using remaining partial match alternatives (where match_percent > 0)
+          // Backfill mock recommendations list up to 4 cards using remaining partial & diff strength matches (where match_percent > 0)
           if (data.recommendations.length < 4) {
             const recBrands = new Set(data.recommendations.map(r => r.brand));
-            const remainingAlts = (data.alternatives.partial || []).filter(item => {
+            const allCandidates = [
+              ...(data.alternatives.partial || []),
+              ...(data.alternatives.different_strength || [])
+            ];
+            const remainingAlts = allCandidates.filter(item => {
               const mp = item.match_percent !== undefined ? item.match_percent : computeMatchPercent(refSalts, item.salts);
               return !recBrands.has(item.brand) && mp > 0;
+            });
+
+            remainingAlts.sort((a, b) => {
+              const aMatch = a.match_percent !== undefined ? a.match_percent : computeMatchPercent(refSalts, a.salts);
+              const bMatch = b.match_percent !== undefined ? b.match_percent : computeMatchPercent(refSalts, b.salts);
+              if (aMatch !== bMatch) {
+                return bMatch - aMatch;
+              }
+              return a.unit_price - b.unit_price;
             });
             
             let backfillIndex = 1;
             for (const item of remainingAlts) {
               if (data.recommendations.length >= 4) break;
               
-              const isExtra = item.status.includes('Extra');
+              const isExtra = item.status && item.status.includes('Extra');
+              const isDiffStrength = item.status && (item.status.includes('Diff') || item.status.includes('Strength'));
               const categoryName = isExtra 
                 ? `Alternative Extra Match #${backfillIndex}`
+                : isDiffStrength
+                ? `Alternative Different Strength Match #${backfillIndex}`
                 : `Alternative Partial Match #${backfillIndex}`;
                 
               data.recommendations.push({
@@ -1203,7 +1259,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   const recommendedBrands = new Set(recommendations.map(r => r.brand));
   const remainingPartials = [];
   
-  [...missingIngredients, ...extraIngredients].forEach(cand => {
+  [...missingIngredients, ...extraIngredients, ...diffStrength].forEach(cand => {
     if (!recommendedBrands.has(cand.name)) {
       remainingPartials.push(cand);
     }
@@ -1233,9 +1289,14 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
     const savings = refMrpPerUnit > 0 ? Number(((refMrpPerUnit - cand.price_per_unit) / refMrpPerUnit * 100).toFixed(2)) : 0.0;
 
     const isExtra = cand.match_status === 'Extra Ingredients';
+    const isDiffStrength = cand.match_status === 'Different Strength';
     const categoryName = isExtra 
       ? `Alternative Extra Match #${backfillIndex}`
+      : isDiffStrength
+      ? `Alternative Different Strength Match #${backfillIndex}`
       : `Alternative Partial Match #${backfillIndex}`;
+
+    const detailLabel = isExtra ? 'Contains extra' : isDiffStrength ? 'Different strength' : 'Missing';
 
     recommendations.push({
       category: categoryName,
@@ -1246,8 +1307,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       savings_percent: savings,
       link: link,
       details: cand.is_suggestion 
-        ? `Buy parent **${cand.parent_name}** & swap in cart (${isExtra ? 'Contains extra' : 'Missing'}: ${cand.match_details ? cand.match_details.join(', ') : ''})` 
-        : (cand.match_details ? `${isExtra ? 'Contains extra' : 'Missing'}: ${cand.match_details.join(', ')}` : ''),
+        ? `Buy parent **${cand.parent_name}** & swap in cart (${detailLabel}: ${cand.match_details ? cand.match_details.join(', ') : ''})` 
+        : (cand.match_details ? `${detailLabel}: ${cand.match_details.join(', ')}` : ''),
       salts: cand.salts,
       match_percent: cand.match_percent !== undefined ? cand.match_percent : computeMatchPercent(refSalts, cand.salts)
     });

@@ -61,6 +61,9 @@ export default function SideBySideCompare({
 
   comparisonList.sort((a, b) => a.name.localeCompare(b.name));
 
+  const isProbiotic = refKeys.some(k => /probiotic|microbe/i.test(k)) || 
+                      compKeys.some(k => /probiotic|microbe/i.test(k));
+
   return (
     <section className="bg-slate-900/95 border-2 border-cyan-500/30 rounded-2xl p-6 relative w-full flex flex-col gap-5 shadow-2xl backdrop-blur-md">
       {/* Header */}
@@ -235,6 +238,17 @@ export default function SideBySideCompare({
           </div>
         </div>
       </div>
+
+      {/* Probiotic Warning */}
+      {isProbiotic && (
+        <div className="bg-amber-500/10 border border-amber-500/25 p-3.5 rounded-xl flex gap-3 items-start text-xs text-amber-300">
+          <span className="text-base select-none mt-0.5">⚠️</span>
+          <div>
+            <strong className="block font-bold mb-0.5 text-amber-200">Probiotic Strain Warning</strong>
+            Probiotic products contain different bacterial strains (e.g. Lactobacillus, Bifidobacterium, Bacillus clausii) targeting different health concerns (e.g., gut health vs. urogenital/vaginal flora) and are generally **not interchangeable**. Consult a doctor before swapping.
+          </div>
+        </div>
+      )}
 
       {/* Savings Summary Banner */}
       <div className="bg-slate-950/80 border border-white/5 p-4 rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4">

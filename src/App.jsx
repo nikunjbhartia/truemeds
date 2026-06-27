@@ -106,13 +106,13 @@ export default function App({ initialQuery = '' } = {}) {
 
   // Sub-filtering states for the alternatives table/stack
   const [subSearchQuery, setSubSearchQuery] = useState("");
-  const [selectedManufacturer, setSelectedManufacturer] = useState("");
+  const [selectedManufacturers, setSelectedManufacturers] = useState([]);
   const [selectedStatusDetail, setSelectedStatusDetail] = useState("");
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
     setSubSearchQuery("");
-    setSelectedManufacturer("");
+    setSelectedManufacturers([]);
     setSelectedStatusDetail("");
   };
 
@@ -131,7 +131,7 @@ export default function App({ initialQuery = '' } = {}) {
     
     // Reset sub-filters on new search
     setSubSearchQuery("");
-    setSelectedManufacturer("");
+    setSelectedManufacturers([]);
     setSelectedStatusDetail("");
   };
 
@@ -155,7 +155,7 @@ export default function App({ initialQuery = '' } = {}) {
     if (subSearchQuery && !sub.brand.toLowerCase().includes(subSearchQuery.toLowerCase())) {
       return false;
     }
-    if (selectedManufacturer && sub.manufacturer !== selectedManufacturer) {
+    if (selectedManufacturers.length > 0 && !selectedManufacturers.includes(sub.manufacturer)) {
       return false;
     }
     if (selectedStatusDetail && sub.status !== selectedStatusDetail) {
@@ -294,8 +294,8 @@ export default function App({ initialQuery = '' } = {}) {
               <TableFilters
                 searchQuery={subSearchQuery}
                 onSearchChange={setSubSearchQuery}
-                selectedManufacturer={selectedManufacturer}
-                onManufacturerChange={setSelectedManufacturer}
+                selectedManufacturers={selectedManufacturers}
+                onManufacturersChange={setSelectedManufacturers}
                 manufacturers={uniqueManufacturers}
                 selectedStatus={selectedStatusDetail}
                 onStatusChange={setSelectedStatusDetail}

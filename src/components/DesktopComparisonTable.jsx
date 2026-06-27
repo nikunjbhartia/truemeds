@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function DesktopComparisonTable({ subs, selectedSub, onSelect, comparedSub, onCompare }) {
   return (
-    <div data-testid="desktop-table" className="glass-panel overflow-x-auto lg:overflow-x-visible w-full">
+    <div data-testid="desktop-table" className="glass-panel overflow-x-auto w-full">
       <table className="min-w-full text-slate-200 border-collapse text-sm">
         <thead>
           <tr className="border-b border-white/10 text-slate-400 text-left uppercase text-[10px] tracking-wider bg-white/3">

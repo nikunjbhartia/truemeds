@@ -66,9 +66,15 @@ export default function App({ initialQuery = '' } = {}) {
       setComparedSub(null);
       setLocalError(null);
 
-      const exacts = (data.alternatives?.exact || []).map(a => ({ ...a, matchType: 'exact' }));
-      const strengths = (data.alternatives?.different_strength || []).map(a => ({ ...a, matchType: 'strength' }));
-      const partials = (data.alternatives?.partial || []).map(a => ({ ...a, matchType: 'partial' }));
+      const exacts = (data.alternatives?.exact || [])
+        .map(a => ({ ...a, matchType: 'exact' }))
+        .filter(a => a.brand !== "" && a.status !== "No matches found under this category");
+      const strengths = (data.alternatives?.different_strength || [])
+        .map(a => ({ ...a, matchType: 'strength' }))
+        .filter(a => a.brand !== "" && a.status !== "No matches found under this category");
+      const partials = (data.alternatives?.partial || [])
+        .map(a => ({ ...a, matchType: 'partial' }))
+        .filter(a => a.brand !== "" && a.status !== "No matches found under this category");
       const allSubs = [...exacts, ...strengths, ...partials];
 
       setSubstitutes(allSubs);

@@ -152,22 +152,21 @@ export default function App({ initialQuery = '' } = {}) {
       )}
 
       {searched && !loading && !displayError && medicine && (
-        <ResponsiveLayout>
+        <div className="flex flex-col gap-6 w-full">
           
-          {/* Left Side: Reference Med details & Savings Calculator */}
-          <aside className="lg:col-span-4 flex flex-col gap-6">
-            
+          {/* Top Panel: Prescribed Med Info and History side-by-side on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {/* Reference Medicine Info Card */}
-            <div className="glass-panel border-cyan-400/30 overflow-hidden">
+            <div className="md:col-span-2 glass-panel border-cyan-400/30 overflow-hidden flex flex-col">
               <div 
                 onClick={() => setIsAccordionOpen(prev => ({ ...prev, ref: !prev.ref }))}
-                className="px-5 py-4 flex justify-between items-center bg-white/5 cursor-pointer lg:cursor-default"
+                className="px-5 py-4 flex justify-between items-center bg-white/5 cursor-pointer md:cursor-default"
               >
                 <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest bg-cyan-400/10 px-2.5 py-1 rounded">Prescribed</span>
-                <span className="lg:hidden text-slate-400 text-xs">{isAccordionOpen.ref ? '▲' : '▼'}</span>
+                <span className="md:hidden text-slate-400 text-xs">{isAccordionOpen.ref ? '▲' : '▼'}</span>
               </div>
               
-              <div className={`px-5 pb-5 pt-2 flex flex-col gap-4 ${isAccordionOpen.ref ? 'block' : 'hidden lg:block'}`}>
+              <div className={`px-5 pb-5 pt-2 flex flex-col gap-4 flex-1 ${isAccordionOpen.ref ? 'block' : 'hidden md:block'}`}>
                 <div>
                   <h3 className="font-heading text-xl font-bold text-slate-50">{medicine.name}</h3>
                   {medicine.manufacturer && <p className="text-slate-400 text-xs">{medicine.manufacturer}</p>}
@@ -187,7 +186,7 @@ export default function App({ initialQuery = '' } = {}) {
                 {medicine.ingredients && medicine.ingredients.length > 0 && (
                   <div className="border-t border-white/5 pt-4">
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Composition</h4>
-                    <ul className="flex flex-col gap-1.5">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {medicine.ingredients.map((ing, idx) => (
                         <li key={idx} className="flex justify-between items-center text-sm bg-white/5 border border-white/5 px-3 py-2 rounded-lg text-slate-200 font-medium">
                           {ing}
@@ -200,19 +199,17 @@ export default function App({ initialQuery = '' } = {}) {
             </div>
 
             {/* Sidebar Search History */}
-            <HistoryList 
-              history={history}
-              onSelectHistoryItem={handleSearch}
-              onClearHistory={handleClearHistory}
-            />
+            <div className="md:col-span-1">
+              <HistoryList 
+                history={history}
+                onSelectHistoryItem={handleSearch}
+                onClearHistory={handleClearHistory}
+              />
+            </div>
+          </div>
 
-          </aside>
-
-          {/* Right Side: Step Walkthrough, Filters, Alternative list */}
-          <main className="lg:col-span-8 flex flex-col gap-6">
-            
-
-
+          {/* Bottom Panel: Alternatives Table (Full Width) */}
+          <div className="flex flex-col gap-6 w-full">
             {/* Filter Options Bar */}
             <MatchFilters 
               activeFilter={activeFilter}
@@ -241,10 +238,9 @@ export default function App({ initialQuery = '' } = {}) {
                 </p>
               )}
             </div>
+          </div>
 
-          </main>
-
-        </ResponsiveLayout>
+        </div>
       )}
 
       {searched && !loading && !displayError && !medicine && (

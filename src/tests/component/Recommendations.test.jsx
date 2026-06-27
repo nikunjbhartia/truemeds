@@ -47,7 +47,8 @@ describe('Recommendations component', () => {
       savings_percent: 33.71,
       link: 'https://www.truemeds.in/aspirin-75',
       details: 'Missing: Enteric coating',
-      salts: { 'Aspirin': '75 mg' }
+      salts: { 'Aspirin': '75 mg' },
+      match_percent: 50
     }
   ];
 
@@ -64,6 +65,9 @@ describe('Recommendations component', () => {
     expect(screen.getAllByText('Ecosprin 75 Tablet 14').length).toBe(1);
     expect(screen.getByText('Delisprin 75 Tablet 14')).toBeInTheDocument();
     expect(screen.getByText('Aspirin 75 Tablet 14')).toBeInTheDocument();
+
+    // Check match percentage badge display for non-exact cards
+    expect(screen.getByText('50% Match')).toBeInTheDocument();
 
     // Check swap instruction details text is rendered with bolding stripped
     expect(screen.getByText('Buy parent Delisprin 75 & swap for Ecosprin 75 in cart')).toBeInTheDocument();

@@ -31,9 +31,16 @@ export default function Recommendations({ recommendations, onCompare, comparedSu
               className="glass-panel p-4 flex flex-col justify-between gap-3 border border-white/10 hover:border-white/20 transition-all duration-200"
             >
               <div className="flex flex-col gap-1.5">
-                <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border self-start ${categoryBadgeColor}`}>
-                  {rec.category}
-                </span>
+                <div className="flex flex-wrap gap-2 items-center">
+                  <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border self-start ${categoryBadgeColor}`}>
+                    {rec.category}
+                  </span>
+                  {rec.match_percent !== undefined && !rec.category.includes('Standalone') && !rec.category.includes('Cheapest Swap') && (
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                      {rec.match_percent}% Match
+                    </span>
+                  )}
+                </div>
                 <div>
                   <h4 className="font-heading text-base font-bold text-slate-100 break-words leading-snug">{rec.brand}</h4>
                   <p className="text-[10px] text-slate-500 font-medium">Unit Price: ₹{parseFloat(rec.unit_price || 0).toFixed(2)}</p>

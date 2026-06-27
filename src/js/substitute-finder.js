@@ -695,6 +695,11 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             } else if (rec.category.includes('Queried Brand')) {
               rec.salts = refSalts;
             }
+            if (matchingAlt && matchingAlt.match_percent !== undefined) {
+              rec.match_percent = matchingAlt.match_percent;
+            } else if (rec.category.includes('Queried Brand')) {
+              rec.match_percent = 100;
+            }
           });
         }
 
@@ -1006,7 +1011,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       details: cheapestDiff.is_suggestion 
         ? `Buy parent **${cheapestDiff.parent_name}** & swap in cart` 
         : (cheapestDiff.match_details ? cheapestDiff.match_details.join(', ') : ''),
-      salts: cheapestDiff.salts
+      salts: cheapestDiff.salts,
+      match_percent: cheapestDiff.match_percent !== undefined ? cheapestDiff.match_percent : computeMatchPercent(refSalts, cheapestDiff.salts)
     });
   }
 
@@ -1032,7 +1038,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       details: cheapestExtra.is_suggestion 
         ? `Buy parent **${cheapestExtra.parent_name}** & swap in cart (Contains extra: ${cheapestExtra.match_details ? cheapestExtra.match_details.join(', ') : ''})` 
         : (cheapestExtra.match_details ? `Contains extra: ${cheapestExtra.match_details.join(', ')}` : ''),
-      salts: cheapestExtra.salts
+      salts: cheapestExtra.salts,
+      match_percent: cheapestExtra.match_percent !== undefined ? cheapestExtra.match_percent : computeMatchPercent(refSalts, cheapestExtra.salts)
     });
   }
 
@@ -1077,7 +1084,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       details: bestMissing.is_suggestion 
         ? `Buy parent **${bestMissing.parent_name}** & swap in cart (Missing: ${bestMissing.match_details ? bestMissing.match_details.join(', ') : ''})` 
         : (bestMissing.match_details ? `Missing: ${bestMissing.match_details.join(', ')}` : ''),
-      salts: bestMissing.salts
+      salts: bestMissing.salts,
+      match_percent: bestMissing.match_percent !== undefined ? bestMissing.match_percent : computeMatchPercent(refSalts, bestMissing.salts)
     });
   }
 

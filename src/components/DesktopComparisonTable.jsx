@@ -41,7 +41,7 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) 
                     {sub.details || 'N/A'}
                   </div>
                 </td>
-                <td className="px-3 py-3 text-slate-400 max-w-[150px] truncate" title={sub.manufacturer}>
+                <td className="px-3 py-3 text-slate-400 text-xs break-words max-w-[180px] leading-relaxed">
                   {sub.manufacturer}
                 </td>
                 <td className="px-3 py-3 whitespace-nowrap font-medium">

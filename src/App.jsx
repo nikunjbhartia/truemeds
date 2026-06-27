@@ -11,6 +11,7 @@ import { useSubstituteFinder } from './hooks/useSubstituteFinder';
 import { useIsMobile, useIsTablet, useIsDesktop } from './hooks/useMediaQuery';
 import MobileAlternativeStack from './components/MobileAlternativeStack';
 import DesktopComparisonTable from './components/DesktopComparisonTable';
+import TableFilters from './components/TableFilters';
 
 export default function App({ initialQuery = '' } = {}) {
   const [history, setHistory] = useState([]);
@@ -93,6 +94,18 @@ export default function App({ initialQuery = '' } = {}) {
     }
   }, []);
 
+  // Sub-filtering states for the alternatives table/stack
+  const [subSearchQuery, setSubSearchQuery] = useState("");
+  const [selectedManufacturer, setSelectedManufacturer] = useState("");
+  const [selectedStatusDetail, setSelectedStatusDetail] = useState("");
+
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter);
+    setSubSearchQuery("");
+    setSelectedManufacturer("");
+    setSelectedStatusDetail("");
+  };
+
   const handleSearch = (queryStr) => {
     if (!queryStr.trim()) return;
     
@@ -104,6 +117,11 @@ export default function App({ initialQuery = '' } = {}) {
     setSearched(true);
     setLocalError(null);
     setSearchQuery(queryStr);
+    
+    // Reset sub-filters on new search
+    setSubSearchQuery("");
+    setSelectedManufacturer("");
+    setSelectedStatusDetail("");
   };
 
   const handleClearHistory = () => {
@@ -111,9 +129,28 @@ export default function App({ initialQuery = '' } = {}) {
     window.localStorage.removeItem('tm_search_history');
   };
 
-  const filteredSubstitutes = substitutes.filter(sub => {
+  // 1. First filter by active category
+  const categorySubstitutes = substitutes.filter(sub => {
     if (activeFilter === 'all') return true;
     return sub.matchType === activeFilter;
+  });
+
+  // 2. Extract unique lists of options for dropdowns based on the active category
+  const uniqueManufacturers = [...new Set(categorySubstitutes.map(s => s.manufacturer))].filter(Boolean).sort();
+  const uniqueStatusDetails = [...new Set(categorySubstitutes.map(s => s.status))].filter(Boolean).sort();
+
+  // 3. Apply the search query and dropdown sub-filters
+  const finalFilteredSubstitutes = categorySubstitutes.filter(sub => {
+    if (subSearchQuery && !sub.brand.toLowerCase().includes(subSearchQuery.toLowerCase())) {
+      return false;
+    }
+    if (selectedManufacturer && sub.manufacturer !== selectedManufacturer) {
+      return false;
+    }
+    if (selectedStatusDetail && sub.status !== selectedStatusDetail) {
+      return false;
+    }
+    return true;
   });
 
   const displayError = error ? 'Failed to fetch results. Please try again.' : localError;
@@ -213,28 +250,46 @@ export default function App({ initialQuery = '' } = {}) {
             {/* Filter Options Bar */}
             <MatchFilters 
               activeFilter={activeFilter}
-              onFilterChange={setActiveFilter}
+              onFilterChange={handleFilterChange}
             />
+
+            {/* Sub-Filters: Search and Dropdowns */}
+            {categorySubstitutes.length > 0 && (
+              <TableFilters
+                searchQuery={subSearchQuery}
+                onSearchChange={setSubSearchQuery}
+                selectedManufacturer={selectedManufacturer}
+                onManufacturerChange={setSelectedManufacturer}
+                manufacturers={uniqueManufacturers}
+                selectedStatus={selectedStatusDetail}
+                onStatusChange={setSelectedStatusDetail}
+                statuses={uniqueStatusDetails}
+                activeFilter={activeFilter}
+              />
+            )}
 
             {/* Substitutes List */}
             <div className="w-full">
-              {filteredSubstitutes.length > 0 ? (
+              {finalFilteredSubstitutes.length > 0 ? (
                 isDesktop ? (
                   <DesktopComparisonTable 
-                    subs={filteredSubstitutes}
+                    subs={finalFilteredSubstitutes}
                     selectedSub={selectedSub}
                     onSelect={setSelectedSub}
                   />
                 ) : (
                   <MobileAlternativeStack 
-                    subs={filteredSubstitutes}
+                    subs={finalFilteredSubstitutes}
                     selectedSub={selectedSub}
                     onSelect={setSelectedSub}
                   />
                 )
               ) : (
                 <p className="glass-panel p-5 text-center text-slate-400 text-sm">
-                  No alternatives found matching filter "{activeFilter.toUpperCase()}".
+                  {categorySubstitutes.length > 0 
+                    ? "No alternatives match the current search or dropdown filter criteria."
+                    : `No alternatives found matching category "${activeFilter.toUpperCase()}".`
+                  }
                 </p>
               )}
             </div>

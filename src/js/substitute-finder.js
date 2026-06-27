@@ -1217,10 +1217,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   const finalDiffStrength = formatTableItems(diffStrength);
   const combinedPartial = [...extraIngredients, ...missingIngredients];
   combinedPartial.sort((a, b) => {
-    const aDiff = a.match_details ? a.match_details.length : 0;
-    const bDiff = b.match_details ? b.match_details.length : 0;
-    if (aDiff !== bDiff) {
-      return aDiff - bDiff;
+    const aMatch = a.match_percent !== undefined ? a.match_percent : computeMatchPercent(refSalts, a.salts);
+    const bMatch = b.match_percent !== undefined ? b.match_percent : computeMatchPercent(refSalts, b.salts);
+    if (aMatch !== bMatch) {
+      return bMatch - aMatch;
     }
     return a.price_per_unit - b.price_per_unit;
   });

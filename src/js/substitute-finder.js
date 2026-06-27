@@ -13,7 +13,7 @@ export function normalizeStrength(strength) {
   const normalizedParts = parts.map(part => {
     const subparts = part.split('/');
     const normalizedSubparts = subparts.map(subpart => {
-      const match = subpart.match(/^(\d+(?:\.\d+)?)\s*([a-z\.]+)/);
+      const match = subpart.match(/^(\d+(?:\.\d+)?)\s*([a-z%]+)/);
       if (match) {
         return `${match[1]} ${match[2]}`;
       }

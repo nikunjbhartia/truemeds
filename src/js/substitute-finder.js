@@ -24,6 +24,76 @@ export function normalizeStrength(strength) {
   return normalizedParts.join(' + ');
 }
 
+export function parseStrengthValueAndUnit(strengthStr) {
+  if (!strengthStr) return null;
+  const match = String(strengthStr).trim().toLowerCase().match(/^(\d+(?:\.\d+)?)\s*([a-z%]+)?/);
+  if (match) {
+    return {
+      value: parseFloat(match[1]),
+      unit: match[2] || ''
+    };
+  }
+  return null;
+}
+
+export function getStrengthMatchRatio(refStr, candStr) {
+  const ref = parseStrengthValueAndUnit(refStr);
+  const cand = parseStrengthValueAndUnit(candStr);
+  if (!ref || !cand) return 1.0;
+  
+  let refVal = ref.value;
+  let candVal = cand.value;
+  
+  const refUnit = ref.unit.replace(/\s+/g, '');
+  const candUnit = cand.unit.replace(/\s+/g, '');
+  
+  if (refUnit !== candUnit) {
+    if ((refUnit === 'g' || refUnit === 'gm') && candUnit === 'mg') {
+      refVal *= 1000;
+    } else if (refUnit === 'mg' && (candUnit === 'g' || candUnit === 'gm')) {
+      candVal *= 1000;
+    } else if (refUnit === 'mcg' && candUnit === 'mg') {
+      refVal /= 1000;
+    } else if (refUnit === 'mg' && candUnit === 'mcg') {
+      candVal /= 1000;
+    } else if ((refUnit === 'g' || refUnit === 'gm') && candUnit === 'mcg') {
+      refVal *= 1000000;
+    } else if (refUnit === 'mcg' && (candUnit === 'g' || candUnit === 'gm')) {
+      candVal *= 1000000;
+    }
+  }
+  
+  if (refVal === 0 || candVal === 0) return 0.0;
+  return Math.min(refVal, candVal) / Math.max(refVal, candVal);
+}
+
+export function computeMatchPercent(refSalts, candSalts) {
+  const refNorm = {};
+  for (const [k, v] of Object.entries(refSalts || {})) {
+    refNorm[normalizeSaltName(k)] = v;
+  }
+  const candNorm = {};
+  for (const [k, v] of Object.entries(candSalts || {})) {
+    candNorm[normalizeSaltName(k)] = v;
+  }
+
+  const refKeys = Object.keys(refNorm);
+  const candKeys = Object.keys(candNorm);
+  const unionKeys = Array.from(new Set([...refKeys, ...candKeys]));
+  
+  if (unionKeys.length === 0) return 0;
+
+  let totalWeight = 0;
+  for (const k of unionKeys) {
+    if (refNorm[k] !== undefined && candNorm[k] !== undefined) {
+      totalWeight += getStrengthMatchRatio(refNorm[k], candNorm[k]);
+    }
+  }
+
+  return Math.round((totalWeight / unionKeys.length) * 100);
+}
+
+
 export function parseMedicineInfo(prodDict) {
   if (!prodDict) return null;
 
@@ -419,12 +489,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
               }
             }
             if (item.match_percent === undefined) {
-              const refKeys = Object.keys(refSalts || {});
-              const candSalts = item.salts || {};
-              const candKeys = Object.keys(candSalts);
-              const matchedKeys = refKeys.filter(k => candSalts[k] !== undefined);
-              const unionKeys = Array.from(new Set([...refKeys, ...candKeys]));
-              item.match_percent = unionKeys.length > 0 ? Math.round((matchedKeys.length / unionKeys.length) * 100) : 0;
+              item.match_percent = computeMatchPercent(refSalts, item.salts);
             }
           });
         };
@@ -820,12 +885,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         link = `https://www.truemeds.in/${cand.product_url}?search_click_id=${clickId}&search_session_id=${sessionId}&suggestion_rank=0&suggestion_source_type=manual_enter`;
       }
 
-      const refKeys = Object.keys(refSalts || {});
-      const candSalts = cand.salts || {};
-      const candKeys = Object.keys(candSalts);
-      const matchedKeys = refKeys.filter(k => candSalts[k] !== undefined);
-      const unionKeys = Array.from(new Set([...refKeys, ...candKeys]));
-      const matchPercent = unionKeys.length > 0 ? Math.round((matchedKeys.length / unionKeys.length) * 100) : 0;
+      const matchPercent = computeMatchPercent(refSalts, cand.salts);
 
       return {
         brand: cand.name,

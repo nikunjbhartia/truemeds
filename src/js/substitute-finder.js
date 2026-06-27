@@ -1103,7 +1103,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       savings_percent: standSavings,
       link: standLink,
       details: '',
-      salts: refSalts
+      salts: refSalts,
+      match_percent: 100
     });
   } else {
     const swapClickId = `sc_${generateUUID()}`;
@@ -1119,7 +1120,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       savings_percent: swapSavings,
       link: swapLink,
       details: `Buy parent **${refCand.parent_name || 'parent'}** & swap for **${refInfo.name}** in cart`,
-      salts: refCand.salts
+      salts: refCand.salts,
+      match_percent: 100
     });
   }
 
@@ -1144,7 +1146,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       savings_percent: savings,
       link: link,
       details: cheapestExact.is_suggestion ? `Buy parent **${cheapestExact.parent_name || 'parent'}** & swap in cart` : '',
-      salts: cheapestExact.salts
+      salts: cheapestExact.salts,
+      match_percent: 100
     });
   }
 

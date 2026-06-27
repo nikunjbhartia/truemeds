@@ -12,6 +12,7 @@ describe('SideBySideCompare Component', () => {
     mrp: 6.5,
     price: 5.2,
     unit_price: 0.37,
+    pack_size: 10,
     link: 'https://www.truemeds.in/otc/ecosprin-75-tablet-14'
   };
 
@@ -70,11 +71,6 @@ describe('SideBySideCompare Component', () => {
     expect(productLinks).toHaveLength(2);
     expect(productLinks[0]).toHaveAttribute('href', 'https://www.truemeds.in/otc/ecosprin-75-tablet-14');
     expect(productLinks[1]).toHaveAttribute('href', 'https://www.truemeds.in/medicine/delisprin-gold-75');
-
-    // Verify footer View on Truemeds link
-    const footerLink = screen.getByRole('link', { name: /view on truemeds/i });
-    expect(footerLink).toBeInTheDocument();
-    expect(footerLink).toHaveAttribute('href', 'https://www.truemeds.in/medicine/delisprin-gold-75');
   });
 
   test('compares salt strengths and extra/missing items correctly', () => {

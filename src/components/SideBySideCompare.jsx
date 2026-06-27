@@ -10,6 +10,14 @@ export default function SideBySideCompare({
 }) {
   if (!refInfo || !compItem) return null;
 
+  const refUnitPrice = refInfo.unit_price || (refInfo.price / (refInfo.pack_size || 1));
+  const refMrpPerUnit = (refInfo.mrp / (refInfo.pack_size || 1)) || refUnitPrice;
+  
+  const compUnitPrice = compItem.unit_price || (compItem.price / (compItem.pack_size || 1));
+  
+  const savingsVsMrp = refMrpPerUnit > 0 ? ((refMrpPerUnit - compUnitPrice) / refMrpPerUnit) * 100 : 0;
+  const savingsVsPrice = refUnitPrice > 0 ? ((refUnitPrice - compUnitPrice) / refUnitPrice) * 100 : 0;
+
   const refKeys = Object.keys(refSalts || {});
   const compSalts = compItem.salts || {};
   const compKeys = Object.keys(compSalts);
@@ -233,37 +241,24 @@ export default function SideBySideCompare({
         <div className="flex flex-row gap-6 w-full sm:w-auto">
           <div className="flex flex-col">
             <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">vs Retail MRP (Offline)</span>
-            {compItem.savings_vs_mrp > 0 ? (
-              <span className="text-emerald-400 text-lg font-bold">Save {Math.round(compItem.savings_vs_mrp)}%</span>
-            ) : compItem.savings_vs_mrp < 0 ? (
-              <span className="text-rose-400 text-lg font-bold">+{Math.abs(Math.round(compItem.savings_vs_mrp))}% Cost</span>
+            {savingsVsMrp > 0 ? (
+              <span className="text-emerald-400 text-lg font-bold">Save {Math.round(savingsVsMrp)}%</span>
+            ) : savingsVsMrp < 0 ? (
+              <span className="text-rose-400 text-lg font-bold">+{Math.abs(Math.round(savingsVsMrp))}% Cost</span>
             ) : (
               <span className="text-slate-400 text-lg font-bold">0%</span>
             )}
           </div>
           <div className="flex flex-col">
             <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">vs Queried Price</span>
-            {compItem.savings_vs_price > 0 ? (
-              <span className="text-emerald-400 text-lg font-bold">Save {Math.round(compItem.savings_vs_price)}%</span>
-            ) : compItem.savings_vs_price < 0 ? (
-              <span className="text-rose-400 text-lg font-bold">+{Math.abs(Math.round(compItem.savings_vs_price))}% Cost</span>
+            {savingsVsPrice > 0 ? (
+              <span className="text-emerald-400 text-lg font-bold">Save {Math.round(savingsVsPrice)}%</span>
+            ) : savingsVsPrice < 0 ? (
+              <span className="text-rose-400 text-lg font-bold">+{Math.abs(Math.round(savingsVsPrice))}% Cost</span>
             ) : (
               <span className="text-slate-400 text-lg font-bold">0%</span>
             )}
           </div>
-        </div>
-
-        <div className="flex gap-4 w-full sm:w-auto justify-end items-center">
-          {compItem.link && (
-            <a
-              href={compItem.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center text-sm font-bold bg-cyan-500/10 border border-cyan-400/20 text-cyan-400 hover:bg-cyan-500/20 px-6 py-2.5 rounded-full transition-all hover:scale-105 active:scale-95 duration-150"
-            >
-              View on Truemeds ↗
-            </a>
-          )}
         </div>
       </div>
     </section>

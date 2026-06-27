@@ -83,7 +83,9 @@ export default function Recommendations({ recommendations, onCompare, comparedSu
                       savings_vs_mrp: rec.savings_percent,
                       link: rec.link,
                       details: rec.details,
-                      salts: rec.salts
+                      salts: rec.salts,
+                      status: rec.category,
+                      match_percent: rec.match_percent
                     })}
                     className={`flex-1 text-xs font-semibold py-1.5 rounded-lg border transition-all duration-150
                       ${comparedSub?.brand === rec.brand

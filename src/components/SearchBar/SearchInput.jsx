@@ -21,7 +21,7 @@ export default function SearchInput({ onSearch, history, onSelectHistoryItem, on
   };
 
   return (
-    <section className="bg-slate-900/90 border border-white/10 shadow-2xl rounded-2xl p-6 sm:p-10 flex flex-col items-center gap-4 text-center w-full mb-6 relative">
+    <section className="bg-slate-900/90 border border-white/10 shadow-2xl rounded-2xl p-4 sm:p-10 flex flex-col items-center gap-4 text-center w-full mb-6 relative">
       <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-50">Find Cheaper Medicine Substitutes</h2>
       <p className="text-slate-400 text-sm sm:text-base max-w-lg">
         Scan active compositions and view alternative recommendations with exact ingredients matching.
@@ -30,9 +30,9 @@ export default function SearchInput({ onSearch, history, onSelectHistoryItem, on
       <div className="w-full max-w-2xl relative">
         <form 
           onSubmit={handleSubmit}
-          className="flex flex-row items-center gap-2 bg-slate-955/40 border border-white/10 rounded-full p-1.5 focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-400/20 transition-all duration-200"
+          className="flex flex-row items-center gap-1 sm:gap-2 bg-slate-955/40 border border-white/10 rounded-full p-1 sm:p-1.5 focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-400/20 transition-all duration-200"
         >
-          <span className="pl-4 text-slate-400 text-lg sm:text-xl select-none">🔍</span>
+          <span className="pl-2 sm:pl-4 text-slate-400 text-base sm:text-xl select-none">🔍</span>
           <input
             type="text"
             value={query}
@@ -43,10 +43,10 @@ export default function SearchInput({ onSearch, history, onSelectHistoryItem, on
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
-            placeholder="Enter medicine name (e.g. Crocin, Dolo, Ecosprin)..."
-            className="flex-1 bg-transparent border-none outline-none py-2 px-3 text-slate-50 font-body placeholder-slate-500 text-base"
+            placeholder="Enter medicine name (e.g. Crocin)..."
+            className="flex-1 bg-transparent border-none outline-none py-1 sm:py-2 px-1.5 sm:px-3 text-slate-50 font-body placeholder-slate-500 text-sm sm:text-base min-w-0"
           />
-          <button type="submit" className="accent-gradient-bg font-heading font-semibold px-6 py-2.5 rounded-full hover:scale-105 active:scale-95 transition-all text-sm">
+          <button type="submit" className="accent-gradient-bg font-heading font-semibold px-4 py-2 sm:px-6 sm:py-2.5 rounded-full hover:scale-105 active:scale-95 transition-all text-xs sm:text-sm shrink-0">
             Search
           </button>
         </form>

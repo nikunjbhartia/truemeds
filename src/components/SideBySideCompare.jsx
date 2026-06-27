@@ -44,17 +44,26 @@ export default function SideBySideCompare({
             <span className="text-xs text-slate-400 font-medium mt-1">{refInfo.manufacturer}</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 text-xs border-y border-white/5 py-3">
+          <div className="grid grid-cols-2 gap-4 text-xs border-y border-white/5 py-3">
             <div>
-              <span className="block text-slate-500 uppercase tracking-wider text-[9px]">Form Factor</span>
-              <span className="text-slate-200">{refInfo.pack_form || 'N/A'}</span>
+              <span className="block text-slate-500 uppercase tracking-wider text-[9px] mb-1">Form Factor</span>
+              <span className="text-slate-200 font-medium">{refInfo.pack_form || 'N/A'}</span>
             </div>
             <div>
-              <span className="block text-slate-500 uppercase tracking-wider text-[9px]">Pack / Unit Price</span>
-              <div className="flex flex-col">
-                <span className="line-through text-slate-500 text-[10px]">₹{parseFloat(refInfo.mrp || 0).toFixed(2)}</span>
-                <span className="text-slate-200 font-semibold">₹{parseFloat(refInfo.price || 0).toFixed(2)}</span>
-                <span className="text-slate-400 text-[10px] mt-0.5">₹{parseFloat(refInfo.unit_price || 0).toFixed(2)} / Unit</span>
+              <span className="block text-slate-500 uppercase tracking-wider text-[9px] mb-1">Pricing Details</span>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center justify-between text-[10px]">
+                  <span className="text-slate-500">Retail MRP:</span>
+                  <span className="line-through text-slate-500">₹{parseFloat(refInfo.mrp || 0).toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px]">
+                  <span className="text-slate-400">Truemeds Price:</span>
+                  <span className="text-slate-200 font-bold">₹{parseFloat(refInfo.price || 0).toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between text-[10px] border-t border-white/5 pt-1 mt-1">
+                  <span className="text-slate-500">Unit Price:</span>
+                  <span className="text-cyan-400 font-semibold">₹{parseFloat(refInfo.unit_price || 0).toFixed(2)} / Unit</span>
+                </div>
               </div>
             </div>
           </div>
@@ -91,17 +100,26 @@ export default function SideBySideCompare({
             <span className="text-xs text-slate-400 font-medium mt-1">{compItem.manufacturer}</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 text-xs border-y border-white/5 py-3">
+          <div className="grid grid-cols-2 gap-4 text-xs border-y border-white/5 py-3">
             <div>
-              <span className="block text-slate-500 uppercase tracking-wider text-[9px]">Form Factor</span>
-              <span className="text-slate-200">{compItem.pack_form || 'N/A'}</span>
+              <span className="block text-slate-500 uppercase tracking-wider text-[9px] mb-1">Form Factor</span>
+              <span className="text-slate-200 font-medium">{compItem.pack_form || 'N/A'}</span>
             </div>
             <div>
-              <span className="block text-slate-500 uppercase tracking-wider text-[9px]">Pack / Unit Price</span>
-              <div className="flex flex-col">
-                <span className="line-through text-slate-500 text-[10px]">₹{parseFloat(compItem.mrp || 0).toFixed(2)}</span>
-                <span className="text-slate-200 font-semibold">₹{parseFloat(compItem.price || 0).toFixed(2)}</span>
-                <span className="text-slate-400 text-[10px] mt-0.5">₹{parseFloat(compItem.unit_price || 0).toFixed(2)} / Unit</span>
+              <span className="block text-slate-500 uppercase tracking-wider text-[9px] mb-1">Pricing Details</span>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center justify-between text-[10px]">
+                  <span className="text-slate-500">Retail MRP:</span>
+                  <span className="line-through text-slate-500">₹{parseFloat(compItem.mrp || 0).toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px]">
+                  <span className="text-slate-400">Truemeds Price:</span>
+                  <span className="text-slate-200 font-bold">₹{parseFloat(compItem.price || 0).toFixed(2)}</span>
+                </div>
+                <div className="flex items-center justify-between text-[10px] border-t border-white/5 pt-1 mt-1">
+                  <span className="text-slate-500">Unit Price:</span>
+                  <span className="text-emerald-400 font-semibold">₹{parseFloat(compItem.unit_price || 0).toFixed(2)} / Unit</span>
+                </div>
               </div>
             </div>
           </div>
@@ -119,17 +137,17 @@ export default function SideBySideCompare({
                 
                 if (hasRef && hasComp) {
                   if (refSalts[salt] === compSalts[salt]) {
-                    strengthLabel = `${compSalts[salt]} (Exact Match) ✓`;
+                    strengthLabel = `${compSalts[salt]} (Match) ✓`;
                     colorClass = 'text-emerald-400';
                   } else {
-                    strengthLabel = `${compSalts[salt]} (Diff Strength) ⚠️`;
-                    colorClass = 'text-amber-400';
+                    strengthLabel = `${compSalts[salt]} (vs ${refSalts[salt]}) ⚠️`;
+                    colorClass = 'text-amber-400 font-bold';
                   }
                 } else if (!hasRef && hasComp) {
-                  strengthLabel = `${compSalts[salt]} (Extra Ingredient) +`;
+                  strengthLabel = `${compSalts[salt]} (Extra) +`;
                   colorClass = 'text-blue-400';
                 } else {
-                  strengthLabel = 'Missing Ingredient ✕';
+                  strengthLabel = `Missing (Prescribed: ${refSalts[salt]}) ✕`;
                   colorClass = 'text-rose-400';
                 }
 

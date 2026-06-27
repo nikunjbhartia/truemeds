@@ -77,15 +77,15 @@ describe('SideBySideCompare Component', () => {
 
     // Aspirin matches: 75 mg
     expect(screen.getAllByText('Aspirin')[0]).toBeInTheDocument();
-    expect(screen.getByText('75 mg (Exact Match) ✓')).toBeInTheDocument();
+    expect(screen.getByText('75 mg (Match) ✓')).toBeInTheDocument();
 
     // Glycine differs: 100 mg vs 50 mg
     expect(screen.getAllByText('Glycine')[0]).toBeInTheDocument();
-    expect(screen.getByText('100 mg (Diff Strength) ⚠️')).toBeInTheDocument();
+    expect(screen.getByText('100 mg (vs 50 mg) ⚠️')).toBeInTheDocument();
 
     // Atorvastatin is extra in compItem
     expect(screen.getAllByText('Atorvastatin')[0]).toBeInTheDocument();
-    expect(screen.getByText('10 mg (Extra Ingredient) +')).toBeInTheDocument();
+    expect(screen.getByText('10 mg (Extra) +')).toBeInTheDocument();
   });
 
   test('triggers onClose callback when clicking the close button', () => {

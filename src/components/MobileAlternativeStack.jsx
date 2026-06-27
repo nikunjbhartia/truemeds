@@ -71,7 +71,7 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) 
                   <span>₹{parseFloat(sub.unit_price || 0).toFixed(2)} / Unit</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-400 text-xs">Savings vs Ref MRP:</span>
+                  <span className="text-slate-400 text-xs">Savings vs Retail MRP (Offline):</span>
                   {sub.savings_vs_mrp > 0 ? (
                     <span className="text-emerald-400 font-semibold">Save {Math.round(sub.savings_vs_mrp)}%</span>
                   ) : sub.savings_vs_mrp < 0 ? (
@@ -81,7 +81,7 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) 
                   )}
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-400 text-xs">Savings vs Ref Price:</span>
+                  <span className="text-slate-400 text-xs">Savings vs Truemeds Price:</span>
                   {sub.savings_vs_price > 0 ? (
                     <span className="text-emerald-400 font-semibold">Save {Math.round(sub.savings_vs_price)}%</span>
                   ) : sub.savings_vs_price < 0 ? (

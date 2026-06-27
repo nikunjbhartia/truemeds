@@ -53,9 +53,9 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) 
                 </td>
                 <td className="px-3 py-3 whitespace-nowrap">
                   <div className="flex flex-col gap-1 py-1">
-                    {/* vs Ref MRP */}
+                    {/* vs Retail MRP */}
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold w-12">vs MRP:</span>
+                      <span className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold w-20">vs Retail MRP:</span>
                       {sub.savings_vs_mrp > 0 ? (
                         <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
                           Save {Math.round(sub.savings_vs_mrp)}%
@@ -69,9 +69,9 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) 
                       )}
                     </div>
 
-                    {/* vs Ref Price */}
+                    {/* vs TM Price */}
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold w-12">vs Price:</span>
+                      <span className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold w-20">vs TM Price:</span>
                       {sub.savings_vs_price > 0 ? (
                         <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
                           Save {Math.round(sub.savings_vs_price)}%

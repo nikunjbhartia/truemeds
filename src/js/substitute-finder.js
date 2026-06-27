@@ -421,8 +421,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             if (item.match_percent === undefined) {
               const refKeys = Object.keys(refSalts || {});
               const candSalts = item.salts || {};
+              const candKeys = Object.keys(candSalts);
               const matchedKeys = refKeys.filter(k => candSalts[k] !== undefined);
-              item.match_percent = refKeys.length > 0 ? Math.round((matchedKeys.length / refKeys.length) * 100) : 0;
+              const unionKeys = Array.from(new Set([...refKeys, ...candKeys]));
+              item.match_percent = unionKeys.length > 0 ? Math.round((matchedKeys.length / unionKeys.length) * 100) : 0;
             }
           });
         };
@@ -820,8 +822,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
 
       const refKeys = Object.keys(refSalts || {});
       const candSalts = cand.salts || {};
+      const candKeys = Object.keys(candSalts);
       const matchedKeys = refKeys.filter(k => candSalts[k] !== undefined);
-      const matchPercent = refKeys.length > 0 ? Math.round((matchedKeys.length / refKeys.length) * 100) : 0;
+      const unionKeys = Array.from(new Set([...refKeys, ...candKeys]));
+      const matchPercent = unionKeys.length > 0 ? Math.round((matchedKeys.length / unionKeys.length) * 100) : 0;
 
       return {
         brand: cand.name,

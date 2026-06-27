@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Recommendations({ recommendations }) {
+export default function Recommendations({ recommendations, onCompare, comparedSub }) {
   if (!recommendations || recommendations.length === 0) return null;
 
   const hasCheapestSwap = recommendations.some(rec => rec.category.includes('Cheapest Swap'));
@@ -55,21 +55,48 @@ export default function Recommendations({ recommendations }) {
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
                     Save {Math.round(rec.savings_percent)}%
                   </span>
+                ) : rec.savings_percent < 0 ? (
+                  <span className="bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
+                    +{Math.abs(Math.round(rec.savings_percent))}% Cost
+                  </span>
                 ) : (
                   <span className="text-slate-500 text-xs font-semibold">0%</span>
                 )}
               </div>
 
-              {rec.link && (
-                <a 
-                  href={rec.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-center text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 py-2 rounded-lg transition-all mt-1"
-                >
-                  {isCheapestSwap ? 'Order Parent & Swap ↗' : 'Order Product ↗'}
-                </a>
-              )}
+              <div className="flex gap-2 mt-2">
+                {onCompare && rec.category !== 'Queried Brand (Standalone)' && (
+                  <button
+                    onClick={() => onCompare({
+                      brand: rec.brand,
+                      manufacturer: rec.manufacturer || 'N/A',
+                      mrp: rec.mrp,
+                      price: rec.price,
+                      unit_price: rec.unit_price,
+                      savings_vs_mrp: rec.savings_percent,
+                      link: rec.link,
+                      details: rec.details
+                    })}
+                    className={`flex-1 text-xs font-semibold py-1.5 rounded-lg border transition-all duration-150
+                      ${comparedSub?.brand === rec.brand
+                        ? 'bg-cyan-500/25 border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.15)] font-bold'
+                        : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10'}`}
+                  >
+                    {comparedSub?.brand === rec.brand ? 'Comparing' : 'Compare'}
+                  </button>
+                )}
+
+                {rec.link && (
+                  <a 
+                    href={rec.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center text-xs font-bold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200 py-1.5 rounded-lg transition-all"
+                  >
+                    {isCheapestSwap ? 'Order Swap ↗' : 'Order ↗'}
+                  </a>
+                )}
+              </div>
             </div>
           );
         })}

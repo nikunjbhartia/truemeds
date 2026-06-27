@@ -48,7 +48,8 @@ describe('Recommendations component', () => {
   ];
 
   test('renders recommended cards side-by-side with correct categories and pricing', () => {
-    render(<Recommendations recommendations={mockRecs} />);
+    const onCompareMock = vi.fn();
+    render(<Recommendations recommendations={mockRecs} onCompare={onCompareMock} />);
 
     expect(screen.queryByText('Queried Brand (Standalone)')).toBeNull();
     expect(screen.getByText('Queried Brand (Cheapest Swap)')).toBeInTheDocument();
@@ -67,6 +68,9 @@ describe('Recommendations component', () => {
     expect(screen.queryByText('Save 16%')).toBeNull();
     expect(screen.getAllByText('Save 20%').length).toBe(2); // Cheapest Swap & Cheapest Exact Match
     expect(screen.getByText('Save 34%')).toBeInTheDocument(); // Partial Match
+
+    // Assert that the three Compare buttons are rendered
+    expect(screen.getAllByRole('button', { name: 'Compare' }).length).toBe(3);
   });
 
   test('returns null when recommendations list is empty or missing', () => {

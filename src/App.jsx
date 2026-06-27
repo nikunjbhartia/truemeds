@@ -292,7 +292,11 @@ export default function App({ initialQuery = '' } = {}) {
           {/* Top Recommendations Options */}
           {data?.recommendations && data.recommendations.length > 0 && (
             <div className="w-full">
-              <Recommendations recommendations={data.recommendations} />
+              <Recommendations 
+                recommendations={data.recommendations} 
+                onCompare={setComparedSub}
+                comparedSub={comparedSub}
+              />
             </div>
           )}
 

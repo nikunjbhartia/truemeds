@@ -86,7 +86,7 @@ export default function MobileAlternativeStack({ subs, comparedSub, onCompare })
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-slate-400 text-xs">Ingredients:</span>
-                  <span className="text-xs bg-white/5 p-2 rounded">{sub.details || 'N/A'}</span>
+                  <span className="text-xs bg-white/5 p-2 rounded">{(sub.details && sub.details.replace(/\*\*/g, '')) || 'N/A'}</span>
                 </div>
                 <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/5">
                   {sub.status !== 'Queried Brand' && (

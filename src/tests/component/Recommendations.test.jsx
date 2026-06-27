@@ -23,7 +23,7 @@ describe('Recommendations component', () => {
       unit_price: 0.30,
       savings_percent: 20.23,
       link: 'https://www.truemeds.in/delisprin-75',
-      details: ''
+      details: 'Buy parent **Delisprin 75** & swap for **Ecosprin 75** in cart'
     }
   ];
 
@@ -35,6 +35,9 @@ describe('Recommendations component', () => {
     
     // Check brand names are displayed (multiple matches)
     expect(screen.getAllByText('Ecosprin 75 Tablet 14').length).toBe(2);
+
+    // Check swap instruction details text is rendered with bolding stripped
+    expect(screen.getByText('Buy parent Delisprin 75 & swap for Ecosprin 75 in cart')).toBeInTheDocument();
 
     // Check savings percentages
     expect(screen.getByText('Save 16%')).toBeInTheDocument();

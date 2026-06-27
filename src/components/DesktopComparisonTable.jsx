@@ -44,7 +44,7 @@ export default function DesktopComparisonTable({ subs, comparedSub, onCompare })
                 <td className="px-3 py-3">
                   <div className="font-semibold text-slate-100">{sub.brand}</div>
                   <div className="text-[10px] text-slate-500 truncate max-w-xs" title={sub.details}>
-                    {sub.details || 'N/A'}
+                    {(sub.details && sub.details.replace(/\*\*/g, '')) || 'N/A'}
                   </div>
                 </td>
                 <td className="px-3 py-3 text-slate-400 text-xs break-words max-w-[180px] leading-relaxed">

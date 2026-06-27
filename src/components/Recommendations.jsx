@@ -33,6 +33,11 @@ export default function Recommendations({ recommendations }) {
                   <h4 className="font-heading text-base font-bold text-slate-100 line-clamp-1">{rec.brand}</h4>
                   <p className="text-[10px] text-slate-500 font-medium">Unit Price: ₹{parseFloat(rec.unit_price || 0).toFixed(2)}</p>
                 </div>
+                {rec.details && (
+                  <p className="text-[10px] text-slate-400 bg-white/5 border border-white/5 px-2.5 py-1.5 rounded-lg leading-relaxed mt-1">
+                    {rec.details.replace(/\*\*/g, '')}
+                  </p>
+                )}
               </div>
 
               <div className="flex items-center justify-between mt-1">

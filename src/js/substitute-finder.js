@@ -347,6 +347,24 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       const data = await loadMockData(resolvedSlug);
       if (data && data.queried_medicine && data.alternatives) {
         const ref = data.queried_medicine;
+        if (!ref.link) {
+          const slugLinks = {
+            'ecosprin_75_tablet_14': 'https://www.truemeds.in/otc/ecosprin-75-tablet-14-tm-taas1-002271',
+            'pan_40_tablet_15': 'https://www.truemeds.in/otc/pan-40-tablet-15-tm-tacr1-030125',
+            'pantomore_dsr_capsule_10': 'https://www.truemeds.in/otc/pantomore-dsr-capsule-10-tm-caet1-000305',
+            'ecoflora_capsule_30': 'https://www.truemeds.in/otc/ecoflora-capsule-30-tm-casu1-000494',
+            'aptamil_premium_stage_1_from_birth_to_6_month_infant_formula_refill_powder_400gm': 'https://www.truemeds.in/otc/aptamil-premium-stage-1-from-birth-to-6-month-infant-formula-refill-powder-400gm-tm-poer1-003839'
+          };
+          ref.link = slugLinks[resolvedSlug] || '';
+        }
+        if (!ref.manufacturer) {
+          const firstExact = data.alternatives?.exact?.[0];
+          ref.manufacturer = firstExact?.manufacturer || 'USV Pvt Ltd';
+        }
+        if (!ref.pack_form) {
+          const firstExact = data.alternatives?.exact?.[0];
+          ref.pack_form = firstExact?.pack_form || 'Tablet';
+        }
         const refMrpPerUnit = ref.mrp / ref.units;
         const refPricePerUnit = ref.unit_price;
 
@@ -835,7 +853,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       mrp: refInfo.mrp,
       unit_price: refInfo.price_per_unit,
       units: refInfo.pack_size,
-      ingredients: Object.entries(refSalts).map(([k, v]) => `${k} (${v})`)
+      ingredients: Object.entries(refSalts).map(([k, v]) => `${k} (${v})`),
+      link: `https://www.truemeds.in/${refInfo.product_url}`,
+      manufacturer: refInfo.manufacturer,
+      pack_form: refInfo.pack_form
     },
     recommendations: recommendations,
     alternatives: {

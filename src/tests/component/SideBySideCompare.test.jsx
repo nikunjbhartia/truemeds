@@ -11,7 +11,8 @@ describe('SideBySideCompare Component', () => {
     pack_form: 'Tablet',
     mrp: 6.5,
     price: 5.2,
-    unit_price: 0.37
+    unit_price: 0.37,
+    link: 'https://www.truemeds.in/otc/ecosprin-75-tablet-14'
   };
 
   const refSalts = {
@@ -49,6 +50,9 @@ describe('SideBySideCompare Component', () => {
       />
     );
 
+    // Verify header title renamed
+    expect(screen.getByText('Detailed Comparison')).toBeInTheDocument();
+
     // Verify brand details
     expect(screen.getByText('Ecosprin 75 Tablet 14')).toBeInTheDocument();
     expect(screen.getByText('USV Pvt Ltd')).toBeInTheDocument();
@@ -63,10 +67,16 @@ describe('SideBySideCompare Component', () => {
     expect(screen.getByText('Save 35%')).toBeInTheDocument();
     expect(screen.getByText('+14% Cost')).toBeInTheDocument();
 
-    // Verify Truemeds product link is rendered
-    const productLink = screen.getByRole('link', { name: /view on truemeds/i });
-    expect(productLink).toBeInTheDocument();
-    expect(productLink).toHaveAttribute('href', 'https://www.truemeds.in/medicine/delisprin-gold-75');
+    // Verify Column-level product links
+    const productLinks = screen.getAllByRole('link', { name: /view product/i });
+    expect(productLinks).toHaveLength(2);
+    expect(productLinks[0]).toHaveAttribute('href', 'https://www.truemeds.in/otc/ecosprin-75-tablet-14');
+    expect(productLinks[1]).toHaveAttribute('href', 'https://www.truemeds.in/medicine/delisprin-gold-75');
+
+    // Verify footer View on Truemeds link
+    const footerLink = screen.getByRole('link', { name: /view on truemeds/i });
+    expect(footerLink).toBeInTheDocument();
+    expect(footerLink).toHaveAttribute('href', 'https://www.truemeds.in/medicine/delisprin-gold-75');
   });
 
   test('compares salt strengths and extra/missing items correctly', () => {

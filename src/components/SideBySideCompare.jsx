@@ -23,7 +23,7 @@ export default function SideBySideCompare({
       <div className="flex justify-between items-center border-b border-white/10 pb-3">
         <div className="flex items-center gap-2">
           <span className="text-xl select-none">📊</span>
-          <h3 className="font-heading text-lg font-bold text-slate-100">Side-by-Side Comparison</h3>
+          <h3 className="font-heading text-lg font-bold text-slate-100">Detailed Comparison</h3>
         </div>
         <button
           onClick={onClose}
@@ -39,7 +39,20 @@ export default function SideBySideCompare({
         {/* Left Column: Prescribed Brand */}
         <div className="bg-slate-950/40 border border-white/5 p-4 rounded-xl flex flex-col gap-3">
           <div className="flex flex-col">
-            <span className="text-[10px] text-cyan-400 uppercase tracking-widest font-bold mb-1">Prescribed Brand</span>
+            <div className="flex justify-between items-start">
+              <span className="text-[10px] text-cyan-400 uppercase tracking-widest font-bold mb-1">Prescribed Brand</span>
+              {refInfo.link && (
+                <a
+                  href={refInfo.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] font-bold text-cyan-400 hover:underline shrink-0"
+                  title="View Prescribed Brand on Truemeds"
+                >
+                  View Product ↗
+                </a>
+              )}
+            </div>
             <h4 className="font-heading text-base font-bold text-slate-100">{refInfo.name}</h4>
             <span className="text-xs text-slate-400 font-medium mt-1">{refInfo.manufacturer}</span>
           </div>
@@ -90,15 +103,28 @@ export default function SideBySideCompare({
         {/* Right Column: Compared Substitute */}
         <div className="bg-slate-950/60 border border-white/10 p-4 rounded-xl flex flex-col gap-3 relative">
           <div className="flex flex-col">
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start gap-4">
               <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-bold mb-1">Compared Substitute</span>
-              <div className="flex gap-1.5">
-                <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                  {compItem.status}
-                </span>
-                <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
-                  {compItem.match_percent}% Match
-                </span>
+              <div className="flex flex-col items-end gap-1.5">
+                <div className="flex gap-1.5">
+                  <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                    {compItem.status}
+                  </span>
+                  <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                    {compItem.match_percent}% Match
+                  </span>
+                </div>
+                {compItem.link && (
+                  <a
+                    href={compItem.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-bold text-cyan-400 hover:underline shrink-0"
+                    title="View Compared Substitute on Truemeds"
+                  >
+                    View Product ↗
+                  </a>
+                )}
               </div>
             </div>
             <h4 className="font-heading text-base font-bold text-slate-100">{compItem.brand}</h4>

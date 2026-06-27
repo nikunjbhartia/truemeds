@@ -449,6 +449,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   const qNorm = normalizeForMatch(medicineQuery);
 
   let refItem = null;
+  let refKeyMatched = null;
+
   // 1. Try exact match (normalized)
   for (const item of results) {
     for (const key of ["suggestion", "product"]) {
@@ -457,6 +459,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         const name = med.skuName || med.brandName || "";
         if (normalizeForMatch(name) === qNorm) {
           refItem = item;
+          refKeyMatched = key;
           break;
         }
       }
@@ -474,6 +477,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
           const nNorm = normalizeForMatch(name);
           if (nNorm.includes(qNorm) || qNorm.includes(nNorm)) {
             refItem = item;
+            refKeyMatched = key;
             break;
           }
         }
@@ -485,9 +489,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   // 3. Fallback
   if (!refItem) {
     refItem = results[0];
+    refKeyMatched = refItem.product ? "product" : "suggestion";
   }
 
-  const refProd = refItem.suggestion || refItem.product;
+  const refProd = refItem[refKeyMatched];
   if (!refProd) {
     return null;
   }

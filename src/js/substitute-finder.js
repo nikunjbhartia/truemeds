@@ -443,14 +443,19 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
     return null;
   }
 
+  const normalizeForMatch = (str) => {
+    return (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  };
+  const qNorm = normalizeForMatch(medicineQuery);
+
   let refItem = null;
-  // 1. Try exact match
+  // 1. Try exact match (normalized)
   for (const item of results) {
     for (const key of ["suggestion", "product"]) {
       const med = item[key];
       if (med) {
         const name = med.skuName || med.brandName || "";
-        if (name.trim().toLowerCase() === medicineQuery.trim().toLowerCase()) {
+        if (normalizeForMatch(name) === qNorm) {
           refItem = item;
           break;
         }
@@ -459,16 +464,15 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
     if (refItem) break;
   }
 
-  // 2. Try substring match
+  // 2. Try substring match (normalized)
   if (!refItem) {
-    const qClean = medicineQuery.trim().toLowerCase();
     for (const item of results) {
       for (const key of ["suggestion", "product"]) {
         const med = item[key];
         if (med) {
           const name = med.skuName || med.brandName || "";
-          const nClean = name.trim().toLowerCase();
-          if (nClean.includes(qClean) || qClean.includes(nClean)) {
+          const nNorm = normalizeForMatch(name);
+          if (nNorm.includes(qNorm) || qNorm.includes(nNorm)) {
             refItem = item;
             break;
           }

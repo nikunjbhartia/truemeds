@@ -32,6 +32,25 @@ export function areIngredientsMatching(name1, name2) {
   return aliases1.some(a1 => aliases2.some(a2 => a1 === a2));
 }
 
+export function extractBrandNameFromUrl(url) {
+  if (!url) return '';
+  try {
+    const match = url.match(/\/otc\/([^\?\/]+)|\/medicine\/([^\?\/]+)/);
+    if (match) {
+      const slug = match[1] || match[2] || '';
+      const cleanSlug = slug.replace(/-tm-[a-z0-9]+-\d+$/i, '');
+      return cleanSlug
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    }
+  } catch (e) {
+    // ignore
+  }
+  return '';
+}
+
+
 
 export function normalizeStrength(strength) {
   if (strength === null || strength === undefined) {
@@ -580,12 +599,49 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             if (item.match_percent === undefined) {
               item.match_percent = computeMatchPercent(refSalts, item.salts);
             }
+
+            // Enrich swap details for mock files
+            const parentName = extractBrandNameFromUrl(item.link);
+            const cleanBrandName = item.brand.replace(/\s+\d+(\.\d+)?\s*[a-zA-Z]+/g, '').toLowerCase().trim();
+            const cleanParentName = parentName.replace(/\s+\d+(\.\d+)?\s*[a-zA-Z]+/g, '').toLowerCase().trim();
+            
+            const isSwapItem = item.details === 'via Swap' || 
+              (parentName && cleanBrandName !== cleanParentName);
+            
+            if (isSwapItem && parentName) {
+              if (item.status === 'Queried Brand') {
+                item.status = 'Queried Brand (Swap)';
+                item.details = `Buy parent **${parentName}** & swap`;
+              } else {
+                if (!item.status.includes('(Swap)')) {
+                  item.status = `${item.status} (Swap)`;
+                }
+                item.details = `Buy parent **${parentName}** & swap ${item.details && item.details !== 'via Swap' ? `(${item.details})` : ''}`.trim();
+              }
+            }
           });
         };
 
         enrichList(data.alternatives.exact, 'exact');
         enrichList(data.alternatives.different_strength, 'strength');
         enrichList(data.alternatives.partial, 'partial');
+
+        // Enrich recommendations in mock data
+        if (data.recommendations) {
+          data.recommendations.forEach(rec => {
+            const parentName = extractBrandNameFromUrl(rec.link);
+            const isCheapestSwap = rec.category.includes('Cheapest Swap');
+            if (isCheapestSwap && parentName && (!rec.details || rec.details === '')) {
+              rec.details = `Buy parent **${parentName}** & swap for **${ref.name}** in cart`;
+            } else if (parentName && (!rec.details || rec.details === '') && !rec.category.includes('Standalone')) {
+              const cleanBrandName = rec.brand.replace(/\s+\d+(\.\d+)?\s*[a-zA-Z]+/g, '').toLowerCase().trim();
+              const cleanParentName = parentName.replace(/\s+\d+(\.\d+)?\s*[a-zA-Z]+/g, '').toLowerCase().trim();
+              if (cleanBrandName !== cleanParentName) {
+                rec.details = `Buy parent **${parentName}** & swap in cart`;
+              }
+            }
+          });
+        }
 
         return data;
       }

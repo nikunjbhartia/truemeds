@@ -10,10 +10,12 @@ export default function SideBySideCompare({
 }) {
   if (!refInfo || !compItem) return null;
 
-  const refUnitPrice = refInfo.unit_price || (refInfo.price / (refInfo.pack_size || 1));
-  const refMrpPerUnit = (refInfo.mrp / (refInfo.pack_size || 1)) || refUnitPrice;
+  const refPackSize = refInfo.pack_size || refInfo.units || 1;
+  const refUnitPrice = refInfo.unit_price || (refInfo.price / refPackSize);
+  const refMrpPerUnit = (refInfo.mrp / refPackSize) || refUnitPrice;
   
-  const compUnitPrice = compItem.unit_price || (compItem.price / (compItem.pack_size || 1));
+  const compPackSize = compItem.pack_size || compItem.units || 1;
+  const compUnitPrice = compItem.unit_price || (compItem.price / compPackSize);
   
   const savingsVsMrp = refMrpPerUnit > 0 ? ((refMrpPerUnit - compUnitPrice) / refMrpPerUnit) * 100 : 0;
   const savingsVsPrice = refUnitPrice > 0 ? ((refUnitPrice - compUnitPrice) / refUnitPrice) * 100 : 0;

@@ -5,7 +5,7 @@ import SearchInput from './components/SearchBar/SearchInput';
 import HistoryList from './components/SearchBar/HistoryList';
 import MatchFilters from './components/MatchFilters';
 
-import SwapWalkthrough from './components/SwapWalkthrough';
+import Recommendations from './components/Recommendations';
 import ResponsiveLayout from './components/ResponsiveLayout';
 import { useSubstituteFinder } from './hooks/useSubstituteFinder';
 import { useIsMobile, useIsTablet, useIsDesktop } from './hooks/useMediaQuery';
@@ -151,13 +151,6 @@ export default function App({ initialQuery = '' } = {}) {
     }
     return true;
   });
-
-  const exactSubstitutes = substitutes.filter(s => s.matchType === 'exact' && s.brand !== medicine?.name);
-  const cheaperExact = exactSubstitutes.length > 0 
-    ? exactSubstitutes.reduce((cheapest, current) => current.price < cheapest.price ? current : cheapest, exactSubstitutes[0])
-    : null;
-  const showSwapWalkthrough = cheaperExact && medicine && cheaperExact.price < medicine.price;
-
   const displayError = error ? 'Failed to fetch results. Please try again.' : localError;
 
   return (
@@ -273,14 +266,10 @@ export default function App({ initialQuery = '' } = {}) {
             </div>
           )}
 
-          {/* Swap Walkthrough if a cheaper exact substitute exists */}
-          {showSwapWalkthrough && (
+          {/* Top Recommendations Options */}
+          {data?.recommendations && data.recommendations.length > 0 && (
             <div className="w-full">
-              <SwapWalkthrough
-                prescribedName={medicine.name}
-                saltsString={medicine.ingredients ? medicine.ingredients.map(ing => ing.replace(/\s*\([^)]*\)/, '')).join(' + ') : ''}
-                substituteName={cheaperExact.brand}
-              />
+              <Recommendations recommendations={data.recommendations} />
             </div>
           )}
 

@@ -49,7 +49,7 @@ describe('Tier 3 Integration: Search Flow', () => {
     // 6. Alternatives/Substitutes list rendered
     const cardTitles = await screen.findAllByText(/Delisprin 75/i);
     expect(cardTitles[0]).toBeInTheDocument();
-    expect(screen.getByText('Save 25%')).toBeInTheDocument(); // Savings percent
+    expect(screen.getAllByText('Save 25%').length).toBeGreaterThan(0); // Savings percent
 
 
     // 8. Filters can be toggled

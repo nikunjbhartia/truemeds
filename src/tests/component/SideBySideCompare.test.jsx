@@ -29,6 +29,7 @@ describe('SideBySideCompare Component', () => {
     status: 'Different Strength',
     savings_vs_mrp: 35.0,
     savings_vs_price: -14.0,
+    link: 'https://www.truemeds.in/medicine/delisprin-gold-75',
     salts: {
       'Aspirin': '75 mg',
       'Glycine': '100 mg',
@@ -61,6 +62,11 @@ describe('SideBySideCompare Component', () => {
     // Verify savings badges
     expect(screen.getByText('Save 35%')).toBeInTheDocument();
     expect(screen.getByText('+14% Cost')).toBeInTheDocument();
+
+    // Verify Truemeds product link is rendered
+    const productLink = screen.getByRole('link', { name: /view on truemeds/i });
+    expect(productLink).toBeInTheDocument();
+    expect(productLink).toHaveAttribute('href', 'https://www.truemeds.in/medicine/delisprin-gold-75');
   });
 
   test('compares salt strengths and extra/missing items correctly', () => {

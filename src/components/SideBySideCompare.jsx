@@ -195,7 +195,17 @@ export default function SideBySideCompare({
           </div>
         </div>
 
-        <div className="flex gap-3 w-full sm:w-auto justify-end">
+        <div className="flex gap-4 w-full sm:w-auto justify-end items-center">
+          {compItem.link && (
+            <a
+              href={compItem.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-bold text-cyan-400 hover:underline shrink-0"
+            >
+              View on Truemeds ↗
+            </a>
+          )}
           <button
             onClick={() => onSelect(compItem)}
             className={`w-full sm:w-auto text-sm font-bold px-6 py-2.5 rounded-full border transition-all hover:scale-105 active:scale-95 duration-150

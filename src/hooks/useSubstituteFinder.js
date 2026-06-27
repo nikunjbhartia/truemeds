@@ -27,6 +27,26 @@ export function useSubstituteFinder(query, warehouseId = '1') {
       try {
         const result = await findSubstitutes(query, warehouseId);
         if (isMounted) {
+          if (result && result.queried_medicine && result.alternatives) {
+            const refPricePerUnit = result.queried_medicine.unit_price;
+            
+            if (result.alternatives.exact) {
+              result.alternatives.exact = result.alternatives.exact.filter(item => {
+                const isRef = item.status === 'Queried Brand' || item.status === 'Queried Brand (Swap)';
+                return isRef || item.unit_price <= refPricePerUnit;
+              });
+            }
+            if (result.alternatives.different_strength) {
+              result.alternatives.different_strength = result.alternatives.different_strength.filter(item => {
+                return item.unit_price <= refPricePerUnit;
+              });
+            }
+            if (result.alternatives.partial) {
+              result.alternatives.partial = result.alternatives.partial.filter(item => {
+                return item.unit_price <= refPricePerUnit;
+              });
+            }
+          }
           setData(result);
           if (result && result.queried_medicine) {
             // Save successful search to localStorage history

@@ -627,6 +627,41 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         enrichList(data.alternatives.different_strength, 'strength');
         enrichList(data.alternatives.partial, 'partial');
 
+        // Filter out items whose unit price is higher than the queried brand
+        const filterCheaper = (list, isExactList = false) => {
+          if (!list) return [];
+          return list.filter(item => {
+            if (isExactList && (item.status === 'Queried Brand' || item.status === 'Queried Brand (Swap)')) {
+              return true;
+            }
+            return item.unit_price <= refPricePerUnit;
+          });
+        };
+
+        data.alternatives.exact = filterCheaper(data.alternatives.exact, true);
+        data.alternatives.different_strength = filterCheaper(data.alternatives.different_strength);
+        data.alternatives.partial = filterCheaper(data.alternatives.partial);
+
+        // Sort exact and different strength by price
+        if (data.alternatives.exact) {
+          data.alternatives.exact.sort((a, b) => a.unit_price - b.unit_price);
+        }
+        if (data.alternatives.different_strength) {
+          data.alternatives.different_strength.sort((a, b) => a.unit_price - b.unit_price);
+        }
+
+        // Sort partial match cases by match percent descending, then by unit price ascending
+        if (data.alternatives.partial) {
+          data.alternatives.partial.sort((a, b) => {
+            const aMatch = a.match_percent || 0;
+            const bMatch = b.match_percent || 0;
+            if (aMatch !== bMatch) {
+              return bMatch - aMatch;
+            }
+            return a.unit_price - b.unit_price;
+          });
+        }
+
         // Enrich recommendations in mock data
         if (data.recommendations) {
           const hasSwap = data.recommendations.some(rec => rec.category.includes('Cheapest Swap'));
@@ -839,24 +874,21 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
     }
   }
 
+  const sortPartial = (list) => {
+    list.sort((a, b) => {
+      const aMatch = a.match_percent !== undefined ? a.match_percent : computeMatchPercent(refSalts, a.salts);
+      const bMatch = b.match_percent !== undefined ? b.match_percent : computeMatchPercent(refSalts, b.salts);
+      if (aMatch !== bMatch) {
+        return bMatch - aMatch;
+      }
+      return a.price_per_unit - b.price_per_unit;
+    });
+  };
+
   exactMatches.sort((a, b) => a.price_per_unit - b.price_per_unit);
   diffStrength.sort((a, b) => a.price_per_unit - b.price_per_unit);
-  extraIngredients.sort((a, b) => {
-    const aDiff = a.match_details ? a.match_details.length : 0;
-    const bDiff = b.match_details ? b.match_details.length : 0;
-    if (aDiff !== bDiff) {
-      return aDiff - bDiff;
-    }
-    return a.price_per_unit - b.price_per_unit;
-  });
-  missingIngredients.sort((a, b) => {
-    const aDiff = a.match_details ? a.match_details.length : 0;
-    const bDiff = b.match_details ? b.match_details.length : 0;
-    if (aDiff !== bDiff) {
-      return aDiff - bDiff;
-    }
-    return a.price_per_unit - b.price_per_unit;
-  });
+  sortPartial(extraIngredients);
+  sortPartial(missingIngredients);
 
   let refCandItem = { ...refInfo };
   refCandItem.match_status = 'Queried Brand';

@@ -35,7 +35,7 @@ export default function Recommendations({ recommendations }) {
                   {rec.category}
                 </span>
                 <div>
-                  <h4 className="font-heading text-base font-bold text-slate-100 line-clamp-1">{rec.brand}</h4>
+                  <h4 className="font-heading text-base font-bold text-slate-100 break-words leading-snug">{rec.brand}</h4>
                   <p className="text-[10px] text-slate-500 font-medium">Unit Price: ₹{parseFloat(rec.unit_price || 0).toFixed(2)}</p>
                 </div>
                 {rec.details && (

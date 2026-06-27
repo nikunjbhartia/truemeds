@@ -346,6 +346,26 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
     try {
       const data = await loadMockData(resolvedSlug);
       if (data && data.queried_medicine && data.alternatives) {
+        const ref = data.queried_medicine;
+        const refMrpPerUnit = ref.mrp / ref.units;
+        const refPricePerUnit = ref.unit_price;
+
+        const enrichList = (list) => {
+          if (!list) return;
+          list.forEach(item => {
+            if (item.savings_vs_mrp === undefined) {
+              item.savings_vs_mrp = refMrpPerUnit > 0 ? Number(((refMrpPerUnit - item.unit_price) / refMrpPerUnit * 100).toFixed(2)) : 0.0;
+            }
+            if (item.savings_vs_price === undefined) {
+              item.savings_vs_price = refPricePerUnit > 0 ? Number(((refPricePerUnit - item.unit_price) / refPricePerUnit * 100).toFixed(2)) : 0.0;
+            }
+          });
+        };
+
+        enrichList(data.alternatives.exact);
+        enrichList(data.alternatives.different_strength);
+        enrichList(data.alternatives.partial);
+
         return data;
       }
     } catch (err) {
@@ -712,7 +732,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   const formatTableItems = (items) => {
     return items.map(cand => {
       const mapping = mapMatchStatusAndDetails(cand.match_status, cand.match_details);
-      const savingsPercent = refMrpPerUnit > 0 ? Math.max(0, Number(((refMrpPerUnit - cand.price_per_unit) / refMrpPerUnit * 100).toFixed(2))) : 0.0;
+      const savingsVsMrp = refMrpPerUnit > 0 ? Number(((refMrpPerUnit - cand.price_per_unit) / refMrpPerUnit * 100).toFixed(2)) : 0.0;
+      const savingsVsPrice = refInfo.price_per_unit > 0 ? Number(((refInfo.price_per_unit - cand.price_per_unit) / refInfo.price_per_unit * 100).toFixed(2)) : 0.0;
 
       const clickId = `sc_${generateUUID()}`;
       const sessionId = `ss_${generateUUID()}`;
@@ -730,7 +751,9 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         mrp: cand.mrp,
         price: cand.selling_price,
         unit_price: cand.price_per_unit,
-        savings_percent: savingsPercent,
+        savings_percent: Math.max(0, savingsVsMrp),
+        savings_vs_mrp: savingsVsMrp,
+        savings_vs_price: savingsVsPrice,
         link: link,
         status: mapping.status,
         details: mapping.details

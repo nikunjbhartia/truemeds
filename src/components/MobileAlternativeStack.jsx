@@ -30,11 +30,15 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) 
                   >
                     {status}
                   </span>
-                  {sub.savings_percent > 0 && (
+                  {sub.savings_vs_mrp > 0 ? (
                     <span className="text-[9px] bg-emerald-500 text-slate-950 px-1.5 py-0.5 rounded font-bold">
-                      Save {Math.round(sub.savings_percent)}%
+                      Save {Math.round(sub.savings_vs_mrp)}%
                     </span>
-                  )}
+                  ) : sub.savings_vs_mrp < 0 ? (
+                    <span className="text-[9px] bg-rose-500/20 text-rose-400 border border-rose-500/30 px-1.5 py-0.5 rounded font-bold">
+                      +{Math.abs(Math.round(sub.savings_vs_mrp))}% Cost
+                    </span>
+                  ) : null}
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -65,6 +69,26 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) 
                 <div className="flex justify-between">
                   <span className="text-slate-400 text-xs">Unit Price:</span>
                   <span>₹{parseFloat(sub.unit_price || 0).toFixed(2)} / Unit</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-400 text-xs">Savings vs Ref MRP:</span>
+                  {sub.savings_vs_mrp > 0 ? (
+                    <span className="text-emerald-400 font-semibold">Save {Math.round(sub.savings_vs_mrp)}%</span>
+                  ) : sub.savings_vs_mrp < 0 ? (
+                    <span className="text-rose-400 font-semibold">+{Math.abs(Math.round(sub.savings_vs_mrp))}% Cost</span>
+                  ) : (
+                    <span className="text-slate-500">0%</span>
+                  )}
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-400 text-xs">Savings vs Ref Price:</span>
+                  {sub.savings_vs_price > 0 ? (
+                    <span className="text-emerald-400 font-semibold">Save {Math.round(sub.savings_vs_price)}%</span>
+                  ) : sub.savings_vs_price < 0 ? (
+                    <span className="text-rose-400 font-semibold">+{Math.abs(Math.round(sub.savings_vs_price))}% Cost</span>
+                  ) : (
+                    <span className="text-slate-500">0%</span>
+                  )}
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-slate-400 text-xs">Ingredients:</span>

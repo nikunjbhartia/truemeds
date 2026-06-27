@@ -52,13 +52,39 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) 
                   ₹{parseFloat(sub.unit_price || 0).toFixed(2)} / Unit
                 </td>
                 <td className="px-3 py-3 whitespace-nowrap">
-                  {sub.savings_percent > 0 ? (
-                    <span className="bg-emerald-500 text-slate-950 text-xs font-bold px-2 py-0.5 rounded">
-                      Save {Math.round(sub.savings_percent)}%
-                    </span>
-                  ) : (
-                    <span className="text-slate-500 text-xs">0%</span>
-                  )}
+                  <div className="flex flex-col gap-1 py-1">
+                    {/* vs Ref MRP */}
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold w-12">vs MRP:</span>
+                      {sub.savings_vs_mrp > 0 ? (
+                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
+                          Save {Math.round(sub.savings_vs_mrp)}%
+                        </span>
+                      ) : sub.savings_vs_mrp < 0 ? (
+                        <span className="bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
+                          +{Math.abs(Math.round(sub.savings_vs_mrp))}% Cost
+                        </span>
+                      ) : (
+                        <span className="text-slate-500 text-[10px] font-medium">0%</span>
+                      )}
+                    </div>
+
+                    {/* vs Ref Price */}
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold w-12">vs Price:</span>
+                      {sub.savings_vs_price > 0 ? (
+                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
+                          Save {Math.round(sub.savings_vs_price)}%
+                        </span>
+                      ) : sub.savings_vs_price < 0 ? (
+                        <span className="bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-bold px-2 py-0.5 rounded">
+                          +{Math.abs(Math.round(sub.savings_vs_price))}% Cost
+                        </span>
+                      ) : (
+                        <span className="text-slate-500 text-[10px] font-medium">0%</span>
+                      )}
+                    </div>
+                  </div>
                 </td>
                 <td className="px-3 py-3 whitespace-nowrap text-center">
                   <div className="flex items-center justify-center gap-3">

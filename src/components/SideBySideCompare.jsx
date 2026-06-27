@@ -92,9 +92,14 @@ export default function SideBySideCompare({
           <div className="flex flex-col">
             <div className="flex justify-between items-start">
               <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-bold mb-1">Compared Substitute</span>
-              <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                {compItem.status}
-              </span>
+              <div className="flex gap-1.5">
+                <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  {compItem.status}
+                </span>
+                <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                  {compItem.match_percent}% Match
+                </span>
+              </div>
             </div>
             <h4 className="font-heading text-base font-bold text-slate-100">{compItem.brand}</h4>
             <span className="text-xs text-slate-400 font-medium mt-1">{compItem.manufacturer}</span>

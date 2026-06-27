@@ -28,12 +28,19 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect, co
                 className={`transition-colors hover:bg-white/3 ${isSelected ? 'bg-cyan-950/10' : ''}`}
               >
                 <td className="px-3 py-3 whitespace-nowrap">
-                  <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border
-                    ${isExact ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : ''}
-                    ${isStrength ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' : 'bg-blue-500/10 border-blue-500/20 text-blue-400'}`}
-                  >
-                    {status}
-                  </span>
+                  <div className="flex flex-col gap-1 items-start">
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border
+                      ${isExact ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : ''}
+                      ${isStrength ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' : 'bg-blue-500/10 border-blue-500/20 text-blue-400'}`}
+                    >
+                      {status}
+                    </span>
+                    {sub.status !== 'Queried Brand' && sub.match_percent !== undefined && (
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                        {sub.match_percent}% Match
+                      </span>
+                    )}
+                  </div>
                 </td>
                 <td className="px-3 py-3">
                   <div className="font-semibold text-slate-100">{sub.brand}</div>

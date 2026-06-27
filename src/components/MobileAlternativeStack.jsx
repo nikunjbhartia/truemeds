@@ -30,6 +30,11 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect, co
                   >
                     {status}
                   </span>
+                  {sub.status !== 'Queried Brand' && sub.match_percent !== undefined && (
+                    <span className="text-[9px] px-1.5 py-0.5 rounded border font-semibold uppercase bg-cyan-500/10 border-cyan-500/20 text-cyan-400">
+                      {sub.match_percent}% Match
+                    </span>
+                  )}
                   {sub.savings_vs_mrp > 0 ? (
                     <span className="text-[9px] bg-emerald-500 text-slate-950 px-1.5 py-0.5 rounded font-bold">
                       Save {Math.round(sub.savings_vs_mrp)}%

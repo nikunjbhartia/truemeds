@@ -400,6 +400,12 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                 item.salts = itemSalts;
               }
             }
+            if (item.match_percent === undefined) {
+              const refKeys = Object.keys(refSalts || {});
+              const candSalts = item.salts || {};
+              const matchedKeys = refKeys.filter(k => candSalts[k] !== undefined);
+              item.match_percent = refKeys.length > 0 ? Math.round((matchedKeys.length / refKeys.length) * 100) : 0;
+            }
           });
         };
 
@@ -785,6 +791,11 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         link = `https://www.truemeds.in/${cand.product_url}?search_click_id=${clickId}&search_session_id=${sessionId}&suggestion_rank=0&suggestion_source_type=manual_enter`;
       }
 
+      const refKeys = Object.keys(refSalts || {});
+      const candSalts = cand.salts || {};
+      const matchedKeys = refKeys.filter(k => candSalts[k] !== undefined);
+      const matchPercent = refKeys.length > 0 ? Math.round((matchedKeys.length / refKeys.length) * 100) : 0;
+
       return {
         brand: cand.name,
         manufacturer: cand.manufacturer,
@@ -798,7 +809,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         link: link,
         status: mapping.status,
         details: mapping.details,
-        salts: cand.salts
+        salts: cand.salts,
+        match_percent: matchPercent
       };
     });
   };

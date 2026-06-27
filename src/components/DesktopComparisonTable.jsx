@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) {
+export default function DesktopComparisonTable({ subs, selectedSub, onSelect, comparedSub, onCompare }) {
   return (
     <div data-testid="desktop-table" className="glass-panel overflow-x-auto lg:overflow-x-visible w-full">
       <table className="min-w-full text-slate-200 border-collapse text-sm">
@@ -97,6 +97,19 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) 
                     >
                       {isSelected ? 'Selected' : 'Swap'}
                     </button>
+                    
+                    {sub.status !== 'Queried Brand' && (
+                      <button
+                        onClick={() => onCompare(sub)}
+                        className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all duration-150
+                          ${comparedSub?.brand === sub.brand
+                            ? 'bg-cyan-500/25 border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.15)] font-bold'
+                            : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10'}`}
+                      >
+                        Compare
+                      </button>
+                    )}
+
                     {sub.link && (
                       <a 
                         href={sub.link} 

@@ -12,6 +12,7 @@ import { useIsMobile, useIsTablet, useIsDesktop } from './hooks/useMediaQuery';
 import MobileAlternativeStack from './components/MobileAlternativeStack';
 import DesktopComparisonTable from './components/DesktopComparisonTable';
 import TableFilters from './components/TableFilters';
+import SideBySideCompare from './components/SideBySideCompare';
 
 export default function App({ initialQuery = '' } = {}) {
   const [history, setHistory] = useState([]);
@@ -24,6 +25,7 @@ export default function App({ initialQuery = '' } = {}) {
   const [selectedSub, setSelectedSub] = useState(null);
   const [medicine, setMedicine] = useState(null);
   const [substitutes, setSubstitutes] = useState([]);
+  const [comparedSub, setComparedSub] = useState(null);
 
   const isMobile = useIsMobile();
   const isTablet = useIsTablet();
@@ -56,10 +58,12 @@ export default function App({ initialQuery = '' } = {}) {
         setMedicine(null);
         setSubstitutes([]);
         setSelectedSub(null);
+        setComparedSub(null);
         setLocalError('No results found.');
         return;
       }
       setMedicine(data.queried_medicine);
+      setComparedSub(null);
       setLocalError(null);
 
       const exacts = (data.alternatives?.exact || []).map(a => ({ ...a, matchType: 'exact' }));
@@ -117,6 +121,7 @@ export default function App({ initialQuery = '' } = {}) {
     setSearched(true);
     setLocalError(null);
     setSearchQuery(queryStr);
+    setComparedSub(null);
     
     // Reset sub-filters on new search
     setSubSearchQuery("");
@@ -245,6 +250,31 @@ export default function App({ initialQuery = '' } = {}) {
             </div>
           </div>
 
+          {/* Side-by-Side Detailed Comparison Card if active */}
+          {comparedSub && (
+            <div className="w-full">
+              <SideBySideCompare
+                refInfo={medicine}
+                refSalts={(() => {
+                  const refSalts = {};
+                  if (medicine.ingredients) {
+                    medicine.ingredients.forEach(ing => {
+                      const match = ing.match(/^([^\(]+)\s*\(([^)]+)\)/);
+                      if (match) {
+                        refSalts[match[1].trim()] = match[2].trim();
+                      }
+                    });
+                  }
+                  return refSalts;
+                })()}
+                compItem={comparedSub}
+                onClose={() => setComparedSub(null)}
+                onSelect={(sub) => setSelectedSub(sub)}
+                isSelected={selectedSub?.brand === comparedSub.brand}
+              />
+            </div>
+          )}
+
           {/* Bottom Panel: Alternatives Table (Full Width) */}
           <div className="flex flex-col gap-6 w-full">
             {/* Filter Options Bar */}
@@ -276,12 +306,16 @@ export default function App({ initialQuery = '' } = {}) {
                     subs={finalFilteredSubstitutes}
                     selectedSub={selectedSub}
                     onSelect={setSelectedSub}
+                    comparedSub={comparedSub}
+                    onCompare={setComparedSub}
                   />
                 ) : (
                   <MobileAlternativeStack 
                     subs={finalFilteredSubstitutes}
                     selectedSub={selectedSub}
                     onSelect={setSelectedSub}
+                    comparedSub={comparedSub}
+                    onCompare={setComparedSub}
                   />
                 )
               ) : (

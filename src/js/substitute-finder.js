@@ -350,7 +350,17 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         const refMrpPerUnit = ref.mrp / ref.units;
         const refPricePerUnit = ref.unit_price;
 
-        const enrichList = (list) => {
+        const refSalts = {};
+        if (ref.ingredients) {
+          ref.ingredients.forEach(ing => {
+            const match = ing.match(/^([^\(]+)\s*\(([^)]+)\)/);
+            if (match) {
+              refSalts[match[1].trim()] = match[2].trim();
+            }
+          });
+        }
+
+        const enrichList = (list, matchType) => {
           if (!list) return;
           list.forEach(item => {
             if (item.savings_vs_mrp === undefined) {
@@ -359,12 +369,43 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             if (item.savings_vs_price === undefined) {
               item.savings_vs_price = refPricePerUnit > 0 ? Number(((refPricePerUnit - item.unit_price) / refPricePerUnit * 100).toFixed(2)) : 0.0;
             }
+            if (item.salts === undefined) {
+              const itemSalts = { ...refSalts };
+              if (matchType === 'exact') {
+                item.salts = itemSalts;
+              } else if (matchType === 'strength') {
+                if (item.details) {
+                  const parts = item.details.split(', ');
+                  parts.forEach(part => {
+                    const m = part.match(/^([^:]+):\s*([^\s]+)\s*vs/);
+                    if (m) {
+                      itemSalts[m[1].trim()] = m[2].trim();
+                    }
+                  });
+                }
+                item.salts = itemSalts;
+              } else if (matchType === 'partial') {
+                const isMissing = item.status && item.status.toLowerCase().includes('missing');
+                if (isMissing && item.status) {
+                  const missingName = item.status.replace(/^Missing:\s*/i, '').trim();
+                  delete itemSalts[missingName];
+                } else if (item.details) {
+                  const match = item.details.match(/^([^\(]+)\s*\(([^)]+)\)/);
+                  if (match) {
+                    itemSalts[match[1].trim()] = match[2].trim();
+                  }
+                }
+                item.salts = itemSalts;
+              } else {
+                item.salts = itemSalts;
+              }
+            }
           });
         };
 
-        enrichList(data.alternatives.exact);
-        enrichList(data.alternatives.different_strength);
-        enrichList(data.alternatives.partial);
+        enrichList(data.alternatives.exact, 'exact');
+        enrichList(data.alternatives.different_strength, 'strength');
+        enrichList(data.alternatives.partial, 'partial');
 
         return data;
       }
@@ -756,7 +797,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         savings_vs_price: savingsVsPrice,
         link: link,
         status: mapping.status,
-        details: mapping.details
+        details: mapping.details,
+        salts: cand.salts
       };
     });
   };

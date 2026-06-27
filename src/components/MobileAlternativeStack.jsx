@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) {
+export default function MobileAlternativeStack({ subs, selectedSub, onSelect, comparedSub, onCompare }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   return (
@@ -94,8 +94,19 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) 
                   <span className="text-slate-400 text-xs">Ingredients:</span>
                   <span className="text-xs bg-white/5 p-2 rounded">{sub.details || 'N/A'}</span>
                 </div>
-                {sub.link && (
-                  <div className="mt-2 text-right">
+                <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/5">
+                  {sub.status !== 'Queried Brand' && (
+                    <button
+                      onClick={() => onCompare(sub)}
+                      className={`text-xs font-bold px-4 py-2 rounded-lg border transition-all duration-150
+                        ${comparedSub?.brand === sub.brand
+                          ? 'bg-cyan-500/25 border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.15)] font-bold'
+                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'}`}
+                    >
+                      {comparedSub?.brand === sub.brand ? 'Comparing...' : 'Compare Side-by-Side'}
+                    </button>
+                  )}
+                  {sub.link && (
                     <a
                       href={sub.link}
                       target="_blank"
@@ -104,8 +115,8 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect }) 
                     >
                       View on Truemeds ↗
                     </a>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             )}
           </div>

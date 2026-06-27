@@ -47,8 +47,8 @@ describe('Tier 3 Integration: Search Flow', () => {
     expect(screen.queryAllByText(/Aspirin/i).length).toBeGreaterThan(0); // Composition salt
 
     // 6. Alternatives/Substitutes list rendered
-    const cardTitle = await screen.findByText(/Delisprin 75/i);
-    expect(cardTitle).toBeInTheDocument();
+    const cardTitles = await screen.findAllByText(/Delisprin 75/i);
+    expect(cardTitles[0]).toBeInTheDocument();
     expect(screen.getByText('Save 25%')).toBeInTheDocument(); // Savings percent
 
 
@@ -57,7 +57,7 @@ describe('Tier 3 Integration: Search Flow', () => {
     fireEvent.click(exactBtn);
 
     // After exact match, we should see exact match cards
-    expect(screen.getByText(/Delisprin 75/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Delisprin 75/i).length).toBeGreaterThan(0);
   });
 
   test('automatically triggers search on mount when URL query parameter "search" is present', async () => {

@@ -701,6 +701,36 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
               rec.match_percent = 100;
             }
           });
+
+          // Backfill mock recommendations list up to 4 cards using remaining partial match alternatives
+          if (data.recommendations.length < 4) {
+            const recBrands = new Set(data.recommendations.map(r => r.brand));
+            const remainingAlts = (data.alternatives.partial || []).filter(item => !recBrands.has(item.brand));
+            
+            let backfillIndex = 1;
+            for (const item of remainingAlts) {
+              if (data.recommendations.length >= 4) break;
+              
+              const isExtra = item.status.includes('Extra');
+              const categoryName = isExtra 
+                ? `Alternative Extra Match #${backfillIndex}`
+                : `Alternative Partial Match #${backfillIndex}`;
+                
+              data.recommendations.push({
+                category: categoryName,
+                brand: item.brand,
+                mrp: item.mrp,
+                price: item.price,
+                unit_price: item.unit_price,
+                savings_percent: item.savings_percent || 0.0,
+                link: item.link,
+                details: item.details,
+                salts: item.salts,
+                match_percent: item.match_percent
+              });
+              backfillIndex += 1;
+            }
+          }
         }
 
         return data;
@@ -1088,6 +1118,62 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       match_percent: bestMissing.match_percent !== undefined ? bestMissing.match_percent : computeMatchPercent(refSalts, bestMissing.salts)
     });
   }
+
+  // Backfill with other top partial matches if we have fewer than 4 recommendations
+  const recommendedBrands = new Set(recommendations.map(r => r.brand));
+  const remainingPartials = [];
+  
+  [...missingIngredients, ...extraIngredients].forEach(cand => {
+    if (!recommendedBrands.has(cand.name)) {
+      remainingPartials.push(cand);
+    }
+  });
+
+  remainingPartials.sort((a, b) => {
+    const aMatch = a.match_percent !== undefined ? a.match_percent : computeMatchPercent(refSalts, a.salts);
+    const bMatch = b.match_percent !== undefined ? b.match_percent : computeMatchPercent(refSalts, b.salts);
+    if (aMatch !== bMatch) {
+      return bMatch - aMatch;
+    }
+    return a.price_per_unit - b.price_per_unit;
+  });
+
+  let backfillIndex = 1;
+  for (const cand of remainingPartials) {
+    if (recommendations.length >= 4) break;
+
+    const clickId = `sc_${generateUUID()}`;
+    const sessionId = `ss_${generateUUID()}`;
+    let link = '';
+    if (cand.is_suggestion && cand.parent_name && cand.parent_url) {
+      link = `https://www.truemeds.in/${cand.parent_url}?search_click_id=${clickId}&search_session_id=${sessionId}&suggestion_rank=0&suggestion_source_type=manual_enter`;
+    } else {
+      link = `https://www.truemeds.in/${cand.product_url}?search_click_id=${clickId}&search_session_id=${sessionId}&suggestion_rank=0&suggestion_source_type=manual_enter`;
+    }
+    const savings = refMrpPerUnit > 0 ? Number(((refMrpPerUnit - cand.price_per_unit) / refMrpPerUnit * 100).toFixed(2)) : 0.0;
+
+    const isExtra = cand.match_status === 'Extra Ingredients';
+    const categoryName = isExtra 
+      ? `Alternative Extra Match #${backfillIndex}`
+      : `Alternative Partial Match #${backfillIndex}`;
+
+    recommendations.push({
+      category: categoryName,
+      brand: cand.name,
+      mrp: cand.mrp,
+      price: cand.selling_price,
+      unit_price: cand.price_per_unit,
+      savings_percent: savings,
+      link: link,
+      details: cand.is_suggestion 
+        ? `Buy parent **${cand.parent_name}** & swap in cart (${isExtra ? 'Contains extra' : 'Missing'}: ${cand.match_details ? cand.match_details.join(', ') : ''})` 
+        : (cand.match_details ? `${isExtra ? 'Contains extra' : 'Missing'}: ${cand.match_details.join(', ')}` : ''),
+      salts: cand.salts,
+      match_percent: cand.match_percent !== undefined ? cand.match_percent : computeMatchPercent(refSalts, cand.salts)
+    });
+    backfillIndex += 1;
+  }
+
 
   const formatTableItems = (items) => {
     return items.map(cand => {

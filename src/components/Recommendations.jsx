@@ -3,11 +3,16 @@ import React from 'react';
 export default function Recommendations({ recommendations }) {
   if (!recommendations || recommendations.length === 0) return null;
 
+  const hasCheapestSwap = recommendations.some(rec => rec.category.includes('Cheapest Swap'));
+  const filteredRecs = hasCheapestSwap
+    ? recommendations.filter(rec => !rec.category.includes('Standalone'))
+    : recommendations;
+
   return (
     <div className="w-full flex flex-col gap-3">
       <h3 className="font-heading text-sm font-bold text-slate-350 uppercase tracking-widest">Recommended Actions</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-        {recommendations.slice(0, 3).map((rec, idx) => {
+        {filteredRecs.slice(0, 3).map((rec, idx) => {
           const isCheapestSwap = rec.category.includes('Cheapest Swap');
           const isStandalone = rec.category.includes('Standalone');
           

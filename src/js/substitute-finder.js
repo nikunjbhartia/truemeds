@@ -532,7 +532,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
           const slugLinks = {
             'ecosprin_75_tablet_14': 'https://www.truemeds.in/otc/ecosprin-75-tablet-14-tm-taas1-002271',
             'pan_40_tablet_15': 'https://www.truemeds.in/otc/pan-40-tablet-15-tm-tacr1-030125',
-            'pantomore_dsr_capsule_10': 'https://www.truemeds.in/otc/pantomore-dsr-capsule-10-tm-caet1-000305',
+            'pantomore_dsr_capsule_10': 'https://www.truemeds.in/medicine/pantomore-dsr-3040-mg-capsule-10-tm-capr1-000026',
             'ecoflora_capsule_30': 'https://www.truemeds.in/otc/ecoflora-capsule-30-tm-casu1-000494',
             'aptamil_premium_stage_1_from_birth_to_6_month_infant_formula_refill_powder_400gm': 'https://www.truemeds.in/otc/aptamil-premium-stage-1-from-birth-to-6-month-infant-formula-refill-powder-400gm-tm-poer1-003839'
           };
@@ -628,6 +628,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
 
         // Enrich recommendations in mock data
         if (data.recommendations) {
+          const hasSwap = data.recommendations.some(rec => rec.category.includes('Cheapest Swap'));
+          if (hasSwap) {
+            data.recommendations = data.recommendations.filter(rec => !rec.category.includes('Standalone'));
+          }
           data.recommendations.forEach(rec => {
             const parentName = extractBrandNameFromUrl(rec.link);
             const isCheapestSwap = rec.category.includes('Cheapest Swap');
@@ -875,18 +879,20 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   const standLink = `https://www.truemeds.in/${refInfo.product_url}?search_click_id=${standClickId}&search_session_id=${standSessionId}&suggestion_rank=0&suggestion_source_type=manual_enter`;
   const standSavings = refMrpPerUnit > 0 ? Number(((refMrpPerUnit - refInfo.price_per_unit) / refMrpPerUnit * 100).toFixed(2)) : 0.0;
   
-  recommendations.push({
-    category: 'Queried Brand (Standalone)',
-    brand: refInfo.name,
-    mrp: refInfo.mrp,
-    price: refInfo.selling_price,
-    unit_price: refInfo.price_per_unit,
-    savings_percent: standSavings,
-    link: standLink,
-    details: ''
-  });
+  const hasCheapestSwap = !!(refCand && refCand.is_suggestion && refCand.selling_price < refInfo.selling_price);
 
-  if (refCand && refCand.is_suggestion && refCand.selling_price < refInfo.selling_price) {
+  if (!hasCheapestSwap) {
+    recommendations.push({
+      category: 'Queried Brand (Standalone)',
+      brand: refInfo.name,
+      mrp: refInfo.mrp,
+      price: refInfo.selling_price,
+      unit_price: refInfo.price_per_unit,
+      savings_percent: standSavings,
+      link: standLink,
+      details: ''
+    });
+  } else {
     const swapClickId = `sc_${generateUUID()}`;
     const swapSessionId = `ss_${generateUUID()}`;
     const swapLink = `https://www.truemeds.in/${refCand.parent_url}?search_click_id=${swapClickId}&search_session_id=${swapSessionId}&suggestion_rank=0&suggestion_source_type=manual_enter`;

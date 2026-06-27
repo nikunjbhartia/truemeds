@@ -30,17 +30,17 @@ describe('Recommendations component', () => {
   test('renders recommended cards side-by-side with correct categories and pricing', () => {
     render(<Recommendations recommendations={mockRecs} />);
 
-    expect(screen.getByText('Queried Brand (Standalone)')).toBeInTheDocument();
+    expect(screen.queryByText('Queried Brand (Standalone)')).toBeNull();
     expect(screen.getByText('Queried Brand (Cheapest Swap)')).toBeInTheDocument();
     
-    // Check brand names are displayed (multiple matches)
-    expect(screen.getAllByText('Ecosprin 75 Tablet 14').length).toBe(2);
+    // Check brand name is displayed
+    expect(screen.getAllByText('Ecosprin 75 Tablet 14').length).toBe(1);
 
     // Check swap instruction details text is rendered with bolding stripped
     expect(screen.getByText('Buy parent Delisprin 75 & swap for Ecosprin 75 in cart')).toBeInTheDocument();
 
     // Check savings percentages
-    expect(screen.getByText('Save 16%')).toBeInTheDocument();
+    expect(screen.queryByText('Save 16%')).toBeNull();
     expect(screen.getByText('Save 20%')).toBeInTheDocument();
   });
 

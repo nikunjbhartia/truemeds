@@ -201,20 +201,43 @@ export default function App({ initialQuery = '' } = {}) {
                 <span className="md:hidden text-slate-400 text-xs">{isAccordionOpen.ref ? '▲' : '▼'}</span>
               </div>
               
-              <div className={`px-5 pb-5 pt-2 flex flex-col gap-4 flex-1 ${isAccordionOpen.ref ? 'block' : 'hidden md:block'}`}>
-                <div>
-                  <h3 className="font-heading text-xl font-bold text-slate-50">{medicine.name}</h3>
-                  {medicine.manufacturer && <p className="text-slate-400 text-xs">{medicine.manufacturer}</p>}
+              <div className={`px-5 pb-5 pt-2 flex flex-col gap-4 flex-1 ${isAccordionOpen.ref ? 'block' : 'hidden lg:block'}`}>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-heading text-xl font-bold text-slate-50">
+                        {medicine.name}
+                      </h3>
+                      {medicine.link && (
+                        <a
+                          href={medicine.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-cyan-400 hover:underline inline-flex items-center gap-0.5"
+                          title="View Prescribed Brand on Truemeds"
+                        >
+                          ↗
+                        </a>
+                      )}
+                    </div>
+                    {medicine.manufacturer && <p className="text-slate-400 text-xs">{medicine.manufacturer}</p>}
+                  </div>
                 </div>
                 
-                <div className="flex justify-between items-baseline">
-                  <div>
-                    <span className="block text-[10px] text-slate-500 uppercase tracking-wider">Price</span>
-                    <span className="font-heading text-lg font-bold">₹{parseFloat(medicine.price || 0).toFixed(2)}</span>
+                <div className="flex justify-between items-baseline border-t border-white/5 pt-4 mt-2">
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-2 text-xs">
+                      <span className="text-slate-500 uppercase tracking-wider text-[9px] font-semibold">Retail MRP:</span>
+                      <span className="line-through text-slate-500 font-medium">₹{parseFloat(medicine.mrp || 0).toFixed(2)}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-slate-500 uppercase tracking-wider text-[9px] font-semibold">Standalone Price:</span>
+                      <span className="font-heading text-lg font-bold text-slate-100">₹{parseFloat(medicine.price || 0).toFixed(2)}</span>
+                    </div>
                   </div>
                   <div className="text-right">
                     <span className="block text-[10px] text-slate-500 uppercase tracking-wider">Unit Price</span>
-                    <span className="text-sm font-semibold text-slate-300">₹{parseFloat(medicine.unit_price || 0).toFixed(2)} / Unit</span>
+                    <span className="text-sm font-semibold text-slate-350">₹{parseFloat(medicine.unit_price || 0).toFixed(2)} / Unit</span>
                   </div>
                 </div>
 

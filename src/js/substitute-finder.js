@@ -731,6 +731,20 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
               backfillIndex += 1;
             }
           }
+
+          // Sort mock recommendation alternatives (index 1 onwards) by match_percent descending
+          if (data.recommendations.length > 2) {
+            const alts = data.recommendations.slice(1);
+            alts.sort((a, b) => {
+              const aMatch = a.match_percent !== undefined ? a.match_percent : 0;
+              const bMatch = b.match_percent !== undefined ? b.match_percent : 0;
+              if (aMatch !== bMatch) {
+                return bMatch - aMatch;
+              }
+              return b.savings_percent - a.savings_percent;
+            });
+            data.recommendations.splice(1, data.recommendations.length - 1, ...alts);
+          }
         }
 
         return data;
@@ -1086,7 +1100,14 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         }
       }
       if (validCands.length > 0) {
-        validCands.sort((a, b) => b.ratio - a.ratio || a.cand.price_per_unit - b.cand.price_per_unit);
+        validCands.sort((a, b) => {
+          const aMatch = a.cand.match_percent !== undefined ? a.cand.match_percent : computeMatchPercent(refSalts, a.cand.salts);
+          const bMatch = b.cand.match_percent !== undefined ? b.cand.match_percent : computeMatchPercent(refSalts, b.cand.salts);
+          if (aMatch !== bMatch) {
+            return bMatch - aMatch;
+          }
+          return a.cand.price_per_unit - b.cand.price_per_unit;
+        });
         bestMissing = validCands[0].cand;
       }
     }
@@ -1171,7 +1192,20 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       salts: cand.salts,
       match_percent: cand.match_percent !== undefined ? cand.match_percent : computeMatchPercent(refSalts, cand.salts)
     });
-    backfillIndex += 1;
+  }
+
+  // Sort alternative cards (from index 1 onwards) by match_percent descending, then by savings descending
+  if (recommendations.length > 2) {
+    const alts = recommendations.slice(1);
+    alts.sort((a, b) => {
+      const aMatch = a.match_percent !== undefined ? a.match_percent : 0;
+      const bMatch = b.match_percent !== undefined ? b.match_percent : 0;
+      if (aMatch !== bMatch) {
+        return bMatch - aMatch;
+      }
+      return b.savings_percent - a.savings_percent;
+    });
+    recommendations.splice(1, recommendations.length - 1, ...alts);
   }
 
 

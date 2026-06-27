@@ -89,7 +89,8 @@ export function parseStrengthValueAndUnit(strengthStr) {
 export function getStrengthMatchRatio(refStr, candStr) {
   const ref = parseStrengthValueAndUnit(refStr);
   const cand = parseStrengthValueAndUnit(candStr);
-  if (!ref || !cand) return 1.0;
+  if (!ref && !cand) return 1.0;
+  if (!ref || !cand) return 0.0;
   
   let refVal = ref.value;
   let candVal = cand.value;
@@ -189,6 +190,23 @@ export function parseMissingIngredients(status, details) {
     });
   }
   return missing;
+}
+
+export function parseExtraIngredients(details) {
+  const extra = {};
+  if (details && details.includes('Contains extra:')) {
+    const rawExtra = details.replace(/^Contains extra:\s*/i, '').trim();
+    const parts = rawExtra.split(', ');
+    parts.forEach(part => {
+      const match = part.match(/^([^\(]+)\s*\(([^)]+)\)/);
+      if (match) {
+        extra[match[1].trim()] = match[2].trim();
+      } else {
+        extra[part.trim()] = 'N/A';
+      }
+    });
+  }
+  return extra;
 }
 
 
@@ -577,7 +595,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                 if (item.details) {
                   const parts = item.details.split(', ');
                   parts.forEach(part => {
-                    const m = part.match(/^([^:]+):\s*([^\s]+)\s*vs/);
+                    const m = part.match(/^([^:]+):\s*(.*?)\s*vs\s+(.+)$/);
                     if (m) {
                       itemSalts[m[1].trim()] = m[2].trim();
                     }
@@ -592,6 +610,10 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                     delete itemSalts[matchKey];
                   }
                 });
+                const extraIngredients = parseExtraIngredients(item.details);
+                for (const [k, v] of Object.entries(extraIngredients)) {
+                  itemSalts[k] = v;
+                }
                 item.salts = itemSalts;
               } else {
                 item.salts = itemSalts;
@@ -641,6 +663,18 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
         data.alternatives.exact = filterCheaper(data.alternatives.exact, true);
         data.alternatives.different_strength = filterCheaper(data.alternatives.different_strength);
         data.alternatives.partial = filterCheaper(data.alternatives.partial);
+
+        const filterValidMatch = (list) => {
+          if (!list) return [];
+          return list.filter(item => {
+            const mp = item.match_percent !== undefined ? item.match_percent : computeMatchPercent(refSalts, item.salts);
+            return mp > 0;
+          });
+        };
+
+        data.alternatives.exact = filterValidMatch(data.alternatives.exact);
+        data.alternatives.different_strength = filterValidMatch(data.alternatives.different_strength);
+        data.alternatives.partial = filterValidMatch(data.alternatives.partial);
 
         // Sort exact and different strength by price
         if (data.alternatives.exact) {
@@ -702,10 +736,19 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             }
           });
 
-          // Backfill mock recommendations list up to 4 cards using remaining partial match alternatives
+          // Filter out recommendations whose match percent is 0
+          data.recommendations = data.recommendations.filter(rec => {
+            const mp = rec.match_percent !== undefined ? rec.match_percent : computeMatchPercent(refSalts, rec.salts);
+            return mp > 0;
+          });
+
+          // Backfill mock recommendations list up to 4 cards using remaining partial match alternatives (where match_percent > 0)
           if (data.recommendations.length < 4) {
             const recBrands = new Set(data.recommendations.map(r => r.brand));
-            const remainingAlts = (data.alternatives.partial || []).filter(item => !recBrands.has(item.brand));
+            const remainingAlts = (data.alternatives.partial || []).filter(item => {
+              const mp = item.match_percent !== undefined ? item.match_percent : computeMatchPercent(refSalts, item.salts);
+              return !recBrands.has(item.brand) && mp > 0;
+            });
             
             let backfillIndex = 1;
             for (const item of remainingAlts) {
@@ -918,6 +961,12 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
     const { status, details } = compareCompositions(refSalts, cand.salts);
     cand.match_status = status;
     cand.match_details = details;
+
+    const matchPercent = computeMatchPercent(refSalts, cand.salts);
+    if (matchPercent === 0) {
+      continue;
+    }
+    cand.match_percent = matchPercent;
 
     if (cand.name.toLowerCase().includes('piza') || cand.name.toLowerCase().includes('pantin rd') || cand.name.toLowerCase().includes('pantafast') || cand.name.toLowerCase().includes('pentab') || cand.name.toLowerCase().includes('pan 40')) {
       console.log(`[JS Engine classification] name: "${cand.name}", code: "${cand.code}", selling_price: ${cand.selling_price}, pack_size: ${cand.pack_size}, price_per_unit: ${cand.price_per_unit}, status: "${status}", details: "${details}", rawSalts: "${cand.salts ? Object.keys(cand.salts).join(' + ') : 'none'}"`);

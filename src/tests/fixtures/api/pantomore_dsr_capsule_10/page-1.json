@@ -1,0 +1,34 @@
+{
+  "response": {
+    "resultList": [
+      {
+        "product": {
+          "productCode": "tm-caer1-000107",
+          "brandName": "Pentopan Dsr Capsule 15",
+          "manufacturerName": "Ozone Pharmaceuticals",
+          "packForm": "Strip of 15 UNITS",
+          "packSize": "18.75128205128205",
+          "sellingPrice": 58.5,
+          "mrp": 73.13,
+          "productUrlSuffix": "medicine/pentopan-dsr-capsule-15-tm-caer1-000107",
+          "productUrl": "medicine/pentopan-dsr-capsule-15-tm-caer1-000107",
+          "available": true,
+          "saltComposition": "Domperidone (30 Mg) + Pantoprazole (40 Mg)",
+          "composition": "Domperidone (30 Mg) + Pantoprazole (40 Mg)"
+        },
+        "suggestion": {
+          "productCode": "ref-code",
+          "brandName": "Pantomore Dsr Capsule 10",
+          "manufacturerName": "Morepen Laboratories Limited",
+          "packForm": "Strip of 10 UNITS",
+          "packSize": "80.94262295081967",
+          "sellingPrice": 24.38,
+          "mrp": 197.5,
+          "productUrlSuffix": "medicine/pantomore_dsr_capsule_10-ref-code",
+          "productUrl": "medicine/pantomore_dsr_capsule_10-ref-code",
+          "available": true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "response": {
+    "resultList": [
+      {
+        "product": {
+          "productCode": "tm-poer1-003839",
+          "brandName": "Aptamil Premium Stage 1 From Birth To 6 Month Infant Formula Refill Powder 400Gm",
+          "manufacturerName": "Nutricia International Pvt Ltd",
+          "packForm": "Refill of 400 GM",
+          "packSize": "398.936170212766",
+          "sellingPrice": 750,
+          "mrp": 750,
+          "productUrlSuffix": "otc/aptamil-premium-stage-1-from-birth-to-6-month-infant-formula-refill-powder-400gm-tm-poer1-003839",
+          "productUrl": "otc/aptamil-premium-stage-1-from-birth-to-6-month-infant-formula-refill-powder-400gm-tm-poer1-003839",
+          "available": true,
+          "saltComposition": "Alpha Linolenic Acid (310 Mg) + Arachidonic Acid (84.5 Mg) + Beta-Carotene (210 Mcg) + Biotin (12.7 Mcg) + Calcium (400 Mg) + Carnitine (7 Mg) + Chloride (255 Mg) + Choline (110 Mg) + Copper (180 Mcg) + Cyanocobalamin / Vitamin B12 (0.7 Mcg) + Dha / Docosahexaenoic Acid (84.5 Mg) + Folic Acid (10 Mcg) + Fructooligosaccharides (0.3 G) + Galacto Oligosaccharides (2.7 G) + Iodine (100 Mcg) + Iron (4.1 Mg) + Linoleic Acid (3100 Mg) + Magnesium (40 Mg) + Manganese (40 Mcg) + Nucleotide (12.5 Mg) + Phosphorus (200 Mg) + Potassium (400 Mg) + Riboflavin / Vitamin B2 (475 Mcg) + Selenium (6.5 Mcg) + Sodium (110 Mg) + Taurine (10 Mg) + Thiamine / Vitamin B1 (235 Mcg) + Vitamin A (410 Mcg) + Vitamin B3 / Niacin (4.5 Mg) + Vitamin B5  Pantothenic Acid (2.5 Mg) + Vitamin B6 / Pyridoxine (150 Mcg) + Vitamin C / Ascorbic Acid (30 Mg) + Vitamin D (7 Mcg) + Vitamin E (2.7 Mg) + Vitamin K (8 Mcg) + Zinc (3.2 Mg)",
+          "composition": "Alpha Linolenic Acid (310 Mg) + Arachidonic Acid (84.5 Mg) + Beta-Carotene (210 Mcg) + Biotin (12.7 Mcg) + Calcium (400 Mg) + Carnitine (7 Mg) + Chloride (255 Mg) + Choline (110 Mg) + Copper (180 Mcg) + Cyanocobalamin / Vitamin B12 (0.7 Mcg) + Dha / Docosahexaenoic Acid (84.5 Mg) + Folic Acid (10 Mcg) + Fructooligosaccharides (0.3 G) + Galacto Oligosaccharides (2.7 G) + Iodine (100 Mcg) + Iron (4.1 Mg) + Linoleic Acid (3100 Mg) + Magnesium (40 Mg) + Manganese (40 Mcg) + Nucleotide (12.5 Mg) + Phosphorus (200 Mg) + Potassium (400 Mg) + Riboflavin / Vitamin B2 (475 Mcg) + Selenium (6.5 Mcg) + Sodium (110 Mg) + Taurine (10 Mg) + Thiamine / Vitamin B1 (235 Mcg) + Vitamin A (410 Mcg) + Vitamin B3 / Niacin (4.5 Mg) + Vitamin B5  Pantothenic Acid (2.5 Mg) + Vitamin B6 / Pyridoxine (150 Mcg) + Vitamin C / Ascorbic Acid (30 Mg) + Vitamin D (7 Mcg) + Vitamin E (2.7 Mg) + Vitamin K (8 Mcg) + Zinc (3.2 Mg)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-003839",
+          "brandName": "Aptamil Premium Stage 1 From Birth To 6 Month Infant Formula Refill Powder 400Gm",
+          "manufacturerName": "Nutricia International Pvt Ltd",
+          "packForm": "Refill of 400 GM",
+          "packSize": "398.936170212766",
+          "sellingPrice": 750,
+          "mrp": 750,
+          "productUrlSuffix": "medicine/aptamil_premium_stage_1_from_birth_to_6_month_infant_formula_refill_powder_400gm-tm-poer1-003839",
+          "productUrl": "medicine/aptamil_premium_stage_1_from_birth_to_6_month_infant_formula_refill_powder_400gm-tm-poer1-003839",
+          "available": true
+        }
+      }
+    ]
+  }
+}

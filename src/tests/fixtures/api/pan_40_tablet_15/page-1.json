@@ -1,0 +1,34 @@
+{
+  "response": {
+    "resultList": [
+      {
+        "product": {
+          "productCode": "tm-tacr1-030124",
+          "brandName": "Pan 40 Tablet 15",
+          "manufacturerName": "Alkem Laboratories Ltd.",
+          "packForm": "Strip of 15 Units",
+          "packSize": "15.0",
+          "sellingPrice": 140.24,
+          "mrp": 140.24,
+          "productUrlSuffix": "medicine/pan-40-mg-tablet-15-tm-tacr1-030124",
+          "productUrl": "medicine/pan-40-mg-tablet-15-tm-tacr1-030124",
+          "available": true,
+          "saltComposition": "Pantoprazole (40 Mg)",
+          "composition": "Pantoprazole (40 Mg)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-030124",
+          "brandName": "Pan 40 Tablet 15",
+          "manufacturerName": "Alkem Laboratories Ltd.",
+          "packForm": "Strip of 15 Units",
+          "packSize": "15.0",
+          "sellingPrice": 140.24,
+          "mrp": 140.24,
+          "productUrlSuffix": "medicine/pan_40_tablet_15-tm-tacr1-030124",
+          "productUrl": "medicine/pan_40_tablet_15-tm-tacr1-030124",
+          "available": true
+        }
+      }
+    ]
+  }
+}

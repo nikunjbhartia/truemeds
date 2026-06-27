@@ -1,0 +1,34 @@
+{
+  "response": {
+    "resultList": [
+      {
+        "product": {
+          "productCode": "tm-tacr1-012745",
+          "brandName": "Ecosprin 75 Tablet 14",
+          "manufacturerName": "Usv Pvt Ltd",
+          "packForm": "Strip of 14 Units",
+          "packSize": "16.53125",
+          "sellingPrice": 4.44,
+          "mrp": 5.29,
+          "productUrlSuffix": "medicine/ecosprin-tablet-14-tm-tacr1-012745",
+          "productUrl": "medicine/ecosprin-tablet-14-tm-tacr1-012745",
+          "available": true,
+          "saltComposition": "Aspirin (75 Mg)",
+          "composition": "Aspirin (75 Mg)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-012745",
+          "brandName": "Ecosprin 75 Tablet 14",
+          "manufacturerName": "Usv Pvt Ltd",
+          "packForm": "Strip of 14 Units",
+          "packSize": "16.53125",
+          "sellingPrice": 4.44,
+          "mrp": 5.29,
+          "productUrlSuffix": "medicine/ecosprin_75_tablet_14-tm-tacr1-012745",
+          "productUrl": "medicine/ecosprin_75_tablet_14-tm-tacr1-012745",
+          "available": true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/65 backdrop-blur-lg border border-white/10 shadow-2xl rounded-2xl;
+  }
+  .glass-panel-nested {
+    @apply bg-white/5 border border-white/5 rounded-xl;
+  }
+  .accent-gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+  }
+  .accent-gradient-bg {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950;
+  }
+  .success-gradient-bg {
+    @apply bg-gradient-to-r from-emerald-400 to-teal-500;
+  }
+}
+
+/* Decorative Orbs */
+.bg-orb {
+  position: fixed;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}

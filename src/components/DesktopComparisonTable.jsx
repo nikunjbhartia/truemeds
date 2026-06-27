@@ -1,0 +1,94 @@
+import React from 'react';
+
+export default function DesktopComparisonTable({ subs, selectedSub, onSelect }) {
+  return (
+    <div data-testid="desktop-table" className="glass-panel overflow-x-auto lg:overflow-x-visible w-full">
+      <table className="min-w-full text-slate-200 border-collapse text-sm">
+        <thead>
+          <tr className="border-b border-white/10 text-slate-400 text-left uppercase text-[10px] tracking-wider bg-white/3">
+            <th className="px-3 py-3">Status</th>
+            <th className="px-3 py-3">Alternative Brand</th>
+            <th className="px-3 py-3">Manufacturer</th>
+            <th className="px-3 py-3">Pack Price</th>
+            <th className="px-3 py-3">Unit Price</th>
+            <th className="px-3 py-3">Savings</th>
+            <th className="px-3 py-3 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-white/5">
+          {subs.map((sub, idx) => {
+            const isSelected = selectedSub?.brand === sub.brand;
+            const status = sub.status || (sub.matchType === 'exact' ? 'Exact Match' : 'Different Strength');
+            const isExact = status.toLowerCase().includes('exact');
+            const isStrength = status.toLowerCase().includes('strength') || status.toLowerCase().includes('diff strength');
+
+            return (
+              <tr 
+                key={idx}
+                className={`transition-colors hover:bg-white/3 ${isSelected ? 'bg-cyan-950/10' : ''}`}
+              >
+                <td className="px-3 py-3 whitespace-nowrap">
+                  <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border
+                    ${isExact ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : ''}
+                    ${isStrength ? 'bg-amber-500/10 border-amber-500/20 text-amber-400' : 'bg-blue-500/10 border-blue-500/20 text-blue-400'}`}
+                  >
+                    {status}
+                  </span>
+                </td>
+                <td className="px-3 py-3">
+                  <div className="font-semibold text-slate-100">{sub.brand}</div>
+                  <div className="text-[10px] text-slate-500 truncate max-w-xs" title={sub.details}>
+                    {sub.details || 'N/A'}
+                  </div>
+                </td>
+                <td className="px-3 py-3 text-slate-400 max-w-[150px] truncate" title={sub.manufacturer}>
+                  {sub.manufacturer}
+                </td>
+                <td className="px-3 py-3 whitespace-nowrap font-medium">
+                  <span className="line-through text-slate-500 text-xs mr-2">₹{parseFloat(sub.mrp || 0).toFixed(2)}</span>
+                  <span className="font-semibold text-slate-200">₹{parseFloat(sub.price || 0).toFixed(2)}</span>
+                </td>
+                <td className="px-3 py-3 text-slate-300 whitespace-nowrap">
+                  ₹{parseFloat(sub.unit_price || 0).toFixed(2)} / Unit
+                </td>
+                <td className="px-3 py-3 whitespace-nowrap">
+                  {sub.savings_percent > 0 ? (
+                    <span className="bg-emerald-500 text-slate-950 text-xs font-bold px-2 py-0.5 rounded">
+                      Save {Math.round(sub.savings_percent)}%
+                    </span>
+                  ) : (
+                    <span className="text-slate-500 text-xs">0%</span>
+                  )}
+                </td>
+                <td className="px-3 py-3 whitespace-nowrap text-center">
+                  <div className="flex items-center justify-center gap-3">
+                    <button
+                      onClick={() => onSelect(sub)}
+                      className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition-all
+                        ${isSelected 
+                          ? 'accent-gradient-bg border-transparent text-slate-950 font-bold' 
+                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'}`}
+                    >
+                      {isSelected ? 'Selected' : 'Swap'}
+                    </button>
+                    {sub.link && (
+                      <a 
+                        href={sub.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-slate-400 hover:text-cyan-400 transition-colors"
+                        title="View on Truemeds"
+                      >
+                        ↗
+                      </a>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}

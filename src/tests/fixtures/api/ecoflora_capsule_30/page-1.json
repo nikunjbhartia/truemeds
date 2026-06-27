@@ -1,0 +1,34 @@
+{
+  "response": {
+    "resultList": [
+      {
+        "product": {
+          "productCode": "tm-cacr1-001581",
+          "brandName": "Ecoflora Capsule 30",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Bottle of 30 Units",
+          "packSize": "37.49989743589743",
+          "sellingPrice": 1462.5,
+          "mrp": 1828.12,
+          "productUrlSuffix": "medicine/ecoflora-capsule-30-tm-cacr1-001581",
+          "productUrl": "medicine/ecoflora-capsule-30-tm-cacr1-001581",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-001581",
+          "brandName": "Ecoflora Capsule 30",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Bottle of 30 Units",
+          "packSize": "37.49989743589743",
+          "sellingPrice": 1462.5,
+          "mrp": 1828.12,
+          "productUrlSuffix": "medicine/ecoflora_capsule_30-tm-cacr1-001581",
+          "productUrl": "medicine/ecoflora_capsule_30-tm-cacr1-001581",
+          "available": true
+        }
+      }
+    ]
+  }
+}

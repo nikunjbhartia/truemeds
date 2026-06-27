@@ -1,0 +1,2078 @@
+{
+  "response": {
+    "resultList": [
+      {
+        "product": {
+          "productCode": "tm-cacr1-001581",
+          "brandName": "Ecoflora Capsule 30",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Bottle of 30 Units",
+          "packSize": "37.49989743589743",
+          "sellingPrice": 1462.5,
+          "mrp": 1828.12,
+          "productUrlSuffix": "medicine/ecoflora-capsule-30-tm-cacr1-001581",
+          "productUrl": "medicine/ecoflora-capsule-30-tm-cacr1-001581",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-001581",
+          "brandName": "Ecoflora Capsule 30",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Bottle of 30 Units",
+          "packSize": "37.49989743589743",
+          "sellingPrice": 1462.5,
+          "mrp": 1828.12,
+          "productUrlSuffix": "medicine/ecoflora_capsule_30-tm-cacr1-001581",
+          "productUrl": "medicine/ecoflora_capsule_30-tm-cacr1-001581",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-001580",
+          "brandName": "Ecoflora Capsule 10",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Bottle of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 525,
+          "mrp": 656.25,
+          "productUrlSuffix": "medicine/ecoflora-capsule-10-tm-cacr1-001580",
+          "productUrl": "medicine/ecoflora-capsule-10-tm-cacr1-001580",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-001580",
+          "brandName": "Ecoflora Capsule 10",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Bottle of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 525,
+          "mrp": 656.25,
+          "productUrlSuffix": "medicine/ecoflora_capsule_10-tm-cacr1-001580",
+          "productUrl": "medicine/ecoflora_capsule_10-tm-cacr1-001580",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-syup1-006537",
+          "brandName": "New Proten Z Syrup 200 ML",
+          "manufacturerName": "Litaka Pharmaceuticals Ltd",
+          "packForm": "Pack of 200 ML",
+          "packSize": "10",
+          "sellingPrice": 61.5,
+          "mrp": 76.88,
+          "productUrlSuffix": "medicine/new-proten-z-syrup-200-ml-tm-syup1-006537",
+          "productUrl": "medicine/new-proten-z-syrup-200-ml-tm-syup1-006537",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-syup1-006537",
+          "brandName": "New Proten Z Syrup 200 ML",
+          "manufacturerName": "Litaka Pharmaceuticals Ltd",
+          "packForm": "Pack of 200 ML",
+          "packSize": "248",
+          "sellingPrice": 61.5,
+          "mrp": 76.88,
+          "productUrlSuffix": "medicine/new_proten_z_syrup_200_ml-tm-syup1-006537",
+          "productUrl": "medicine/new_proten_z_syrup_200_ml-tm-syup1-006537",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-syup1-007056",
+          "brandName": "Stimup Syrup 200 ML",
+          "manufacturerName": "Indian Drug & Pharmaceuticals Ltd (idpl)",
+          "packForm": "Pack of 200 ML",
+          "packSize": "10",
+          "sellingPrice": 74.33,
+          "mrp": 92.91,
+          "productUrlSuffix": "medicine/stimup-syrup-200-ml-tm-syup1-007056",
+          "productUrl": "medicine/stimup-syrup-200-ml-tm-syup1-007056",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-syup1-007056",
+          "brandName": "Stimup Syrup 200 ML",
+          "manufacturerName": "Indian Drug & Pharmaceuticals Ltd (idpl)",
+          "packForm": "Pack of 200 ML",
+          "packSize": "251.1081081081081",
+          "sellingPrice": 74.33,
+          "mrp": 92.91,
+          "productUrlSuffix": "medicine/stimup_syrup_200_ml-tm-syup1-007056",
+          "productUrl": "medicine/stimup_syrup_200_ml-tm-syup1-007056",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-coom1-002502",
+          "brandName": "Biozora Cream 20 GM",
+          "manufacturerName": "Cipla Ltd.",
+          "packForm": "Pack of 20 GM",
+          "packSize": "10",
+          "sellingPrice": 21,
+          "mrp": 26.25,
+          "productUrlSuffix": "medicine/biozora-cream-20-gm-tm-coom1-002502",
+          "productUrl": "medicine/biozora-cream-20-gm-tm-coom1-002502",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-coom1-002502",
+          "brandName": "Biozora Cream 20 GM",
+          "manufacturerName": "Cipla Ltd.",
+          "packForm": "Pack of 20 GM",
+          "packSize": "25",
+          "sellingPrice": 21,
+          "mrp": 26.25,
+          "productUrlSuffix": "medicine/biozora_cream_20_gm-tm-coom1-002502",
+          "productUrl": "medicine/biozora_cream_20_gm-tm-coom1-002502",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-drup1-000839",
+          "brandName": "Biogut Dry Syrup 60 Ml",
+          "manufacturerName": "Eskag Pharma Pvt.ltd",
+          "packForm": "Pack of 60 ML",
+          "packSize": "10",
+          "sellingPrice": 64.5,
+          "mrp": 80.62,
+          "productUrlSuffix": "medicine/biogut-dry-syrup-60-ml-tm-drup1-000839",
+          "productUrl": "medicine/biogut-dry-syrup-60-ml-tm-drup1-000839",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-drup1-000839",
+          "brandName": "Biogut Dry Syrup 60 Ml",
+          "manufacturerName": "Eskag Pharma Pvt.ltd",
+          "packForm": "Pack of 60 ML",
+          "packSize": "75.34579439252336",
+          "sellingPrice": 64.5,
+          "mrp": 80.62,
+          "productUrlSuffix": "medicine/biogut_dry_syrup_60_ml-tm-drup1-000839",
+          "productUrl": "medicine/biogut_dry_syrup_60_ml-tm-drup1-000839",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-drup1-000882",
+          "brandName": "Picpro Dry Syrup 30 Ml",
+          "manufacturerName": "Ronyd Health Care Pvt Ltd",
+          "packForm": "Pack of 30 ML",
+          "packSize": "10",
+          "sellingPrice": 33.67,
+          "mrp": 42.09,
+          "productUrlSuffix": "medicine/picpro-dry-syrup-30-ml-tm-drup1-000882",
+          "productUrl": "medicine/picpro-dry-syrup-30-ml-tm-drup1-000882",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-drup1-000882",
+          "brandName": "Picpro Dry Syrup 30 Ml",
+          "manufacturerName": "Ronyd Health Care Pvt Ltd",
+          "packForm": "Pack of 30 ML",
+          "packSize": "37.58035714285714",
+          "sellingPrice": 33.67,
+          "mrp": 42.09,
+          "productUrlSuffix": "medicine/picpro_dry_syrup_30_ml-tm-drup1-000882",
+          "productUrl": "medicine/picpro_dry_syrup_30_ml-tm-drup1-000882",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-015716",
+          "brandName": "Flora L 150 MIU Tablet 10",
+          "manufacturerName": "Mcw Healthcare",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 22.13,
+          "mrp": 27.66,
+          "productUrlSuffix": "medicine/flora-l-150-miu-tablet-10-tm-tacr1-015716",
+          "productUrl": "medicine/flora-l-150-miu-tablet-10-tm-tacr1-015716",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-015716",
+          "brandName": "Flora L 150 MIU Tablet 10",
+          "manufacturerName": "Mcw Healthcare",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.515837104072398",
+          "sellingPrice": 22.13,
+          "mrp": 27.66,
+          "productUrlSuffix": "medicine/flora_l_150_miu_tablet_10-tm-tacr1-015716",
+          "productUrl": "medicine/flora_l_150_miu_tablet_10-tm-tacr1-015716",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-047057",
+          "brandName": "Endolac Kid Tablet 10",
+          "manufacturerName": "Endocard India Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 28.81,
+          "mrp": 36.01,
+          "productUrlSuffix": "medicine/endolac-kid-tablet-10-tm-tacr1-047057",
+          "productUrl": "medicine/endolac-kid-tablet-10-tm-tacr1-047057",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-047057",
+          "brandName": "Endolac Kid Tablet 10",
+          "manufacturerName": "Endocard India Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.503472222222221",
+          "sellingPrice": 28.81,
+          "mrp": 36.01,
+          "productUrlSuffix": "medicine/endolac_kid_tablet_10-tm-tacr1-047057",
+          "productUrl": "medicine/endolac_kid_tablet_10-tm-tacr1-047057",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-048701",
+          "brandName": "Only Lb Tablet 10",
+          "manufacturerName": "Shrinivas Gujarat Laboratories Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 30.75,
+          "mrp": 38.44,
+          "productUrlSuffix": "medicine/only-lb-tablet-10-tm-tacr1-048701",
+          "productUrl": "medicine/only-lb-tablet-10-tm-tacr1-048701",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-048701",
+          "brandName": "Only Lb Tablet 10",
+          "manufacturerName": "Shrinivas Gujarat Laboratories Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.48051948051948",
+          "sellingPrice": 30.75,
+          "mrp": 38.44,
+          "productUrlSuffix": "medicine/only_lb_tablet_10-tm-tacr1-048701",
+          "productUrl": "medicine/only_lb_tablet_10-tm-tacr1-048701",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-004839",
+          "brandName": "Base 250 MG Tablet 10",
+          "manufacturerName": "Bestochem Formulations (i) Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 32.33,
+          "mrp": 40.41,
+          "productUrlSuffix": "medicine/base-250-mg-tablet-10-tm-tacr1-004839",
+          "productUrl": "medicine/base-250-mg-tablet-10-tm-tacr1-004839",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-004839",
+          "brandName": "Base 250 MG Tablet 10",
+          "manufacturerName": "Bestochem Formulations (i) Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.510835913312693",
+          "sellingPrice": 32.33,
+          "mrp": 40.41,
+          "productUrlSuffix": "medicine/base_250_mg_tablet_10-tm-tacr1-004839",
+          "productUrl": "medicine/base_250_mg_tablet_10-tm-tacr1-004839",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-drup1-000857",
+          "brandName": "Entero Biotic Dry Syrup 30 Ml",
+          "manufacturerName": "Eskag Pharma Pvt.ltd",
+          "packForm": "Pack of 30 ML",
+          "packSize": "10",
+          "sellingPrice": 115.98,
+          "mrp": 144.98,
+          "productUrlSuffix": "medicine/entero-biotic-dry-syrup-30-ml-tm-drup1-000857",
+          "productUrl": "medicine/entero-biotic-dry-syrup-30-ml-tm-drup1-000857",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-drup1-000857",
+          "brandName": "Entero Biotic Dry Syrup 30 Ml",
+          "manufacturerName": "Eskag Pharma Pvt.ltd",
+          "packForm": "Pack of 30 ML",
+          "packSize": "37.462532299741596",
+          "sellingPrice": 115.98,
+          "mrp": 144.98,
+          "productUrlSuffix": "medicine/entero_biotic_dry_syrup_30_ml-tm-drup1-000857",
+          "productUrl": "medicine/entero_biotic_dry_syrup_30_ml-tm-drup1-000857",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-sury1-000247",
+          "brandName": "Beneflora Suspension 5ml",
+          "manufacturerName": "Shreya Life Sciences Pvt. Ltd",
+          "packForm": "Bottle of 5 ML",
+          "packSize": "10",
+          "sellingPrice": 24,
+          "mrp": 30,
+          "productUrlSuffix": "medicine/beneflora-suspension-5-ml-tm-sury1-000247",
+          "productUrl": "medicine/beneflora-suspension-5-ml-tm-sury1-000247",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-sury1-000247",
+          "brandName": "Beneflora Suspension 5ml",
+          "manufacturerName": "Shreya Life Sciences Pvt. Ltd",
+          "packForm": "Bottle of 5 ML",
+          "packSize": "6.25",
+          "sellingPrice": 24,
+          "mrp": 30,
+          "productUrlSuffix": "medicine/beneflora_suspension_5ml-tm-sury1-000247",
+          "productUrl": "medicine/beneflora_suspension_5ml-tm-sury1-000247",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-006877",
+          "brandName": "Bioform Capsule 10",
+          "manufacturerName": "Medley Pharmaceuticals",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 51,
+          "mrp": 63.75,
+          "productUrlSuffix": "medicine/bioform-capsule-10-tm-cacr1-006877",
+          "productUrl": "medicine/bioform-capsule-10-tm-cacr1-006877",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-006877",
+          "brandName": "Bioform Capsule 10",
+          "manufacturerName": "Medley Pharmaceuticals",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 51,
+          "mrp": 63.75,
+          "productUrlSuffix": "medicine/bioform_capsule_10-tm-cacr1-006877",
+          "productUrl": "medicine/bioform_capsule_10-tm-cacr1-006877",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-009150",
+          "brandName": "Pentastic 50/20 Mg Capsule 10",
+          "manufacturerName": "Elder Pharmaceuticals Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 52.5,
+          "mrp": 65.62,
+          "productUrlSuffix": "medicine/pentastic-5020-mg-capsule-10-tm-cacr1-009150",
+          "productUrl": "medicine/pentastic-5020-mg-capsule-10-tm-cacr1-009150",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-009150",
+          "brandName": "Pentastic 50/20 Mg Capsule 10",
+          "manufacturerName": "Elder Pharmaceuticals Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.49904761904762",
+          "sellingPrice": 52.5,
+          "mrp": 65.62,
+          "productUrlSuffix": "medicine/pentastic_50_20_mg_capsule_10-tm-cacr1-009150",
+          "productUrl": "medicine/pentastic_50_20_mg_capsule_10-tm-cacr1-009150",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007270",
+          "brandName": "Fourts B Lac Capsule 10",
+          "manufacturerName": "Fourrts India Laboratories Pvt. Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 55.87,
+          "mrp": 69.84,
+          "productUrlSuffix": "medicine/fourts-b-lac-capsule-10-tm-cacr1-007270",
+          "productUrl": "medicine/fourts-b-lac-capsule-10-tm-cacr1-007270",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007270",
+          "brandName": "Fourts B Lac Capsule 10",
+          "manufacturerName": "Fourrts India Laboratories Pvt. Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.493738819320216",
+          "sellingPrice": 55.87,
+          "mrp": 69.84,
+          "productUrlSuffix": "medicine/fourts_b_lac_capsule_10-tm-cacr1-007270",
+          "productUrl": "medicine/fourts_b_lac_capsule_10-tm-cacr1-007270",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008491",
+          "brandName": "Yuko Capsule 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 56.25,
+          "mrp": 70.31,
+          "productUrlSuffix": "medicine/yuko-capsule-10-tm-cacr1-008491",
+          "productUrl": "medicine/yuko-capsule-10-tm-cacr1-008491",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008491",
+          "brandName": "Yuko Capsule 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.51067615658363",
+          "sellingPrice": 56.25,
+          "mrp": 70.31,
+          "productUrlSuffix": "medicine/yuko_capsule_10-tm-cacr1-008491",
+          "productUrl": "medicine/yuko_capsule_10-tm-cacr1-008491",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008437",
+          "brandName": "Vitalac Pb Capsule 10",
+          "manufacturerName": "Marc Pharma",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 66.75,
+          "mrp": 83.44,
+          "productUrlSuffix": "medicine/vitalac-pb-capsule-10-tm-cacr1-008437",
+          "productUrl": "medicine/vitalac-pb-capsule-10-tm-cacr1-008437",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008437",
+          "brandName": "Vitalac Pb Capsule 10",
+          "manufacturerName": "Marc Pharma",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.509745127436283",
+          "sellingPrice": 66.75,
+          "mrp": 83.44,
+          "productUrlSuffix": "medicine/vitalac_pb_capsule_10-tm-cacr1-008437",
+          "productUrl": "medicine/vitalac_pb_capsule_10-tm-cacr1-008437",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008020",
+          "brandName": "Prepost Capsule 10",
+          "manufacturerName": "Salud Care (I) Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 71.25,
+          "mrp": 89.06,
+          "productUrlSuffix": "medicine/prepost-capsule-10-tm-cacr1-008020",
+          "productUrl": "medicine/prepost-capsule-10-tm-cacr1-008020",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008020",
+          "brandName": "Prepost Capsule 10",
+          "manufacturerName": "Salud Care (I) Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.508426966292134",
+          "sellingPrice": 71.25,
+          "mrp": 89.06,
+          "productUrlSuffix": "medicine/prepost_capsule_10-tm-cacr1-008020",
+          "productUrl": "medicine/prepost_capsule_10-tm-cacr1-008020",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000679",
+          "brandName": "Therabact Sachet 1 Gm",
+          "manufacturerName": "Dupen Laboratories Pvt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 7.2,
+          "mrp": 9,
+          "productUrlSuffix": "medicine/therabact-sachet-1-gm-tm-saet1-000679",
+          "productUrl": "medicine/therabact-sachet-1-gm-tm-saet1-000679",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000679",
+          "brandName": "Therabact Sachet 1 Gm",
+          "manufacturerName": "Dupen Laboratories Pvt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.25",
+          "sellingPrice": 7.2,
+          "mrp": 9,
+          "productUrlSuffix": "medicine/therabact_sachet_1_gm-tm-saet1-000679",
+          "productUrl": "medicine/therabact_sachet_1_gm-tm-saet1-000679",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000646",
+          "brandName": "Reztor Sachet 1",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 1 Units",
+          "packSize": "10",
+          "sellingPrice": 7.31,
+          "mrp": 9.14,
+          "productUrlSuffix": "medicine/reztor-sachet-1-tm-saet1-000646",
+          "productUrl": "medicine/reztor-sachet-1-tm-saet1-000646",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000646",
+          "brandName": "Reztor Sachet 1",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 1 Units",
+          "packSize": "1.250341997264022",
+          "sellingPrice": 7.31,
+          "mrp": 9.14,
+          "productUrlSuffix": "medicine/reztor_sachet_1-tm-saet1-000646",
+          "productUrl": "medicine/reztor_sachet_1-tm-saet1-000646",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-047568",
+          "brandName": "Gutlove Tablet 10",
+          "manufacturerName": "Aprica Healthcare Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 74.25,
+          "mrp": 92.81,
+          "productUrlSuffix": "medicine/gutlove-tablet-10-tm-tacr1-047568",
+          "productUrl": "medicine/gutlove-tablet-10-tm-tacr1-047568",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-047568",
+          "brandName": "Gutlove Tablet 10",
+          "manufacturerName": "Aprica Healthcare Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.508086253369273",
+          "sellingPrice": 74.25,
+          "mrp": 92.81,
+          "productUrlSuffix": "medicine/gutlove_tablet_10-tm-tacr1-047568",
+          "productUrl": "medicine/gutlove_tablet_10-tm-tacr1-047568",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007703",
+          "brandName": "Mariflora Plus Capsule 10",
+          "manufacturerName": "Emenox Healthcare Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 74.25,
+          "mrp": 92.81,
+          "productUrlSuffix": "medicine/mariflora-plus-capsule-10-tm-cacr1-007703",
+          "productUrl": "medicine/mariflora-plus-capsule-10-tm-cacr1-007703",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007703",
+          "brandName": "Mariflora Plus Capsule 10",
+          "manufacturerName": "Emenox Healthcare Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.508086253369273",
+          "sellingPrice": 74.25,
+          "mrp": 92.81,
+          "productUrlSuffix": "medicine/mariflora_plus_capsule_10-tm-cacr1-007703",
+          "productUrl": "medicine/mariflora_plus_capsule_10-tm-cacr1-007703",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-011433",
+          "brandName": "Sumlac Capsule 10",
+          "manufacturerName": "Biophar Lifesciences Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 74.29,
+          "mrp": 92.86,
+          "productUrlSuffix": "medicine/sumlac-capsule-10-tm-cacr1-011433",
+          "productUrl": "medicine/sumlac-capsule-10-tm-cacr1-011433",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-011433",
+          "brandName": "Sumlac Capsule 10",
+          "manufacturerName": "Biophar Lifesciences Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.497981157469718",
+          "sellingPrice": 74.29,
+          "mrp": 92.86,
+          "productUrlSuffix": "medicine/sumlac_capsule_10-tm-cacr1-011433",
+          "productUrl": "medicine/sumlac_capsule_10-tm-cacr1-011433",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-000594",
+          "brandName": "Bio 4 Capsule 10",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 74.62,
+          "mrp": 93.28,
+          "productUrlSuffix": "medicine/bio-tbl-4-capsule-10-tm-cacr1-000594",
+          "productUrl": "medicine/bio-tbl-4-capsule-10-tm-cacr1-000594",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-000594",
+          "brandName": "Bio 4 Capsule 10",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.504021447721179",
+          "sellingPrice": 74.62,
+          "mrp": 93.28,
+          "productUrlSuffix": "medicine/bio_4_capsule_10-tm-cacr1-000594",
+          "productUrl": "medicine/bio_4_capsule_10-tm-cacr1-000594",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-006867",
+          "brandName": "Bifistar Capsule 10",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 74.62,
+          "mrp": 93.28,
+          "productUrlSuffix": "medicine/bifistar-capsule-10-tm-cacr1-006867",
+          "productUrl": "medicine/bifistar-capsule-10-tm-cacr1-006867",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-006867",
+          "brandName": "Bifistar Capsule 10",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.504021447721179",
+          "sellingPrice": 74.62,
+          "mrp": 93.28,
+          "productUrlSuffix": "medicine/bifistar_capsule_10-tm-cacr1-006867",
+          "productUrl": "medicine/bifistar_capsule_10-tm-cacr1-006867",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008107",
+          "brandName": "Regermina Capsule 10",
+          "manufacturerName": "Morepen Laboratories Limited",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 81.26,
+          "mrp": 101.58,
+          "productUrlSuffix": "medicine/regermina-capsule-10-tm-cacr1-008107",
+          "productUrl": "medicine/regermina-capsule-10-tm-cacr1-008107",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008107",
+          "brandName": "Regermina Capsule 10",
+          "manufacturerName": "Morepen Laboratories Limited",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.494464944649446",
+          "sellingPrice": 81.26,
+          "mrp": 101.58,
+          "productUrlSuffix": "medicine/regermina_capsule_10-tm-cacr1-008107",
+          "productUrl": "medicine/regermina_capsule_10-tm-cacr1-008107",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000332",
+          "brandName": "Bifistar Sachet 3 Gm",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 3 GM",
+          "packSize": "10",
+          "sellingPrice": 25.39,
+          "mrp": 31.74,
+          "productUrlSuffix": "medicine/bifistar-sachet-3-gm-tm-saet1-000332",
+          "productUrl": "medicine/bifistar-sachet-3-gm-tm-saet1-000332",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000332",
+          "brandName": "Bifistar Sachet 3 Gm",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 3 GM",
+          "packSize": "3.7517730496453896",
+          "sellingPrice": 25.39,
+          "mrp": 31.74,
+          "productUrlSuffix": "medicine/bifistar_sachet_3_gm-tm-saet1-000332",
+          "productUrl": "medicine/bifistar_sachet_3_gm-tm-saet1-000332",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007938",
+          "brandName": "Oxastop Capsule 10",
+          "manufacturerName": "La Renon Healthcare Private Limited",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 85.71,
+          "mrp": 107.14,
+          "productUrlSuffix": "medicine/oxastop-capsule-10-tm-cacr1-007938",
+          "productUrl": "medicine/oxastop-capsule-10-tm-cacr1-007938",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007938",
+          "brandName": "Oxastop Capsule 10",
+          "manufacturerName": "La Renon Healthcare Private Limited",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.501750291715286",
+          "sellingPrice": 85.71,
+          "mrp": 107.14,
+          "productUrlSuffix": "medicine/oxastop_capsule_10-tm-cacr1-007938",
+          "productUrl": "medicine/oxastop_capsule_10-tm-cacr1-007938",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-poer1-001923",
+          "brandName": "Flora Sb 40/40/40/25/25/100 Mg Powder 12 Gm",
+          "manufacturerName": "Mankind Pharmaceuticals Ltd.",
+          "packForm": "Pack of 12 GM",
+          "packSize": "10",
+          "sellingPrice": 108.9,
+          "mrp": 136.12,
+          "productUrlSuffix": "otc/flora-sb-4040402525100-mg-powder-12-gm-tm-poer1-001923",
+          "productUrl": "otc/flora-sb-4040402525100-mg-powder-12-gm-tm-poer1-001923",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-001923",
+          "brandName": "Flora Sb 40/40/40/25/25/100 Mg Powder 12 Gm",
+          "manufacturerName": "Mankind Pharmaceuticals Ltd.",
+          "packForm": "Pack of 12 GM",
+          "packSize": "14.991189427312776",
+          "sellingPrice": 108.9,
+          "mrp": 136.12,
+          "productUrlSuffix": "medicine/flora_sb_40_40_40_25_25_100_mg_powder_12_gm-tm-poer1-001923",
+          "productUrl": "medicine/flora_sb_40_40_40_25_25_100_mg_powder_12_gm-tm-poer1-001923",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000667",
+          "brandName": "Stimup Flora Sachet 1 GM",
+          "manufacturerName": "Indian Drug & Pharmaceuticals Ltd (idpl)",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 9.53,
+          "mrp": 11.91,
+          "productUrlSuffix": "medicine/stimup-flora-sachet-1-gm-tm-saet1-000667",
+          "productUrl": "medicine/stimup-flora-sachet-1-gm-tm-saet1-000667",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000667",
+          "brandName": "Stimup Flora Sachet 1 GM",
+          "manufacturerName": "Indian Drug & Pharmaceuticals Ltd (idpl)",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2497376705141658",
+          "sellingPrice": 9.53,
+          "mrp": 11.91,
+          "productUrlSuffix": "medicine/stimup_flora_sachet_1_gm-tm-saet1-000667",
+          "productUrl": "medicine/stimup_flora_sachet_1_gm-tm-saet1-000667",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-poer1-001448",
+          "brandName": "Prob P Powder 1 GM",
+          "manufacturerName": "Intra Labs India Private Limited",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 9.6,
+          "mrp": 12,
+          "productUrlSuffix": "medicine/prob-p-powder-1-gm-tm-poer1-001448",
+          "productUrl": "medicine/prob-p-powder-1-gm-tm-poer1-001448",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-001448",
+          "brandName": "Prob P Powder 1 GM",
+          "manufacturerName": "Intra Labs India Private Limited",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.25",
+          "sellingPrice": 9.6,
+          "mrp": 12,
+          "productUrlSuffix": "medicine/prob_p_powder_1_gm-tm-poer1-001448",
+          "productUrl": "medicine/prob_p_powder_1_gm-tm-poer1-001448",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000645",
+          "brandName": "Reztor Dz Sachet 1",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 1 Units",
+          "packSize": "10",
+          "sellingPrice": 9.71,
+          "mrp": 12.14,
+          "productUrlSuffix": "medicine/reztor-dz-sachet-1-tm-saet1-000645",
+          "productUrl": "medicine/reztor-dz-sachet-1-tm-saet1-000645",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000645",
+          "brandName": "Reztor Dz Sachet 1",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 1 Units",
+          "packSize": "1.250257466529351",
+          "sellingPrice": 9.71,
+          "mrp": 12.14,
+          "productUrlSuffix": "medicine/reztor_dz_sachet_1-tm-saet1-000645",
+          "productUrl": "medicine/reztor_dz_sachet_1-tm-saet1-000645",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000654",
+          "brandName": "Rinilab Sachet 1 Gm",
+          "manufacturerName": "Elan Pharma(India) Pvt. Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 9.75,
+          "mrp": 12.19,
+          "productUrlSuffix": "medicine/rinilab-sachet-1-gm-tm-saet1-000654",
+          "productUrl": "medicine/rinilab-sachet-1-gm-tm-saet1-000654",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000654",
+          "brandName": "Rinilab Sachet 1 Gm",
+          "manufacturerName": "Elan Pharma(India) Pvt. Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2502564102564102",
+          "sellingPrice": 9.75,
+          "mrp": 12.19,
+          "productUrlSuffix": "medicine/rinilab_sachet_1_gm-tm-saet1-000654",
+          "productUrl": "medicine/rinilab_sachet_1_gm-tm-saet1-000654",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008435",
+          "brandName": "Vitagut Forte Capsule 10",
+          "manufacturerName": "Medley Pharmaceuticals",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 101.25,
+          "mrp": 126.56,
+          "productUrlSuffix": "medicine/vitagut-forte-capsule-10-tm-cacr1-008435",
+          "productUrl": "medicine/vitagut-forte-capsule-10-tm-cacr1-008435",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008435",
+          "brandName": "Vitagut Forte Capsule 10",
+          "manufacturerName": "Medley Pharmaceuticals",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.505928853754941",
+          "sellingPrice": 101.25,
+          "mrp": 126.56,
+          "productUrlSuffix": "medicine/vitagut_forte_capsule_10-tm-cacr1-008435",
+          "productUrl": "medicine/vitagut_forte_capsule_10-tm-cacr1-008435",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008275",
+          "brandName": "Stimup Flora Capsule 10",
+          "manufacturerName": "Indian Drug & Pharmaceuticals Ltd (idpl)",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 102,
+          "mrp": 127.5,
+          "productUrlSuffix": "medicine/stimup-flora-capsule-10-tm-cacr1-008275",
+          "productUrl": "medicine/stimup-flora-capsule-10-tm-cacr1-008275",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008275",
+          "brandName": "Stimup Flora Capsule 10",
+          "manufacturerName": "Indian Drug & Pharmaceuticals Ltd (idpl)",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 102,
+          "mrp": 127.5,
+          "productUrlSuffix": "medicine/stimup_flora_capsule_10-tm-cacr1-008275",
+          "productUrl": "medicine/stimup_flora_capsule_10-tm-cacr1-008275",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007567",
+          "brandName": "Kenpro Capsule 10",
+          "manufacturerName": "Kenn Pharmaceuticals",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 102.75,
+          "mrp": 128.44,
+          "productUrlSuffix": "medicine/kenpro-capsule-10-tm-cacr1-007567",
+          "productUrl": "medicine/kenpro-capsule-10-tm-cacr1-007567",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007567",
+          "brandName": "Kenpro Capsule 10",
+          "manufacturerName": "Kenn Pharmaceuticals",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.494163424124514",
+          "sellingPrice": 102.75,
+          "mrp": 128.44,
+          "productUrlSuffix": "medicine/kenpro_capsule_10-tm-cacr1-007567",
+          "productUrl": "medicine/kenpro_capsule_10-tm-cacr1-007567",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-001311",
+          "brandName": "Darolac Capsule 10",
+          "manufacturerName": "Aristo Pharmaceuticals Pvt.ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 108.74,
+          "mrp": 135.93,
+          "productUrlSuffix": "medicine/DAROLAC-CAPSULE-10-TM-CACR1-001311",
+          "productUrl": "medicine/DAROLAC-CAPSULE-10-TM-CACR1-001311",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-001311",
+          "brandName": "Darolac Capsule 10",
+          "manufacturerName": "Aristo Pharmaceuticals Pvt.ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.505059797608098",
+          "sellingPrice": 108.74,
+          "mrp": 135.93,
+          "productUrlSuffix": "medicine/darolac_capsule_10-tm-cacr1-001311",
+          "productUrl": "medicine/darolac_capsule_10-tm-cacr1-001311",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007296",
+          "brandName": "Genrobo Capsule 15",
+          "manufacturerName": "Encore Healthcare Pvt Ltd",
+          "packForm": "Pack of 15 Units",
+          "packSize": "10",
+          "sellingPrice": 163.58,
+          "mrp": 204.47,
+          "productUrlSuffix": "medicine/genrobo-capsule-15-tm-cacr1-007296",
+          "productUrl": "medicine/genrobo-capsule-15-tm-cacr1-007296",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007296",
+          "brandName": "Genrobo Capsule 15",
+          "manufacturerName": "Encore Healthcare Pvt Ltd",
+          "packForm": "Pack of 15 Units",
+          "packSize": "18.741521539871677",
+          "sellingPrice": 163.58,
+          "mrp": 204.47,
+          "productUrlSuffix": "medicine/genrobo_capsule_15-tm-cacr1-007296",
+          "productUrl": "medicine/genrobo_capsule_15-tm-cacr1-007296",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000624",
+          "brandName": "Proseallb Sachet 1 Gm",
+          "manufacturerName": "Organic Laboratories",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 10.91,
+          "mrp": 13.64,
+          "productUrlSuffix": "medicine/proseallb-sachet-1-gm-tm-saet1-000624",
+          "productUrl": "medicine/proseallb-sachet-1-gm-tm-saet1-000624",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000624",
+          "brandName": "Proseallb Sachet 1 Gm",
+          "manufacturerName": "Organic Laboratories",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2502291475710359",
+          "sellingPrice": 10.91,
+          "mrp": 13.64,
+          "productUrlSuffix": "medicine/proseallb_sachet_1_gm-tm-saet1-000624",
+          "productUrl": "medicine/proseallb_sachet_1_gm-tm-saet1-000624",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000656",
+          "brandName": "Rubic Sachet 1 Gm",
+          "manufacturerName": "Tidal Laboratories Pvt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 11.14,
+          "mrp": 13.92,
+          "productUrlSuffix": "medicine/rubic-sachet-1-gm-tm-saet1-000656",
+          "productUrl": "medicine/rubic-sachet-1-gm-tm-saet1-000656",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000656",
+          "brandName": "Rubic Sachet 1 Gm",
+          "manufacturerName": "Tidal Laboratories Pvt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2495511669658885",
+          "sellingPrice": 11.14,
+          "mrp": 13.92,
+          "productUrlSuffix": "medicine/rubic_sachet_1_gm-tm-saet1-000656",
+          "productUrl": "medicine/rubic_sachet_1_gm-tm-saet1-000656",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007343",
+          "brandName": "Goodcolon Capsule 10",
+          "manufacturerName": "Akumentis Healthcare Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 111.75,
+          "mrp": 139.69,
+          "productUrlSuffix": "medicine/goodcolon-capsule-10-tm-cacr1-007343",
+          "productUrl": "medicine/goodcolon-capsule-10-tm-cacr1-007343",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007343",
+          "brandName": "Goodcolon Capsule 10",
+          "manufacturerName": "Akumentis Healthcare Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.494633273703041",
+          "sellingPrice": 111.75,
+          "mrp": 139.69,
+          "productUrlSuffix": "medicine/goodcolon_capsule_10-tm-cacr1-007343",
+          "productUrl": "medicine/goodcolon_capsule_10-tm-cacr1-007343",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-000349",
+          "brandName": "Apylori 100 M Capsule 30",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 30 Units",
+          "packSize": "10",
+          "sellingPrice": 335.58,
+          "mrp": 419.47,
+          "productUrlSuffix": "medicine/apylori-100-m-capsule-30-tm-cacr1-000349",
+          "productUrl": "medicine/apylori-100-m-capsule-30-tm-cacr1-000349",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-000349",
+          "brandName": "Apylori 100 M Capsule 30",
+          "manufacturerName": "Tablets India Ltd",
+          "packForm": "Pack of 30 Units",
+          "packSize": "37.48614834673816",
+          "sellingPrice": 335.58,
+          "mrp": 419.47,
+          "productUrlSuffix": "medicine/apylori_100_m_capsule_30-tm-cacr1-000349",
+          "productUrl": "medicine/apylori_100_m_capsule_30-tm-cacr1-000349",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-003230",
+          "brandName": "Magnipro Capsule 10",
+          "manufacturerName": "Pharmed Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 114.65,
+          "mrp": 143.31,
+          "productUrlSuffix": "medicine/magnipro-capsule-10-tm-cacr1-003230",
+          "productUrl": "medicine/magnipro-capsule-10-tm-cacr1-003230",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-003230",
+          "brandName": "Magnipro Capsule 10",
+          "manufacturerName": "Pharmed Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.50523560209424",
+          "sellingPrice": 114.65,
+          "mrp": 143.31,
+          "productUrlSuffix": "medicine/magnipro_capsule_10-tm-cacr1-003230",
+          "productUrl": "medicine/magnipro_capsule_10-tm-cacr1-003230",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000414",
+          "brandName": "Emlac Sachet 1",
+          "manufacturerName": "Embiotic Lab",
+          "packForm": "Pack of 1 Units",
+          "packSize": "10",
+          "sellingPrice": 11.93,
+          "mrp": 14.91,
+          "productUrlSuffix": "medicine/emlac-sachet-1-tm-saet1-000414",
+          "productUrl": "medicine/emlac-sachet-1-tm-saet1-000414",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000414",
+          "brandName": "Emlac Sachet 1",
+          "manufacturerName": "Embiotic Lab",
+          "packForm": "Pack of 1 Units",
+          "packSize": "1.2497904442581727",
+          "sellingPrice": 11.93,
+          "mrp": 14.91,
+          "productUrlSuffix": "medicine/emlac_sachet_1-tm-saet1-000414",
+          "productUrl": "medicine/emlac_sachet_1-tm-saet1-000414",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008887",
+          "brandName": "Floravio Capsule 10",
+          "manufacturerName": "Salud Care (i) Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 120,
+          "mrp": 150,
+          "productUrlSuffix": "medicine/floravio-capsule-10-tm-cacr1-008887",
+          "productUrl": "medicine/floravio-capsule-10-tm-cacr1-008887",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008887",
+          "brandName": "Floravio Capsule 10",
+          "manufacturerName": "Salud Care (i) Pvt Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 120,
+          "mrp": 150,
+          "productUrlSuffix": "medicine/floravio_capsule_10-tm-cacr1-008887",
+          "productUrl": "medicine/floravio_capsule_10-tm-cacr1-008887",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000665",
+          "brandName": "Sporochek Sachet 0.5 GM",
+          "manufacturerName": "Indoco Remedies Ltd",
+          "packForm": "Pack of 0.5 GM",
+          "packSize": "10",
+          "sellingPrice": 7.43,
+          "mrp": 9.29,
+          "productUrlSuffix": "medicine/sporochek-sachet-05-gm-tm-saet1-000665",
+          "productUrl": "medicine/sporochek-sachet-05-gm-tm-saet1-000665",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000665",
+          "brandName": "Sporochek Sachet 0.5 GM",
+          "manufacturerName": "Indoco Remedies Ltd",
+          "packForm": "Pack of 0.5 GM",
+          "packSize": "0.6251682368775235",
+          "sellingPrice": 7.43,
+          "mrp": 9.29,
+          "productUrlSuffix": "medicine/sporochek_sachet_0_5_gm-tm-saet1-000665",
+          "productUrl": "medicine/sporochek_sachet_0_5_gm-tm-saet1-000665",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000373",
+          "brandName": "Comensal Sachet 1",
+          "manufacturerName": "Medreich Lifecare Limited",
+          "packForm": "Pack of 1 Units",
+          "packSize": "10",
+          "sellingPrice": 17.86,
+          "mrp": 22.32,
+          "productUrlSuffix": "medicine/comensal-sachet-1-tm-saet1-000373",
+          "productUrl": "medicine/comensal-sachet-1-tm-saet1-000373",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000373",
+          "brandName": "Comensal Sachet 1",
+          "manufacturerName": "Medreich Lifecare Limited",
+          "packForm": "Pack of 1 Units",
+          "packSize": "1.2497200447928332",
+          "sellingPrice": 17.86,
+          "mrp": 22.32,
+          "productUrlSuffix": "medicine/comensal_sachet_1-tm-saet1-000373",
+          "productUrl": "medicine/comensal_sachet_1-tm-saet1-000373",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-008267",
+          "brandName": "Sporlac Plus Capsule 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 186.2,
+          "mrp": 232.75,
+          "productUrlSuffix": "medicine/sporlac-plus-capsule-10-tm-cacr1-008267",
+          "productUrl": "medicine/sporlac-plus-capsule-10-tm-cacr1-008267",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-008267",
+          "brandName": "Sporlac Plus Capsule 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 186.2,
+          "mrp": 232.75,
+          "productUrlSuffix": "medicine/sporlac_plus_capsule_10-tm-cacr1-008267",
+          "productUrl": "medicine/sporlac_plus_capsule_10-tm-cacr1-008267",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-001989",
+          "brandName": "Floristore Capsule 10",
+          "manufacturerName": "Zuventus Healthcare Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 188.4,
+          "mrp": 235.5,
+          "productUrlSuffix": "medicine/floristore-capsule-10-tm-cacr1-001989",
+          "productUrl": "medicine/floristore-capsule-10-tm-cacr1-001989",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-001989",
+          "brandName": "Floristore Capsule 10",
+          "manufacturerName": "Zuventus Healthcare Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 188.4,
+          "mrp": 235.5,
+          "productUrlSuffix": "medicine/floristore_capsule_10-tm-cacr1-001989",
+          "productUrl": "medicine/floristore_capsule_10-tm-cacr1-001989",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000306",
+          "brandName": "Amicolon Kid Sachet 1 Gm",
+          "manufacturerName": "Abbott Healthcare Pvt. Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 20.09,
+          "mrp": 25.11,
+          "productUrlSuffix": "medicine/amicolon-kid-sachet-1-gm-tm-saet1-000306",
+          "productUrl": "medicine/amicolon-kid-sachet-1-gm-tm-saet1-000306",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000306",
+          "brandName": "Amicolon Kid Sachet 1 Gm",
+          "manufacturerName": "Abbott Healthcare Pvt. Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2498755599800895",
+          "sellingPrice": 20.09,
+          "mrp": 25.11,
+          "productUrlSuffix": "medicine/amicolon_kid_sachet_1_gm-tm-saet1-000306",
+          "productUrl": "medicine/amicolon_kid_sachet_1_gm-tm-saet1-000306",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-poer1-000998",
+          "brandName": "Immuplus Powder 1 GM",
+          "manufacturerName": "Saf Fermion Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 20.25,
+          "mrp": 25.31,
+          "productUrlSuffix": "medicine/immuplus-powder-1-gm-tm-poer1-000998",
+          "productUrl": "medicine/immuplus-powder-1-gm-tm-poer1-000998",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-000998",
+          "brandName": "Immuplus Powder 1 GM",
+          "manufacturerName": "Saf Fermion Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2498765432098764",
+          "sellingPrice": 20.25,
+          "mrp": 25.31,
+          "productUrlSuffix": "medicine/immuplus_powder_1_gm-tm-poer1-000998",
+          "productUrl": "medicine/immuplus_powder_1_gm-tm-poer1-000998",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-049307",
+          "brandName": "Solib Tablet 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 206.25,
+          "mrp": 257.81,
+          "productUrlSuffix": "medicine/solib-tablet-10-tm-tacr1-049307",
+          "productUrl": "medicine/solib-tablet-10-tm-tacr1-049307",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-049307",
+          "brandName": "Solib Tablet 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.502909796314258",
+          "sellingPrice": 206.25,
+          "mrp": 257.81,
+          "productUrlSuffix": "medicine/solib_tablet_10-tm-tacr1-049307",
+          "productUrl": "medicine/solib_tablet_10-tm-tacr1-049307",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-000201",
+          "brandName": "Allerbio Capsule 10",
+          "manufacturerName": "Fourrts India Laboratories Pvt. Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 209.99,
+          "mrp": 253,
+          "productUrlSuffix": "medicine/allerbio-capsule-10-TM-CACR1-000201",
+          "productUrl": "medicine/allerbio-capsule-10-TM-CACR1-000201",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-000201",
+          "brandName": "Allerbio Capsule 10",
+          "manufacturerName": "Fourrts India Laboratories Pvt. Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.047619047619047",
+          "sellingPrice": 209.99,
+          "mrp": 253,
+          "productUrlSuffix": "medicine/allerbio_capsule_10-tm-cacr1-000201",
+          "productUrl": "medicine/allerbio_capsule_10-tm-cacr1-000201",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-005224",
+          "brandName": "Remune Al Capsule 10",
+          "manufacturerName": "Sundyota Numandis Pharma Pvt Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 217.12,
+          "mrp": 271.4,
+          "productUrlSuffix": "medicine/remune-al-capsule-10-TM-CACR1-005224",
+          "productUrl": "medicine/remune-al-capsule-10-TM-CACR1-005224",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-005224",
+          "brandName": "Remune Al Capsule 10",
+          "manufacturerName": "Sundyota Numandis Pharma Pvt Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.50115154306771",
+          "sellingPrice": 217.12,
+          "mrp": 271.4,
+          "productUrlSuffix": "medicine/remune_al_capsule_10-tm-cacr1-005224",
+          "productUrl": "medicine/remune_al_capsule_10-tm-cacr1-005224",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-poer1-001377",
+          "brandName": "Pedistine Powder 1 Gm",
+          "manufacturerName": "Wockhardt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 22.36,
+          "mrp": 27.95,
+          "productUrlSuffix": "medicine/pedistine-powder-1-gm-tm-poer1-001377",
+          "productUrl": "medicine/pedistine-powder-1-gm-tm-poer1-001377",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-001377",
+          "brandName": "Pedistine Powder 1 Gm",
+          "manufacturerName": "Wockhardt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.25",
+          "sellingPrice": 22.36,
+          "mrp": 27.95,
+          "productUrlSuffix": "medicine/pedistine_powder_1_gm-tm-poer1-001377",
+          "productUrl": "medicine/pedistine_powder_1_gm-tm-poer1-001377",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000635",
+          "brandName": "Regermina Sachet 1 Gm",
+          "manufacturerName": "Morepen Laboratories Limited",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 24.75,
+          "mrp": 30.94,
+          "productUrlSuffix": "medicine/regermina-sachet-1-gm-tm-saet1-000635",
+          "productUrl": "medicine/regermina-sachet-1-gm-tm-saet1-000635",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000635",
+          "brandName": "Regermina Sachet 1 Gm",
+          "manufacturerName": "Morepen Laboratories Limited",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2501010101010102",
+          "sellingPrice": 24.75,
+          "mrp": 30.94,
+          "productUrlSuffix": "medicine/regermina_sachet_1_gm-tm-saet1-000635",
+          "productUrl": "medicine/regermina_sachet_1_gm-tm-saet1-000635",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-006232",
+          "brandName": "Utivax Capsule 10",
+          "manufacturerName": "Pharmanova",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 250.01,
+          "mrp": 290.71,
+          "productUrlSuffix": "medicine/utivax-capsule-10-tm-cacr1-006232",
+          "productUrl": "medicine/utivax-capsule-10-tm-cacr1-006232",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-006232",
+          "brandName": "Utivax Capsule 10",
+          "manufacturerName": "Pharmanova",
+          "packForm": "Strip of 10 Units",
+          "packSize": "11.6284",
+          "sellingPrice": 250.01,
+          "mrp": 290.71,
+          "productUrlSuffix": "medicine/utivax_capsule_10-tm-cacr1-006232",
+          "productUrl": "medicine/utivax_capsule_10-tm-cacr1-006232",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000337",
+          "brandName": "Bioclin Sachet 3 Gm",
+          "manufacturerName": "Lupin Ltd",
+          "packForm": "Pack of 3 GM",
+          "packSize": "10",
+          "sellingPrice": 77.9,
+          "mrp": 97.38,
+          "productUrlSuffix": "medicine/bioclin-sachet-3-gm-tm-saet1-000337",
+          "productUrl": "medicine/bioclin-sachet-3-gm-tm-saet1-000337",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000337",
+          "brandName": "Bioclin Sachet 3 Gm",
+          "manufacturerName": "Lupin Ltd",
+          "packForm": "Pack of 3 GM",
+          "packSize": "3.7497112052368116",
+          "sellingPrice": 77.9,
+          "mrp": 97.38,
+          "productUrlSuffix": "medicine/bioclin_sachet_3_gm-tm-saet1-000337",
+          "productUrl": "medicine/bioclin_sachet_3_gm-tm-saet1-000337",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-tacr1-049336",
+          "brandName": "Sporlac Qik Tablet 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 261,
+          "mrp": 326.25,
+          "productUrlSuffix": "medicine/sporlac-qik-tablet-10-tm-tacr1-049336",
+          "productUrl": "medicine/sporlac-qik-tablet-10-tm-tacr1-049336",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-tacr1-049336",
+          "brandName": "Sporlac Qik Tablet 10",
+          "manufacturerName": "Sanzyme Ltd",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 261,
+          "mrp": 326.25,
+          "productUrlSuffix": "medicine/sporlac_qik_tablet_10-tm-tacr1-049336",
+          "productUrl": "medicine/sporlac_qik_tablet_10-tm-tacr1-049336",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000040",
+          "brandName": "Boular 282.5 MG Sachet 1 GM",
+          "manufacturerName": "Lark Laboratories Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 26.33,
+          "mrp": 32.91,
+          "productUrlSuffix": "medicine/boular-2825-mg-sachet-1-gm-tm-saet1-000040",
+          "productUrl": "medicine/boular-2825-mg-sachet-1-gm-tm-saet1-000040",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000040",
+          "brandName": "Boular 282.5 MG Sachet 1 GM",
+          "manufacturerName": "Lark Laboratories Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2499050512723129",
+          "sellingPrice": 26.33,
+          "mrp": 32.91,
+          "productUrlSuffix": "medicine/boular_282_5_mg_sachet_1_gm-tm-saet1-000040",
+          "productUrl": "medicine/boular_282_5_mg_sachet_1_gm-tm-saet1-000040",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-000243",
+          "brandName": "Amicolon 15 Mg Capsule 6",
+          "manufacturerName": "Abbott Healthcare Pvt. Ltd",
+          "packForm": "Pack of 6 Units",
+          "packSize": "10",
+          "sellingPrice": 166.5,
+          "mrp": 208.12,
+          "productUrlSuffix": "medicine/amicolon-15-mg-capsule-6-tm-cacr1-000243",
+          "productUrl": "medicine/amicolon-15-mg-capsule-6-tm-cacr1-000243",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-000243",
+          "brandName": "Amicolon 15 Mg Capsule 6",
+          "manufacturerName": "Abbott Healthcare Pvt. Ltd",
+          "packForm": "Pack of 6 Units",
+          "packSize": "7.49981981981982",
+          "sellingPrice": 166.5,
+          "mrp": 208.12,
+          "productUrlSuffix": "medicine/amicolon_15_mg_capsule_6-tm-cacr1-000243",
+          "productUrl": "medicine/amicolon_15_mg_capsule_6-tm-cacr1-000243",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000151",
+          "brandName": "Lesunberry 5 B Sachet 1 GM",
+          "manufacturerName": "Sundyota Numandis Pharma Pvt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 29.38,
+          "mrp": 36.72,
+          "productUrlSuffix": "medicine/lesunberry-5-b-sachet-1-gm-tm-saet1-000151",
+          "productUrl": "medicine/lesunberry-5-b-sachet-1-gm-tm-saet1-000151",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000151",
+          "brandName": "Lesunberry 5 B Sachet 1 GM",
+          "manufacturerName": "Sundyota Numandis Pharma Pvt Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2498298162014976",
+          "sellingPrice": 29.38,
+          "mrp": 36.72,
+          "productUrlSuffix": "medicine/lesunberry_5_b_sachet_1_gm-tm-saet1-000151",
+          "productUrl": "medicine/lesunberry_5_b_sachet_1_gm-tm-saet1-000151",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-emon1-000003",
+          "brandName": "Amicolon 15 Mg Emulsion 5 Ml",
+          "manufacturerName": "Abbott Healthcare Pvt. Ltd",
+          "packForm": "Pack of 5 ML",
+          "packSize": "10",
+          "sellingPrice": 166.5,
+          "mrp": 208.12,
+          "productUrlSuffix": "medicine/amicolon-15-mg-emulsion-5-ml-tm-emon1-000003",
+          "productUrl": "medicine/amicolon-15-mg-emulsion-5-ml-tm-emon1-000003",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-emon1-000003",
+          "brandName": "Amicolon 15 Mg Emulsion 5 Ml",
+          "manufacturerName": "Abbott Healthcare Pvt. Ltd",
+          "packForm": "Pack of 5 ML",
+          "packSize": "6.24984984984985",
+          "sellingPrice": 166.5,
+          "mrp": 208.12,
+          "productUrlSuffix": "medicine/amicolon_15_mg_emulsion_5_ml-tm-emon1-000003",
+          "productUrl": "medicine/amicolon_15_mg_emulsion_5_ml-tm-emon1-000003",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-016296",
+          "brandName": "Lobun Capsule 10",
+          "manufacturerName": "J B Chemicals And Pharmaceuticals Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 448.8,
+          "mrp": 561,
+          "productUrlSuffix": "otc/lobun-capsule-10-tm-cacr1-016296",
+          "productUrl": "otc/lobun-capsule-10-tm-cacr1-016296",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-016296",
+          "brandName": "Lobun Capsule 10",
+          "manufacturerName": "J B Chemicals And Pharmaceuticals Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 448.8,
+          "mrp": 561,
+          "productUrlSuffix": "medicine/lobun_capsule_10-tm-cacr1-016296",
+          "productUrl": "medicine/lobun_capsule_10-tm-cacr1-016296",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000128",
+          "brandName": "Indilac 500 MG Sachet 1",
+          "manufacturerName": "Ind Swift Laboratories Ltd",
+          "packForm": "Pack of 1 Units",
+          "packSize": "10",
+          "sellingPrice": 46.87,
+          "mrp": 58.59,
+          "productUrlSuffix": "medicine/indilac-500-mg-sachet-1-tm-saet1-000128",
+          "productUrl": "medicine/indilac-500-mg-sachet-1-tm-saet1-000128",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000128",
+          "brandName": "Indilac 500 MG Sachet 1",
+          "manufacturerName": "Ind Swift Laboratories Ltd",
+          "packForm": "Pack of 1 Units",
+          "packSize": "1.2500533390228292",
+          "sellingPrice": 46.87,
+          "mrp": 58.59,
+          "productUrlSuffix": "medicine/indilac_500_mg_sachet_1-tm-saet1-000128",
+          "productUrl": "medicine/indilac_500_mg_sachet_1-tm-saet1-000128",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-007130",
+          "brandName": "Emlac Capsule 10",
+          "manufacturerName": "Embiotic Lab",
+          "packForm": "Pack of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 594,
+          "mrp": 742.5,
+          "productUrlSuffix": "medicine/emlac-capsule-10-tm-cacr1-007130",
+          "productUrl": "medicine/emlac-capsule-10-tm-cacr1-007130",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-007130",
+          "brandName": "Emlac Capsule 10",
+          "manufacturerName": "Embiotic Lab",
+          "packForm": "Pack of 10 Units",
+          "packSize": "12.5",
+          "sellingPrice": 594,
+          "mrp": 742.5,
+          "productUrlSuffix": "medicine/emlac_capsule_10-tm-cacr1-007130",
+          "productUrl": "medicine/emlac_capsule_10-tm-cacr1-007130",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-poer1-001836",
+          "brandName": "Vitagut Powder 1 Gm",
+          "manufacturerName": "Medley Pharmaceuticals",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 72.75,
+          "mrp": 90.94,
+          "productUrlSuffix": "medicine/vitagut-powder-1-gm-tm-poer1-001836",
+          "productUrl": "medicine/vitagut-powder-1-gm-tm-poer1-001836",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-001836",
+          "brandName": "Vitagut Powder 1 Gm",
+          "manufacturerName": "Medley Pharmaceuticals",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2500343642611684",
+          "sellingPrice": 72.75,
+          "mrp": 90.94,
+          "productUrlSuffix": "medicine/vitagut_powder_1_gm-tm-poer1-001836",
+          "productUrl": "medicine/vitagut_powder_1_gm-tm-poer1-001836",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-poer1-000198",
+          "brandName": "Lactobacil Plus 1000 MG Powder 1 GM",
+          "manufacturerName": "Organon (india) Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 112.5,
+          "mrp": 140.62,
+          "productUrlSuffix": "medicine/lactobacil-plus-1000-mg-powder-1-gm-tm-poer1-000198",
+          "productUrl": "medicine/lactobacil-plus-1000-mg-powder-1-gm-tm-poer1-000198",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-poer1-000198",
+          "brandName": "Lactobacil Plus 1000 MG Powder 1 GM",
+          "manufacturerName": "Organon (india) Ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2499555555555555",
+          "sellingPrice": 112.5,
+          "mrp": 140.62,
+          "productUrlSuffix": "medicine/lactobacil_plus_1000_mg_powder_1_gm-tm-poer1-000198",
+          "productUrl": "medicine/lactobacil_plus_1000_mg_powder_1_gm-tm-poer1-000198",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000625",
+          "brandName": "Prosenior Powder Sachet 2 GM",
+          "manufacturerName": "Dr. Reddys Laboratories Ltd",
+          "packForm": "Pack of 2 GM",
+          "packSize": "10",
+          "sellingPrice": 1171.87,
+          "mrp": 1464.84,
+          "productUrlSuffix": "medicine/prosenior-powder-sachet-2-gm-tm-saet1-000625",
+          "productUrl": "medicine/prosenior-powder-sachet-2-gm-tm-saet1-000625",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000625",
+          "brandName": "Prosenior Powder Sachet 2 GM",
+          "manufacturerName": "Dr. Reddys Laboratories Ltd",
+          "packForm": "Pack of 2 GM",
+          "packSize": "2.5000256003276844",
+          "sellingPrice": 1171.87,
+          "mrp": 1464.84,
+          "productUrlSuffix": "medicine/prosenior_powder_sachet_2_gm-tm-saet1-000625",
+          "productUrl": "medicine/prosenior_powder_sachet_2_gm-tm-saet1-000625",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000043",
+          "brandName": "Brigut Rz 250/10 Mg Sachet 1 Gm",
+          "manufacturerName": "Brio Bliss Life Science Pvt.ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "10",
+          "sellingPrice": 23.14,
+          "mrp": 28.93,
+          "productUrlSuffix": "otc/brigut-rz-25010-mg-sachet-1-gm-tm-saet1-000043",
+          "productUrl": "otc/brigut-rz-25010-mg-sachet-1-gm-tm-saet1-000043",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000043",
+          "brandName": "Brigut Rz 250/10 Mg Sachet 1 Gm",
+          "manufacturerName": "Brio Bliss Life Science Pvt.ltd",
+          "packForm": "Pack of 1 GM",
+          "packSize": "1.2502160760587726",
+          "sellingPrice": 23.14,
+          "mrp": 28.93,
+          "productUrlSuffix": "medicine/brigut_rz_250_10_mg_sachet_1_gm-tm-saet1-000043",
+          "productUrl": "medicine/brigut_rz_250_10_mg_sachet_1_gm-tm-saet1-000043",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-saet1-000072",
+          "brandName": "Darolac New Sachet 2Gm",
+          "manufacturerName": "Aristo Pharmaceuticals Pvt.ltd",
+          "packForm": "Sachet of 2 GM",
+          "packSize": "10",
+          "sellingPrice": 14.18,
+          "mrp": 16.88,
+          "productUrlSuffix": "medicine/darolac-new-125-bg-sachet-2-gm-TM-SAET1-000072",
+          "productUrl": "medicine/darolac-new-125-bg-sachet-2-gm-TM-SAET1-000072",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-saet1-000072",
+          "brandName": "Darolac New Sachet 2Gm",
+          "manufacturerName": "Aristo Pharmaceuticals Pvt.ltd",
+          "packForm": "Sachet of 2 GM",
+          "packSize": "2.380818053596615",
+          "sellingPrice": 14.18,
+          "mrp": 16.88,
+          "productUrlSuffix": "medicine/darolac_new_sachet_2gm-tm-saet1-000072",
+          "productUrl": "medicine/darolac_new_sachet_2gm-tm-saet1-000072",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-002913",
+          "brandName": "Laff Xt Capsule 10",
+          "manufacturerName": "Pharmed Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "10",
+          "sellingPrice": 119.25,
+          "mrp": 149.06,
+          "productUrlSuffix": "medicine/laff-xt-100-mg-capsule-10-tm-cacr1-002913",
+          "productUrl": "medicine/laff-xt-100-mg-capsule-10-tm-cacr1-002913",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-002913",
+          "brandName": "Laff Xt Capsule 10",
+          "manufacturerName": "Pharmed Ltd",
+          "packForm": "Strip of 10 Units",
+          "packSize": "12.49455155071249",
+          "sellingPrice": 119.25,
+          "mrp": 149.06,
+          "productUrlSuffix": "medicine/laff_xt_capsule_10-tm-cacr1-002913",
+          "productUrl": "medicine/laff_xt_capsule_10-tm-cacr1-002913",
+          "available": true
+        }
+      },
+      {
+        "product": {
+          "productCode": "tm-cacr1-005477",
+          "brandName": "Sacro 250 Capsule 4",
+          "manufacturerName": "Dr. Johns Laboratories Pvt Ltd",
+          "packForm": "Strip of 4 Units",
+          "packSize": "10",
+          "sellingPrice": 93.75,
+          "mrp": 117.19,
+          "productUrlSuffix": "medicine/sacro-250-mg-capsule-4-tm-cacr1-005477",
+          "productUrl": "medicine/sacro-250-mg-capsule-4-tm-cacr1-005477",
+          "available": true,
+          "saltComposition": "Probiotic Microbes (1 B)",
+          "composition": "Probiotic Microbes (1 B)"
+        },
+        "suggestion": {
+          "productCode": "tm-cacr1-005477",
+          "brandName": "Sacro 250 Capsule 4",
+          "manufacturerName": "Dr. Johns Laboratories Pvt Ltd",
+          "packForm": "Strip of 4 Units",
+          "packSize": "4.99957337883959",
+          "sellingPrice": 93.75,
+          "mrp": 117.19,
+          "productUrlSuffix": "medicine/sacro_250_capsule_4-tm-cacr1-005477",
+          "productUrl": "medicine/sacro_250_capsule_4-tm-cacr1-005477",
+          "available": true
+        }
+      }
+    ]
+  }
+}

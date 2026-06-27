@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 
-export default function MobileAlternativeStack({ subs, selectedSub, onSelect, comparedSub, onCompare }) {
+export default function MobileAlternativeStack({ subs, comparedSub, onCompare }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   return (
     <div data-testid="mobile-stack" className="flex flex-col gap-4 w-full">
       {subs.map((sub, idx) => {
-        const isSelected = selectedSub?.brand === sub.brand;
         const isExpanded = expandedIndex === idx;
         const status = sub.status || (sub.matchType === 'exact' ? 'Exact Match' : 'Different Strength');
         const isExact = status.toLowerCase().includes('exact');
         const isStrength = status.toLowerCase().includes('strength') || status.toLowerCase().includes('diff strength');
         
         return (
-          <div key={idx} className={`glass-panel border rounded-xl overflow-hidden transition-all duration-300
-            ${isSelected ? 'border-cyan-400/40 shadow-lg' : 'border-white/10'}`}
+          <div key={idx} className="glass-panel border rounded-xl overflow-hidden border-white/10"
           >
             {/* Header: Brand Name, Savings, select button */}
             <div className="p-4 flex justify-between items-center bg-white/3">
@@ -48,15 +46,6 @@ export default function MobileAlternativeStack({ subs, selectedSub, onSelect, co
               </div>
               <div className="flex items-center gap-3">
                 <span className="font-heading font-bold text-slate-100">₹{parseFloat(sub.price || 0).toFixed(2)}</span>
-                <button
-                  onClick={() => onSelect(sub)}
-                  className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition-all
-                    ${isSelected 
-                      ? 'accent-gradient-bg border-transparent text-slate-950 font-bold' 
-                      : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'}`}
-                >
-                  {isSelected ? 'Selected' : 'Swap'}
-                </button>
               </div>
             </div>
 

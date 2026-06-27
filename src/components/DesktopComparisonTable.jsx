@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DesktopComparisonTable({ subs, selectedSub, onSelect, comparedSub, onCompare }) {
+export default function DesktopComparisonTable({ subs, comparedSub, onCompare }) {
   return (
     <div data-testid="desktop-table" className="glass-panel overflow-x-auto w-full">
       <table className="min-w-full text-slate-200 border-collapse text-sm">
@@ -17,7 +17,6 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect, co
         </thead>
         <tbody className="divide-y divide-white/5">
           {subs.map((sub, idx) => {
-            const isSelected = selectedSub?.brand === sub.brand;
             const status = sub.status || (sub.matchType === 'exact' ? 'Exact Match' : 'Different Strength');
             const isExact = status.toLowerCase().includes('exact');
             const isStrength = status.toLowerCase().includes('strength') || status.toLowerCase().includes('diff strength');
@@ -25,7 +24,7 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect, co
             return (
               <tr 
                 key={idx}
-                className={`transition-colors hover:bg-white/3 ${isSelected ? 'bg-cyan-950/10' : ''}`}
+                className="transition-colors hover:bg-white/3"
               >
                 <td className="px-3 py-3 whitespace-nowrap">
                   <div className="flex flex-col gap-1 items-start">
@@ -95,16 +94,6 @@ export default function DesktopComparisonTable({ subs, selectedSub, onSelect, co
                 </td>
                 <td className="px-3 py-3 whitespace-nowrap text-center">
                   <div className="flex items-center justify-center gap-3">
-                    <button
-                      onClick={() => onSelect(sub)}
-                      className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition-all
-                        ${isSelected 
-                          ? 'accent-gradient-bg border-transparent text-slate-950 font-bold' 
-                          : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'}`}
-                    >
-                      {isSelected ? 'Selected' : 'Swap'}
-                    </button>
-                    
                     {sub.status !== 'Queried Brand' && (
                       <button
                         onClick={() => onCompare(sub)}

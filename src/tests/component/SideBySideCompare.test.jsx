@@ -45,8 +45,6 @@ describe('SideBySideCompare Component', () => {
         refSalts={refSalts}
         compItem={compItem}
         onClose={() => {}}
-        onSelect={() => {}}
-        isSelected={false}
       />
     );
 
@@ -86,8 +84,6 @@ describe('SideBySideCompare Component', () => {
         refSalts={refSalts}
         compItem={compItem}
         onClose={() => {}}
-        onSelect={() => {}}
-        isSelected={false}
       />
     );
 
@@ -112,31 +108,11 @@ describe('SideBySideCompare Component', () => {
         refSalts={refSalts}
         compItem={compItem}
         onClose={closeSpy}
-        onSelect={() => {}}
-        isSelected={false}
       />
     );
 
     const closeBtn = screen.getByRole('button', { name: '✕' });
     fireEvent.click(closeBtn);
     expect(closeSpy).toHaveBeenCalled();
-  });
-
-  test('triggers onSelect callback when clicking Swap to this Substitute button', () => {
-    const selectSpy = vi.fn();
-    render(
-      <SideBySideCompare
-        refInfo={refInfo}
-        refSalts={refSalts}
-        compItem={compItem}
-        onClose={() => {}}
-        onSelect={selectSpy}
-        isSelected={false}
-      />
-    );
-
-    const swapBtn = screen.getByRole('button', { name: /swap to this substitute/i });
-    fireEvent.click(swapBtn);
-    expect(selectSpy).toHaveBeenCalledWith(compItem);
   });
 });

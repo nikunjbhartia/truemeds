@@ -4,7 +4,6 @@ import Header from './components/Header';
 import SearchInput from './components/SearchBar/SearchInput';
 import HistoryList from './components/SearchBar/HistoryList';
 import MatchFilters from './components/MatchFilters';
-import AlternativeCard from './components/AlternativeCard';
 
 import ResponsiveLayout from './components/ResponsiveLayout';
 import { useSubstituteFinder } from './hooks/useSubstituteFinder';
@@ -22,7 +21,6 @@ export default function App({ initialQuery = '' } = {}) {
   const [localError, setLocalError] = useState(null);
 
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedSub, setSelectedSub] = useState(null);
   const [medicine, setMedicine] = useState(null);
   const [substitutes, setSubstitutes] = useState([]);
   const [comparedSub, setComparedSub] = useState(null);
@@ -57,7 +55,6 @@ export default function App({ initialQuery = '' } = {}) {
       if (!data.queried_medicine) {
         setMedicine(null);
         setSubstitutes([]);
-        setSelectedSub(null);
         setComparedSub(null);
         setLocalError('No results found.');
         return;
@@ -78,19 +75,9 @@ export default function App({ initialQuery = '' } = {}) {
       const allSubs = [...exacts, ...strengths, ...partials];
 
       setSubstitutes(allSubs);
-      
-      // Auto-select recommended (cheapest) or first alternative
-      if (data.recommendations && data.recommendations.length > 0) {
-        const recBrand = data.recommendations[0].brand;
-        const match = allSubs.find(s => s.brand === recBrand);
-        setSelectedSub(match || allSubs[0] || null);
-      } else {
-        setSelectedSub(allSubs[0] || null);
-      }
     } else if (searchQuery) {
       setMedicine(null);
       setSubstitutes([]);
-      setSelectedSub(null);
       setLocalError('No results found.');
     }
   }, [data, searchQuery]);
@@ -275,8 +262,6 @@ export default function App({ initialQuery = '' } = {}) {
                 })()}
                 compItem={comparedSub}
                 onClose={() => setComparedSub(null)}
-                onSelect={(sub) => setSelectedSub(sub)}
-                isSelected={selectedSub?.brand === comparedSub.brand}
               />
             </div>
           )}
@@ -310,16 +295,12 @@ export default function App({ initialQuery = '' } = {}) {
                 isDesktop ? (
                   <DesktopComparisonTable 
                     subs={finalFilteredSubstitutes}
-                    selectedSub={selectedSub}
-                    onSelect={setSelectedSub}
                     comparedSub={comparedSub}
                     onCompare={setComparedSub}
                   />
                 ) : (
                   <MobileAlternativeStack 
                     subs={finalFilteredSubstitutes}
-                    selectedSub={selectedSub}
-                    onSelect={setSelectedSub}
                     comparedSub={comparedSub}
                     onCompare={setComparedSub}
                   />

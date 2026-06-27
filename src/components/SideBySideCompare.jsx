@@ -5,9 +5,7 @@ export default function SideBySideCompare({
   refInfo,
   refSalts,
   compItem,
-  onClose,
-  onSelect,
-  isSelected
+  onClose
 }) {
   if (!refInfo || !compItem) return null;
 
@@ -210,7 +208,7 @@ export default function SideBySideCompare({
             )}
           </div>
           <div className="flex flex-col">
-            <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">vs Truemeds Price</span>
+            <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">vs Queried Price</span>
             {compItem.savings_vs_price > 0 ? (
               <span className="text-emerald-400 text-lg font-bold">Save {Math.round(compItem.savings_vs_price)}%</span>
             ) : compItem.savings_vs_price < 0 ? (
@@ -227,20 +225,11 @@ export default function SideBySideCompare({
               href={compItem.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold text-cyan-400 hover:underline shrink-0"
+              className="w-full sm:w-auto text-center text-sm font-bold bg-cyan-500/10 border border-cyan-400/20 text-cyan-400 hover:bg-cyan-500/20 px-6 py-2.5 rounded-full transition-all hover:scale-105 active:scale-95 duration-150"
             >
               View on Truemeds ↗
             </a>
           )}
-          <button
-            onClick={() => onSelect(compItem)}
-            className={`w-full sm:w-auto text-sm font-bold px-6 py-2.5 rounded-full border transition-all hover:scale-105 active:scale-95 duration-150
-              ${isSelected
-                ? 'accent-gradient-bg border-transparent text-slate-950 font-bold'
-                : 'bg-white/5 border-white/10 text-slate-200 hover:bg-white/10'}`}
-          >
-            {isSelected ? 'Selected' : 'Swap to this Substitute'}
-          </button>
         </div>
       </div>
     </section>

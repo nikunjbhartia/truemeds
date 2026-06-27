@@ -192,9 +192,12 @@ export function parseMissingIngredients(status, details) {
   return missing;
 }
 
-export function parseExtraIngredients(details) {
+export function parseExtraIngredients(details, status) {
   const extra = {};
-  if (details && details.includes('Contains extra:')) {
+  const isExtra = (status && String(status).toLowerCase().includes('extra')) || 
+                  (details && String(details).toLowerCase().includes('contains extra'));
+
+  if (isExtra && details) {
     const rawExtra = details.replace(/^Contains extra:\s*/i, '').trim();
     const parts = rawExtra.split(', ');
     parts.forEach(part => {
@@ -610,7 +613,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                     delete itemSalts[matchKey];
                   }
                 });
-                const extraIngredients = parseExtraIngredients(item.details);
+                const extraIngredients = parseExtraIngredients(item.details, item.status || 'partial');
                 for (const [k, v] of Object.entries(extraIngredients)) {
                   itemSalts[k] = v;
                 }

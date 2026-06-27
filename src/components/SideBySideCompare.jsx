@@ -1,5 +1,6 @@
 // src/components/SideBySideCompare.jsx
 import React from 'react';
+import { areIngredientsMatching } from '../js/substitute-finder';
 
 export default function SideBySideCompare({
   refInfo,
@@ -9,11 +10,48 @@ export default function SideBySideCompare({
 }) {
   if (!refInfo || !compItem) return null;
 
-  // Extract all unique salt keys from both reference and compared items
   const refKeys = Object.keys(refSalts || {});
   const compSalts = compItem.salts || {};
   const compKeys = Object.keys(compSalts);
-  const allSalts = [...new Set([...refKeys, ...compKeys])].sort();
+
+  // Group and match active ingredients between Prescribed and Compared
+  const comparisonList = [];
+  const matchedCompKeys = new Set();
+
+  refKeys.forEach(rk => {
+    const ck = compKeys.find(k => areIngredientsMatching(rk, k));
+    if (ck) {
+      matchedCompKeys.add(ck);
+      comparisonList.push({
+        name: rk,
+        hasRef: true,
+        refStrength: refSalts[rk],
+        hasComp: true,
+        compName: ck,
+        compStrength: compSalts[ck]
+      });
+    } else {
+      comparisonList.push({
+        name: rk,
+        hasRef: true,
+        refStrength: refSalts[rk],
+        hasComp: false
+      });
+    }
+  });
+
+  compKeys.forEach(ck => {
+    if (!matchedCompKeys.has(ck)) {
+      comparisonList.push({
+        name: ck,
+        hasRef: false,
+        hasComp: true,
+        compStrength: compSalts[ck]
+      });
+    }
+  });
+
+  comparisonList.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <section className="bg-slate-900/95 border-2 border-cyan-500/30 rounded-2xl p-6 relative w-full flex flex-col gap-5 shadow-2xl backdrop-blur-md">
@@ -83,13 +121,12 @@ export default function SideBySideCompare({
           <div>
             <span className="block text-[10px] text-slate-500 uppercase tracking-wider mb-2 font-bold">Active Ingredients</span>
             <div className="flex flex-col gap-2">
-              {allSalts.map((salt, idx) => {
-                const hasRef = refSalts[salt] !== undefined;
+              {comparisonList.map((item, idx) => {
                 return (
                   <div key={idx} className="flex justify-between items-center text-xs p-2 rounded bg-white/5 border border-white/5">
-                    <span className="text-slate-300 font-medium">{salt}</span>
-                    <span className={`font-bold ${hasRef ? 'text-slate-100' : 'text-slate-500'}`}>
-                      {hasRef ? refSalts[salt] : 'Not Present'}
+                    <span className="text-slate-300 font-medium">{item.name}</span>
+                    <span className={`font-bold ${item.hasRef ? 'text-slate-100' : 'text-slate-500'}`}>
+                      {item.hasRef ? item.refStrength : 'Not Present'}
                     </span>
                   </div>
                 );
@@ -157,32 +194,29 @@ export default function SideBySideCompare({
           <div>
             <span className="block text-[10px] text-slate-500 uppercase tracking-wider mb-2 font-bold">Active Ingredients Comparison</span>
             <div className="flex flex-col gap-2">
-              {allSalts.map((salt, idx) => {
-                const hasRef = refSalts[salt] !== undefined;
-                const hasComp = compSalts[salt] !== undefined;
-                
+              {comparisonList.map((item, idx) => {
                 let strengthLabel = '';
                 let colorClass = '';
                 
-                if (hasRef && hasComp) {
-                  if (refSalts[salt] === compSalts[salt]) {
-                    strengthLabel = `${compSalts[salt]} (Match) ✓`;
+                if (item.hasRef && item.hasComp) {
+                  if (item.refStrength === item.compStrength) {
+                    strengthLabel = `${item.compStrength} (Match) ✓`;
                     colorClass = 'text-emerald-400';
                   } else {
-                    strengthLabel = `${compSalts[salt]} (vs ${refSalts[salt]}) ⚠️`;
+                    strengthLabel = `${item.compStrength} (vs ${item.refStrength}) ⚠️`;
                     colorClass = 'text-amber-400 font-bold';
                   }
-                } else if (!hasRef && hasComp) {
-                  strengthLabel = `${compSalts[salt]} (Extra) +`;
+                } else if (!item.hasRef && item.hasComp) {
+                  strengthLabel = `${item.compStrength} (Extra) +`;
                   colorClass = 'text-blue-400';
                 } else {
-                  strengthLabel = `Missing (Prescribed: ${refSalts[salt]}) ✕`;
+                  strengthLabel = `Missing (Prescribed: ${item.refStrength}) ✕`;
                   colorClass = 'text-rose-400';
                 }
 
                 return (
                   <div key={idx} className="flex justify-between items-center text-xs p-2 rounded bg-white/5 border border-white/5">
-                    <span className="text-slate-300 font-medium">{salt}</span>
+                    <span className="text-slate-300 font-medium">{item.compName || item.name}</span>
                     <span className={`font-bold ${colorClass}`}>
                       {strengthLabel}
                     </span>

@@ -2,6 +2,37 @@ export function normalizeSaltName(name) {
   return name.toLowerCase().trim();
 }
 
+export function getIngredientAliases(name) {
+  if (!name) return [];
+  const clean = name.toLowerCase().replace(/\s+/g, ' ').replace(/-/g, ' ').replace(/\//g, ' ').trim();
+  
+  const parts = name.toLowerCase().split('/').map(p => p.trim());
+  const aliases = [clean];
+  
+  parts.forEach(part => {
+    const partClean = part.replace(/\s+/g, ' ').replace(/-/g, ' ').trim();
+    if (partClean && !aliases.includes(partClean)) {
+      aliases.push(partClean);
+    }
+    const noSpace = partClean.replace(/\s+/g, '');
+    if (noSpace && !aliases.includes(noSpace)) {
+      aliases.push(noSpace);
+    }
+  });
+  return aliases;
+}
+
+export function areIngredientsMatching(name1, name2) {
+  const norm1 = normalizeSaltName(name1);
+  const norm2 = normalizeSaltName(name2);
+  if (norm1 === norm2) return true;
+
+  const aliases1 = getIngredientAliases(name1);
+  const aliases2 = getIngredientAliases(name2);
+  return aliases1.some(a1 => aliases2.some(a2 => a1 === a2));
+}
+
+
 export function normalizeStrength(strength) {
   if (strength === null || strength === undefined) {
     return '';
@@ -67,6 +98,15 @@ export function getStrengthMatchRatio(refStr, candStr) {
   return Math.min(refVal, candVal) / Math.max(refVal, candVal);
 }
 
+export function findMatchingKey(key, targetDict) {
+  for (const targetKey of Object.keys(targetDict)) {
+    if (areIngredientsMatching(key, targetKey)) {
+      return targetKey;
+    }
+  }
+  return null;
+}
+
 export function computeMatchPercent(refSalts, candSalts) {
   const refNorm = {};
   for (const [k, v] of Object.entries(refSalts || {})) {
@@ -79,19 +119,34 @@ export function computeMatchPercent(refSalts, candSalts) {
 
   const refKeys = Object.keys(refNorm);
   const candKeys = Object.keys(candNorm);
-  const unionKeys = Array.from(new Set([...refKeys, ...candKeys]));
   
-  if (unionKeys.length === 0) return 0;
-
-  let totalWeight = 0;
-  for (const k of unionKeys) {
-    if (refNorm[k] !== undefined && candNorm[k] !== undefined) {
-      totalWeight += getStrengthMatchRatio(refNorm[k], candNorm[k]);
+  const refToCandMap = {};
+  const matchedCandKeys = new Set();
+  
+  for (const rk of refKeys) {
+    const ck = findMatchingKey(rk, candNorm);
+    if (ck) {
+      refToCandMap[rk] = ck;
+      matchedCandKeys.add(ck);
     }
   }
 
-  return Math.round((totalWeight / unionKeys.length) * 100);
+  const unmatchedRef = refKeys.filter(rk => refToCandMap[rk] === undefined).length;
+  const unmatchedCand = candKeys.filter(ck => !matchedCandKeys.has(ck)).length;
+  const matchedPairsCount = Object.keys(refToCandMap).length;
+  
+  const unionSize = matchedPairsCount + unmatchedRef + unmatchedCand;
+  if (unionSize === 0) return 0;
+
+  let totalWeight = 0;
+  for (const rk of Object.keys(refToCandMap)) {
+    const ck = refToCandMap[rk];
+    totalWeight += getStrengthMatchRatio(refNorm[rk], candNorm[ck]);
+  }
+
+  return Math.round((totalWeight / unionSize) * 100);
 }
+
 
 export function parseMissingIngredients(status, details) {
   const missing = new Set();
@@ -226,17 +281,29 @@ export function compareCompositions(refSalts, candSalts) {
     candNorm[normalizeSaltName(k)] = normalizeStrength(v);
   }
 
-  const refKeys = new Set(Object.keys(refNorm));
-  const candKeys = new Set(Object.keys(candNorm));
+  const refKeys = Object.keys(refNorm);
+  const candKeys = Object.keys(candNorm);
+
+  const refToCandMap = {};
+  const matchedCandKeys = new Set();
+  
+  for (const rk of refKeys) {
+    const ck = findMatchingKey(rk, candNorm);
+    if (ck) {
+      refToCandMap[rk] = ck;
+      matchedCandKeys.add(ck);
+    }
+  }
 
   // 1. Exact Match Check
-  const areKeysEqual = refKeys.size === candKeys.size && [...refKeys].every(k => candKeys.has(k));
-  if (areKeysEqual) {
+  const isExactKeys = refKeys.length === candKeys.length && refKeys.every(rk => refToCandMap[rk] !== undefined);
+  if (isExactKeys) {
     const strengthMismatch = [];
-    for (const k of refKeys) {
-      if (refNorm[k] !== candNorm[k]) {
-        const origRefKey = Object.keys(refSalts).find(ok => normalizeSaltName(ok) === k) || k;
-        strengthMismatch.push(`${origRefKey}: ${candNorm[k]} vs ${refNorm[k]}`);
+    for (const rk of refKeys) {
+      const ck = refToCandMap[rk];
+      if (refNorm[rk] !== candNorm[ck]) {
+        const origRefKey = Object.keys(refSalts).find(ok => normalizeSaltName(ok) === rk) || rk;
+        strengthMismatch.push(`${origRefKey}: ${candNorm[ck]} vs ${refNorm[rk]}`);
       }
     }
 
@@ -247,23 +314,23 @@ export function compareCompositions(refSalts, candSalts) {
     }
   }
 
-  // 2. Extra Ingredients Check (refKeys is subset of candKeys)
-  const isSubset = [...refKeys].every(k => candKeys.has(k));
-  if (isSubset && candKeys.size > refKeys.size) {
-    const extraKeys = [...candKeys].filter(k => !refKeys.has(k)).sort();
-    const extraDetails = extraKeys.map(k => {
-      const origCandKey = Object.keys(candSalts).find(ok => normalizeSaltName(ok) === k) || k;
-      return `${origCandKey} (${candNorm[k]})`;
+  // 2. Extra Ingredients Check
+  const allRefMatched = refKeys.every(rk => refToCandMap[rk] !== undefined);
+  if (allRefMatched && candKeys.length > refKeys.length) {
+    const extraKeys = candKeys.filter(ck => !matchedCandKeys.has(ck)).sort();
+    const extraDetails = extraKeys.map(ck => {
+      const origCandKey = Object.keys(candSalts).find(ok => normalizeSaltName(ok) === ck) || ck;
+      return `${origCandKey} (${candNorm[ck]})`;
     });
     return { status: 'Extra Ingredients', details: extraDetails };
   }
 
   // 3. Missing Ingredients Check
-  const missingKeys = [...refKeys].filter(k => !candKeys.has(k)).sort();
+  const missingKeys = refKeys.filter(rk => refToCandMap[rk] === undefined).sort();
   if (missingKeys.length > 0) {
-    const missingDetails = missingKeys.map(k => {
-      const origRefKey = Object.keys(refSalts).find(ok => normalizeSaltName(ok) === k) || k;
-      return `${origRefKey} (${refNorm[k]})`;
+    const missingDetails = missingKeys.map(rk => {
+      const origRefKey = Object.keys(refSalts).find(ok => normalizeSaltName(ok) === rk) || rk;
+      return `${origRefKey} (${refNorm[rk]})`;
     });
     return { status: 'Missing Ingredients', details: missingDetails };
   }

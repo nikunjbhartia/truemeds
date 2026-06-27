@@ -529,14 +529,15 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       if (data && data.queried_medicine && data.alternatives) {
         const ref = data.queried_medicine;
         if (!ref.link) {
-          const slugLinks = {
-            'ecosprin_75_tablet_14': 'https://www.truemeds.in/otc/ecosprin-75-tablet-14-tm-taas1-002271',
-            'pan_40_tablet_15': 'https://www.truemeds.in/otc/pan-40-tablet-15-tm-tacr1-030125',
-            'pantomore_dsr_capsule_10': 'https://www.truemeds.in/medicine/pantomore-dsr-3040-mg-capsule-10-tm-capr1-000026',
-            'ecoflora_capsule_30': 'https://www.truemeds.in/otc/ecoflora-capsule-30-tm-casu1-000494',
-            'aptamil_premium_stage_1_from_birth_to_6_month_infant_formula_refill_powder_400gm': 'https://www.truemeds.in/otc/aptamil-premium-stage-1-from-birth-to-6-month-infant-formula-refill-powder-400gm-tm-poer1-003839'
-          };
-          ref.link = slugLinks[resolvedSlug] || '';
+          const standaloneRec = data.recommendations?.find(r => r.category.includes('Standalone'));
+          if (standaloneRec) {
+            ref.link = standaloneRec.link;
+          } else {
+            const swapRec = data.recommendations?.find(r => r.category.includes('Cheapest Swap'));
+            if (swapRec) {
+              ref.link = swapRec.link;
+            }
+          }
         }
         if (!ref.manufacturer) {
           const firstExact = data.alternatives?.exact?.[0];

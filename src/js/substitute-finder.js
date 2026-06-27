@@ -684,7 +684,14 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
           data.alternatives.exact.sort((a, b) => a.unit_price - b.unit_price);
         }
         if (data.alternatives.different_strength) {
-          data.alternatives.different_strength.sort((a, b) => a.unit_price - b.unit_price);
+          data.alternatives.different_strength.sort((a, b) => {
+            const aMatch = a.match_percent || 0;
+            const bMatch = b.match_percent || 0;
+            if (aMatch !== bMatch) {
+              return bMatch - aMatch;
+            }
+            return a.unit_price - b.unit_price;
+          });
         }
 
         // Sort partial match cases by match percent descending, then by unit price ascending
@@ -1002,7 +1009,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   };
 
   exactMatches.sort((a, b) => a.price_per_unit - b.price_per_unit);
-  diffStrength.sort((a, b) => a.price_per_unit - b.price_per_unit);
+  sortPartial(diffStrength);
   sortPartial(extraIngredients);
   sortPartial(missingIngredients);
 

@@ -796,6 +796,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
           if (data.recommendations.length < 4) {
             const recBrands = new Set(data.recommendations.map(r => r.brand));
             const allCandidates = [
+              ...(data.alternatives.exact || []),
               ...(data.alternatives.partial || []),
               ...(data.alternatives.different_strength || [])
             ];
@@ -817,9 +818,12 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             for (const item of remainingAlts) {
               if (data.recommendations.length >= 4) break;
               
+              const isExact = item.status && item.status.includes('Exact');
               const isExtra = item.status && item.status.includes('Extra');
               const isDiffStrength = item.status && (item.status.includes('Diff') || item.status.includes('Strength'));
-              const categoryName = isExtra 
+              const categoryName = isExact
+                ? `Alternative Exact Match #${backfillIndex}`
+                : isExtra 
                 ? `Alternative Extra Match #${backfillIndex}`
                 : isDiffStrength
                 ? `Alternative Different Strength Match #${backfillIndex}`
@@ -1262,7 +1266,7 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
   const recommendedBrands = new Set(recommendations.map(r => r.brand));
   const remainingPartials = [];
   
-  [...missingIngredients, ...extraIngredients, ...diffStrength].forEach(cand => {
+  [...exactMatches, ...missingIngredients, ...extraIngredients, ...diffStrength].forEach(cand => {
     if (!recommendedBrands.has(cand.name)) {
       remainingPartials.push(cand);
     }
@@ -1293,13 +1297,16 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
 
     const isExtra = cand.match_status === 'Extra Ingredients';
     const isDiffStrength = cand.match_status === 'Different Strength';
-    const categoryName = isExtra 
+    const isExact = cand.match_status === 'Exact Match';
+    const categoryName = isExact
+      ? `Alternative Exact Match #${backfillIndex}`
+      : isExtra 
       ? `Alternative Extra Match #${backfillIndex}`
       : isDiffStrength
       ? `Alternative Different Strength Match #${backfillIndex}`
       : `Alternative Partial Match #${backfillIndex}`;
 
-    const detailLabel = isExtra ? 'Contains extra' : isDiffStrength ? 'Different strength' : 'Missing';
+    const detailLabel = isExact ? 'Exact match' : isExtra ? 'Contains extra' : isDiffStrength ? 'Different strength' : 'Missing';
 
     recommendations.push({
       category: categoryName,

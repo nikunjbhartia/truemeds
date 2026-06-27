@@ -93,6 +93,31 @@ export function computeMatchPercent(refSalts, candSalts) {
   return Math.round((totalWeight / unionKeys.length) * 100);
 }
 
+export function parseMissingIngredients(status, details) {
+  const missing = new Set();
+  if (status && status.toLowerCase().includes('missing')) {
+    const mainMissing = status.replace(/^Missing:\s*/i, '').trim();
+    if (mainMissing) {
+      missing.add(normalizeSaltName(mainMissing));
+    }
+  }
+  if (details) {
+    const cleanDetails = details.replace(/^\d+(?:\.\d+)?\s*[a-zA-Z%]+\)\s*,\s*/i, '');
+    const parts = cleanDetails.split(',');
+    parts.forEach(part => {
+      const match = part.match(/^\s*([^\(]+)/);
+      if (match) {
+        const name = match[1].trim();
+        if (name) {
+          missing.add(normalizeSaltName(name));
+        }
+      }
+    });
+  }
+  return missing;
+}
+
+
 
 export function parseMedicineInfo(prodDict) {
   if (!prodDict) return null;
@@ -473,16 +498,13 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                 }
                 item.salts = itemSalts;
               } else if (matchType === 'partial') {
-                const isMissing = item.status && item.status.toLowerCase().includes('missing');
-                if (isMissing && item.status) {
-                  const missingName = item.status.replace(/^Missing:\s*/i, '').trim();
-                  delete itemSalts[missingName];
-                } else if (item.details) {
-                  const match = item.details.match(/^([^\(]+)\s*\(([^)]+)\)/);
-                  if (match) {
-                    itemSalts[match[1].trim()] = match[2].trim();
+                const missingIngredients = parseMissingIngredients(item.status, item.details);
+                missingIngredients.forEach(missingName => {
+                  const matchKey = Object.keys(itemSalts).find(k => normalizeSaltName(k) === missingName);
+                  if (matchKey) {
+                    delete itemSalts[matchKey];
                   }
-                }
+                });
                 item.salts = itemSalts;
               } else {
                 item.salts = itemSalts;

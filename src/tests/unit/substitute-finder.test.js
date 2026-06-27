@@ -5,7 +5,9 @@ import {
   normalizeStrength,
   parseMedicineInfo,
   compareCompositions,
-  mapMatchStatusAndDetails
+  mapMatchStatusAndDetails,
+  parseMissingIngredients,
+  computeMatchPercent
 } from '../../js/substitute-finder';
 
 describe('Tier 1: substitute-finder engine unit tests', () => {
@@ -190,4 +192,52 @@ describe('Tier 1: substitute-finder engine unit tests', () => {
       });
     });
   });
+
+  describe('parseMissingIngredients', () => {
+    test('extracts single missing ingredient from status', () => {
+      expect(parseMissingIngredients('Missing: Nucleotide', '')).toEqual(new Set(['nucleotide']));
+    });
+
+    test('extracts multiple missing ingredients from details including truncated list', () => {
+      const details = '12.5 mg), Beta-Carotene (210 mcg), Arachidonic Acid (84.5 mg), Fructooligosaccharides (0.3 g)';
+      const missing = parseMissingIngredients('Missing: Nucleotide', details);
+      expect(missing).toEqual(new Set([
+        'nucleotide',
+        'beta-carotene',
+        'arachidonic acid',
+        'fructooligosaccharides'
+      ]));
+    });
+
+    test('handles standard list of ingredients in details without starting paren prefix', () => {
+      const details = 'Zinc (3.2 mg), Calcium (400 mg)';
+      const missing = parseMissingIngredients('', details);
+      expect(missing).toEqual(new Set([
+        'zinc',
+        'calcium'
+      ]));
+    });
+  });
+
+  describe('computeMatchPercent', () => {
+    test('returns 100% for exact matches', () => {
+      const ref = { 'Paracetamol': '650 mg' };
+      const cand = { 'Paracetamol': '650 mg' };
+      expect(computeMatchPercent(ref, cand)).toBe(100);
+    });
+
+    test('returns correctly scaled percent for different strengths', () => {
+      const ref = { 'Paracetamol': '650 mg' };
+      const cand = { 'Paracetamol': '125 mg' };
+      expect(computeMatchPercent(ref, cand)).toBe(19);
+    });
+
+    test('returns correctly weighted Jaccard similarity for missing/extra items', () => {
+      // 1 matched, 1 missing -> union size 2, match wt 1 -> 50%
+      const ref = { 'Aspirin': '75 mg', 'Glycine': '50 mg' };
+      const cand = { 'Aspirin': '75 mg' };
+      expect(computeMatchPercent(ref, cand)).toBe(50);
+    });
+  });
 });
+

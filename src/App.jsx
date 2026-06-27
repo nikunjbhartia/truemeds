@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import SearchInput from './components/SearchBar/SearchInput';
 import HistoryList from './components/SearchBar/HistoryList';
@@ -25,6 +25,13 @@ export default function App({ initialQuery = '' } = {}) {
   const [medicine, setMedicine] = useState(null);
   const [substitutes, setSubstitutes] = useState([]);
   const [comparedSub, setComparedSub] = useState(null);
+  const compareRef = useRef(null);
+
+  useEffect(() => {
+    if (comparedSub && compareRef.current) {
+      compareRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [comparedSub]);
 
   const isMobile = useIsMobile();
   const isTablet = useIsTablet();
@@ -268,7 +275,7 @@ export default function App({ initialQuery = '' } = {}) {
 
           {/* Side-by-Side Detailed Comparison Card if active */}
           {comparedSub && (
-            <div className="w-full">
+            <div ref={compareRef} className="w-full">
               <SideBySideCompare
                 refInfo={medicine}
                 refSalts={(() => {

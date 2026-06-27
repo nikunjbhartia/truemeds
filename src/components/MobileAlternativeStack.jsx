@@ -84,9 +84,20 @@ export default function MobileAlternativeStack({ subs, comparedSub, onCompare })
                     <span className="text-slate-500">0%</span>
                   )}
                 </div>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5">
                   <span className="text-slate-400 text-xs">Ingredients:</span>
-                  <span className="text-xs bg-white/5 p-2 rounded">{(sub.details && sub.details.replace(/\*\*/g, '')) || 'N/A'}</span>
+                  <div className="flex flex-col gap-1.5 bg-white/5 p-2 rounded">
+                    {sub.salts ? (
+                      Object.entries(sub.salts).map(([name, strength]) => (
+                        <div key={name} className="flex justify-between items-center text-[11px] text-slate-300">
+                          <span>{name}</span>
+                          <span className="text-slate-400 font-medium">{strength}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <span className="text-slate-500 text-xs">N/A</span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/5">
                   {sub.status !== 'Queried Brand' && (

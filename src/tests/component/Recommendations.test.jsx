@@ -13,7 +13,8 @@ describe('Recommendations component', () => {
       unit_price: 0.32,
       savings_percent: 15.91,
       link: 'https://www.truemeds.in/ecosprin-75',
-      details: ''
+      details: '',
+      salts: { 'Aspirin': '75 mg' }
     },
     {
       category: 'Queried Brand (Cheapest Swap)',
@@ -23,7 +24,8 @@ describe('Recommendations component', () => {
       unit_price: 0.30,
       savings_percent: 20.23,
       link: 'https://www.truemeds.in/delisprin-75',
-      details: 'Buy parent **Delisprin 75** & swap for **Ecosprin 75** in cart'
+      details: 'Buy parent **Delisprin 75** & swap for **Ecosprin 75** in cart',
+      salts: { 'Aspirin': '75 mg' }
     },
     {
       category: 'Cheapest Exact Match Alternative',
@@ -33,7 +35,8 @@ describe('Recommendations component', () => {
       unit_price: 0.30,
       savings_percent: 20.23,
       link: 'https://www.truemeds.in/delisprin-75',
-      details: ''
+      details: '',
+      salts: { 'Aspirin': '75 mg' }
     },
     {
       category: 'Partial Match (Missing Ingredients)',
@@ -43,7 +46,8 @@ describe('Recommendations component', () => {
       unit_price: 0.25,
       savings_percent: 33.71,
       link: 'https://www.truemeds.in/aspirin-75',
-      details: 'Missing: Enteric coating'
+      details: 'Missing: Enteric coating',
+      salts: { 'Aspirin': '75 mg' }
     }
   ];
 

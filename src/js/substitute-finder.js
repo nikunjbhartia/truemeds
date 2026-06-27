@@ -680,6 +680,21 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
                 rec.details = `Buy parent **${parentName}** & swap in cart`;
               }
             }
+
+            // Copy salts from alternative matches list to this recommendation item
+            let matchingAlt = null;
+            for (const key of ['exact', 'different_strength', 'partial']) {
+              const list = data.alternatives[key];
+              if (list) {
+                matchingAlt = list.find(item => item.brand === rec.brand);
+                if (matchingAlt) break;
+              }
+            }
+            if (matchingAlt && matchingAlt.salts) {
+              rec.salts = matchingAlt.salts;
+            } else if (rec.category.includes('Queried Brand')) {
+              rec.salts = refSalts;
+            }
           });
         }
 
@@ -923,7 +938,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       unit_price: refInfo.price_per_unit,
       savings_percent: standSavings,
       link: standLink,
-      details: ''
+      details: '',
+      salts: refSalts
     });
   } else {
     const swapClickId = `sc_${generateUUID()}`;
@@ -938,7 +954,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       unit_price: refCand.price_per_unit,
       savings_percent: swapSavings,
       link: swapLink,
-      details: `Buy parent **${refCand.parent_name || 'parent'}** & swap for **${refInfo.name}** in cart`
+      details: `Buy parent **${refCand.parent_name || 'parent'}** & swap for **${refInfo.name}** in cart`,
+      salts: refCand.salts
     });
   }
 
@@ -962,7 +979,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       unit_price: cheapestExact.price_per_unit,
       savings_percent: savings,
       link: link,
-      details: cheapestExact.is_suggestion ? `Buy parent **${cheapestExact.parent_name || 'parent'}** & swap in cart` : ''
+      details: cheapestExact.is_suggestion ? `Buy parent **${cheapestExact.parent_name || 'parent'}** & swap in cart` : '',
+      salts: cheapestExact.salts
     });
   }
 
@@ -987,7 +1005,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       link: link,
       details: cheapestDiff.is_suggestion 
         ? `Buy parent **${cheapestDiff.parent_name}** & swap in cart` 
-        : (cheapestDiff.match_details ? cheapestDiff.match_details.join(', ') : '')
+        : (cheapestDiff.match_details ? cheapestDiff.match_details.join(', ') : ''),
+      salts: cheapestDiff.salts
     });
   }
 
@@ -1012,7 +1031,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       link: link,
       details: cheapestExtra.is_suggestion 
         ? `Buy parent **${cheapestExtra.parent_name}** & swap in cart (Contains extra: ${cheapestExtra.match_details ? cheapestExtra.match_details.join(', ') : ''})` 
-        : (cheapestExtra.match_details ? `Contains extra: ${cheapestExtra.match_details.join(', ')}` : '')
+        : (cheapestExtra.match_details ? `Contains extra: ${cheapestExtra.match_details.join(', ')}` : ''),
+      salts: cheapestExtra.salts
     });
   }
 
@@ -1056,7 +1076,8 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
       link: link,
       details: bestMissing.is_suggestion 
         ? `Buy parent **${bestMissing.parent_name}** & swap in cart (Missing: ${bestMissing.match_details ? bestMissing.match_details.join(', ') : ''})` 
-        : (bestMissing.match_details ? `Missing: ${bestMissing.match_details.join(', ')}` : '')
+        : (bestMissing.match_details ? `Missing: ${bestMissing.match_details.join(', ')}` : ''),
+      salts: bestMissing.salts
     });
   }
 

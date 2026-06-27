@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 //   For each pilot brand:
 //     1. Shell out to `python3 python/substitute_finder.py "<query>"`.
-//        The script writes /Users/nikunjbhartia/truemeds/<slug>_substitutes.md.
+//        The script writes the markdown report to python/reports/<slug>_substitutes.md.
 //        SLUG is derived from the live API's `skuName`, NOT the user query,
 //        so we DISCOVER the produced file at runtime via mtime-newest glob.
 //     2. Parse the Markdown into:

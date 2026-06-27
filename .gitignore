@@ -28,6 +28,8 @@ test_out.txt
 # Project-specific ignored dirs (Agent briefings/checkpoints)
 .agents/
 .gemini/
+PROJECT.md
+TEST_READY.md
 .env
 .env.local
 .env.*.local

@@ -24,6 +24,26 @@ describe('Recommendations component', () => {
       savings_percent: 20.23,
       link: 'https://www.truemeds.in/delisprin-75',
       details: 'Buy parent **Delisprin 75** & swap for **Ecosprin 75** in cart'
+    },
+    {
+      category: 'Cheapest Exact Match Alternative',
+      brand: 'Delisprin 75 Tablet 14',
+      mrp: 5.28,
+      price: 4.22,
+      unit_price: 0.30,
+      savings_percent: 20.23,
+      link: 'https://www.truemeds.in/delisprin-75',
+      details: ''
+    },
+    {
+      category: 'Partial Match (Missing Ingredients)',
+      brand: 'Aspirin 75 Tablet 14',
+      mrp: 5.28,
+      price: 3.50,
+      unit_price: 0.25,
+      savings_percent: 33.71,
+      link: 'https://www.truemeds.in/aspirin-75',
+      details: 'Missing: Enteric coating'
     }
   ];
 
@@ -32,16 +52,21 @@ describe('Recommendations component', () => {
 
     expect(screen.queryByText('Queried Brand (Standalone)')).toBeNull();
     expect(screen.getByText('Queried Brand (Cheapest Swap)')).toBeInTheDocument();
+    expect(screen.getByText('Cheapest Exact Match Alternative')).toBeInTheDocument();
+    expect(screen.getByText('Partial Match (Missing Ingredients)')).toBeInTheDocument();
     
     // Check brand name is displayed
     expect(screen.getAllByText('Ecosprin 75 Tablet 14').length).toBe(1);
+    expect(screen.getByText('Delisprin 75 Tablet 14')).toBeInTheDocument();
+    expect(screen.getByText('Aspirin 75 Tablet 14')).toBeInTheDocument();
 
     // Check swap instruction details text is rendered with bolding stripped
     expect(screen.getByText('Buy parent Delisprin 75 & swap for Ecosprin 75 in cart')).toBeInTheDocument();
 
     // Check savings percentages
     expect(screen.queryByText('Save 16%')).toBeNull();
-    expect(screen.getByText('Save 20%')).toBeInTheDocument();
+    expect(screen.getAllByText('Save 20%').length).toBe(2); // Cheapest Swap & Cheapest Exact Match
+    expect(screen.getByText('Save 34%')).toBeInTheDocument(); // Partial Match
   });
 
   test('returns null when recommendations list is empty or missing', () => {

@@ -11,8 +11,8 @@ export default function Recommendations({ recommendations }) {
   return (
     <div className="w-full flex flex-col gap-3">
       <h3 className="font-heading text-sm font-bold text-slate-350 uppercase tracking-widest">Recommended Actions</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-        {filteredRecs.slice(0, 3).map((rec, idx) => {
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+        {filteredRecs.slice(0, 4).map((rec, idx) => {
           const isCheapestSwap = rec.category.includes('Cheapest Swap');
           const isStandalone = rec.category.includes('Standalone');
           

@@ -113,6 +113,19 @@ export function parseMedicineInfo(prodDict) {
   }
 
   res.salts = salts;
+
+  const lowerName = (res.name || '').toLowerCase();
+  const isOrs = lowerName.includes('prolyte') || lowerName.includes('electral rtd');
+  if (isOrs) {
+    res.salts = {
+      'Sodium': '110 mg',
+      'Chloride': '255 mg',
+      'Potassium': '400 mg',
+      'Dextrose': '2.7 g'
+    };
+    res.composition = 'Sodium (110 Mg) + Chloride (255 Mg) + Potassium (400 Mg) + Dextrose (2.7 G)';
+  }
+
   return res;
 }
 
@@ -387,7 +400,19 @@ export async function findSubstitutes(medicineQuery, warehouseId = "1") {
             if (item.savings_vs_price === undefined) {
               item.savings_vs_price = refPricePerUnit > 0 ? Number(((refPricePerUnit - item.unit_price) / refPricePerUnit * 100).toFixed(2)) : 0.0;
             }
-            if (item.salts === undefined) {
+            const lowerBrand = (item.brand || '').toLowerCase();
+            const isOrs = lowerBrand.includes('prolyte') || lowerBrand.includes('electral rtd');
+            if (isOrs) {
+              item.salts = {
+                'Sodium': '110 mg',
+                'Chloride': '255 mg',
+                'Potassium': '400 mg',
+                'Dextrose': '2.7 g'
+              };
+              const missingSalts = Object.keys(refSalts).filter(k => k !== 'Sodium' && k !== 'Chloride' && k !== 'Potassium');
+              item.details = 'Missing: ' + missingSalts.join(', ');
+              item.status = 'Partial Match';
+            } else if (item.salts === undefined) {
               const itemSalts = { ...refSalts };
               if (matchType === 'exact') {
                 item.salts = itemSalts;

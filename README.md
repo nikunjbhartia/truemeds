@@ -13,15 +13,66 @@ A premium, highly interactive dynamic mobile-first web portal built with **React
 ---
 
 ## Architecture
+
+### System Flow Diagram
+```mermaid
+graph TD
+    Client[Browser Frontend / React App] -->|1. Search Query| Proxy[CF Pages Function /api/search]
+    Proxy -->|2. Forward Request with rotated headers| TM[Truemeds API]
+    TM -->|3. JSON Response| Proxy
+    Proxy -->|4. Return Response| Client
+    Client -->|5. Match Compositions & Sort| Engine[JS Substitute Finder Engine]
+    Engine -->|6. Render Comparison View| Client
+```
+
 All search, parsing, composition comparison, and sorting logic is ported from the original Python script into client-side JavaScript.
 If CORS prevents direct browser calls to the Truemeds API, a serverless Cloudflare Pages Function is implemented under `/functions/api/search.js` as an API proxy.
 
-Key Specifications:
+### Key Specifications:
 - **Framework & Build Stack**: React + Vite + Tailwind CSS v3
 - **Mobile-First Design**: Highly responsive, touch-friendly UI. Mobile view uses card layouts or collapsing accordions instead of wide tables.
 - **Search History**: Persisted in browser's `localStorage` and displayed in a "Recent Searches" panel/sidebar.
 - **URL Search Parameters**: Automatically detects and parses `?search=query` or `?q=query` on mount to trigger search.
 - **Offline Fixtures**: JSON reports are stored under `/public/data/` for offline/fallback mode.
+
+---
+
+## Medicine Discovery & Matching Logic
+
+### Logic Flow Diagram
+```mermaid
+graph TD
+    A[Start Search: findSubstitutes] --> B[Fetch candidates from Search API]
+    B --> C[Retrieve Reference Medicine details]
+    C --> D[Loop over each alternative candidate]
+    D --> E[Normalize Salt Names & Strengths]
+    E --> F{Check composition overlap}
+    F -->|Same salts & strengths| G[Exact Match]
+    F -->|Same salts, diff strengths| H[Different Strength]
+    F -->|Ref salts is subset of Cand salts| I[Extra Ingredients]
+    F -->|Cand salts missing any Ref salts| J[Missing Ingredients]
+    G --> K[Sort by price_per_unit ascending]
+    H --> K
+    I --> K
+    J --> K
+    K --> L[Render results & Dual Savings vs MRP/Price]
+```
+
+### Exact Core Matching & Classification Details:
+1. **Candidate Retrieval**: Fetches brand matching and auto-suggestions from Truemeds' search API. 
+2. **Salt Composition Extraction**: Extract key elements from `composition` strings (or the structured `saltComposition` payload) using pattern matching regexes.
+3. **Normalization**:
+   * **Name**: Trimmed and converted to lowercase (e.g. `Polyethylene Glycol` ➡️ `polyethylene glycol`).
+   * **Strength**: Normalizes concentrations, removing spaces, converting units like `i.u.` to `iu`, and handling large number formats cleanly (e.g., `0.3 %` ➡️ `0.3%`).
+4. **Matching Classification**:
+   * **Exact Match**: The candidate contains the exact same list of normalized salts in the exact same strengths.
+   * **Different Strength**: The candidate contains the exact same list of normalized salts, but at least one salt has a different strength.
+   * **Extra Ingredients**: The reference medicine's salts list is a proper subset of the candidate's salts (meaning the candidate contains all reference salts plus some additional ones).
+   * **Missing Ingredients**: The candidate lacks one or more of the reference medicine's salts.
+5. **Sorting & Dual Savings**:
+   * Alternatives are sorted by `price_per_unit` in ascending order.
+   * Savings are calculated relative to both the **Reference MRP** (retail) and **Reference Price** (Truemeds selling price).
+   * If a product is more expensive, the savings percentage resolves to a negative value shown as a surcharge (e.g., `+24% Cost`).
 
 ---
 
